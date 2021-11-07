@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models.db import Song
+from forms.upload_form import UploadForm
 
 song_routes = Blueprint('songs', __name__)
 
@@ -10,7 +11,7 @@ def song_post():
     form = UploadForm()
     if form.validate_on_submit():
         data = form.data
-        new_song = song(
+        new_song = Song(
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
