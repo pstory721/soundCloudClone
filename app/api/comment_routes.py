@@ -23,4 +23,4 @@ def post_comment():
 @comment_routes.route('/comments/:id',methods=["DELETE"])
 @login_required
 def delete_comment():
-    Comment.query.filter(Comment.id == id).delet()
+    Comment.query.filter(Comment.id == id).delete()
