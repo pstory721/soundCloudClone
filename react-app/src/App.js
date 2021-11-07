@@ -9,6 +9,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import { Home } from './components/home';
+import { Library } from './components/Library';
+import { Discover } from './components/discover';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +45,12 @@ function App() {
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <Home />
+        </Route>
+        <Route path='/discover' exact={true} >
+          <Discover />
+        </Route>
+        <Route path='/library' exact={true} >
+        <Library />
         </Route>
       </Switch>
     </BrowserRouter>
