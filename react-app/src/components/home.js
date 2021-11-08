@@ -1,8 +1,17 @@
-import React from "react";
+import React, {  useEffect }  from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { GetSongs } from "../store/song";
 import "./home.css";
 
 export function Home() {
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const songs = useSelector((state) => state.songs.songs);
+  useEffect(() => {
+    dispatch(GetSongs());
+  }, [dispatch]);
+
   return (
     <div className="home-body">
       <div>
