@@ -1,4 +1,4 @@
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from "./csrf.js";
 
 const PUT_SONG = "session/PutSongs";
 const GET_SONGS = "session/GetSongs";
