@@ -1,14 +1,15 @@
 from flask import Blueprint, jsonify, request, session
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models.db import Song
-from forms.upload_form import UploadForm
-from api.aws_songs import (
+from app.forms.upload_form import UploadForm
+from app.api.aws_songs import (
     upload_song_to_s3, allowed_song, get_unique_songname)
-from api.aws_images import (
+from app.api.aws_images import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
 song_routes = Blueprint('songs', __name__)
 
+print(current_user)
 # Post songs to the Database
 @song_routes.route("/songs/upload", methods=["POST"])
 @login_required
@@ -34,7 +35,7 @@ def song_post():
     if form.validate_on_submit():
         data = form.data
         new_song = Song(
-            user_id=session.User.id
+            user_id=session.User.id,
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
@@ -49,17 +50,17 @@ def song_post():
         return "Bad Data"
 
 # Get all songs from the database
-@song_routes("/songs")
+@song_routes.route("/songs")
 def all_songs():
     songs = Song.query.all()
     return jsonify(songs)
 
 # To delete the song from the database
-@song_routes("/songs/:id", methods=["DELETE"])
-@login_required
-def delete_song(id):
-    current_song = Song["id"]
-    if current_song["user_id"] not session.User:
-        return "Cannot complete request", 403
-    Song[id].delete()
-    return redirect("/")
+# @song_routes("/songs/:id", methods=["DELETE"])
+# @login_required
+# def delete_song(id):
+#     current_song = Song["id"]
+#     if current_song["user_id"] not session.User:
+#         return "Cannot complete request", 403
+#     Song[id].delete()
+#     return redirect("/")
