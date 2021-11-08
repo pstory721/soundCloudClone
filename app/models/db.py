@@ -8,7 +8,7 @@ class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
     artist = db.Column(db.String)
-    length = db.Column(db.Integer)
+    length = db.Column(db.Time)
     likes = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     users = db.relationship("User", back_populates="songs")
