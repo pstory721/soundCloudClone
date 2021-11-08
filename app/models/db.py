@@ -10,6 +10,9 @@ class Song(db.Model):
     artist = db.Column(db.String)
     length = db.Column(db.Integer)
     likes = db.Column(db.Integer)
+    song_url = db.Column(db.String(255))
+    image_url = db.Column(db.String(255))
+    
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     users = db.relationship("User", back_populates="songs")
 

@@ -9,5 +9,6 @@ class UploadForm(FlaskForm):
     title=StringField("Title")
     artist=StringField("Artist")
     length=IntegerField("Length")
-    likes=IntegerField("Likes")
+    song_url=StringField("Upload Song")
+    image_url=StringField("Upload Image")
     submit=SubmitField("Submit")
