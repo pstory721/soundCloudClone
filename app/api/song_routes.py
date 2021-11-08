@@ -5,7 +5,8 @@ from forms.upload_form import UploadForm
 
 song_routes = Blueprint('songs', __name__)
 
-@song_routes.route("/songs/upload",methods=["POST"])
+
+@song_routes.route("/songs/upload", methods=["POST"])
 @login_required
 def song_post():
     form = UploadForm()
@@ -21,3 +22,9 @@ def song_post():
         return redirect("/")
     else:
         return "Bad Data"
+
+
+@song_routes("/songs")
+def all_songs():
+    songs = Song.query.all()
+    return jsonify(songs)
