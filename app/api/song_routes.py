@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, session
 from flask_login import login_required
 from app.models.db import Song
 from forms.upload_form import UploadForm
@@ -9,7 +9,7 @@ from api.aws_images import (
 
 song_routes = Blueprint('songs', __name__)
 
-
+# Post songs to the Database
 @song_routes.route("/songs/upload", methods=["POST"])
 @login_required
 def song_post():
@@ -34,6 +34,7 @@ def song_post():
     if form.validate_on_submit():
         data = form.data
         new_song = Song(
+            user_id=session.User.id
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
@@ -47,8 +48,18 @@ def song_post():
     else:
         return "Bad Data"
 
-
+# Get all songs from the database
 @song_routes("/songs")
 def all_songs():
     songs = Song.query.all()
     return jsonify(songs)
+
+# To delete the song from the database
+@song_routes("/songs/:id", methods=["DELETE"])
+@login_required
+def delete_song(id):
+    current_song = Song["id"]
+    if current_song["user_id"] not session.User:
+        return "Cannot complete request", 403
+    Song[id].delete()
+    return redirect("/")
