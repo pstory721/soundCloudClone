@@ -16,9 +16,9 @@ export function Home() {
     <div className="home-body">
       <div>
         <div className="discover">
-          <h2>Discover more with angry cloud</h2>
-          <p>heres some stuff about angrycloud</p>
-          <button>Start uploading today "this will probloy be a link"</button>
+          <h2 className='more'>Discover more with angry cloud</h2>
+          <p className="other-main">heres some stuff about angrycloud</p>
+          <button className="other-main">Start uploading today "this will probloy be a link"</button>
         </div>
       </div>
 
@@ -29,7 +29,7 @@ export function Home() {
         </form>
       </div>
       <div className="lower">
-        <div>Heres whats trending in our community</div>
+        <div className="other-main">Heres whats trending in our community</div>
         <p>THIS IS GOING TO BE A MAP OF CURRENT SONGS</p>
         <button>this will be a link to playlists</button>
       </div>

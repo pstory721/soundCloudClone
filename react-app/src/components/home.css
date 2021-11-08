@@ -5,12 +5,20 @@
     align-items: center;
 }
 
+.more{
+    font-size: 30px;
+    font-family: 'Permanent Marker', cursive;
+}
+
 .the-search{
     margin-top: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.other-main{
 }
 
 .lower{
@@ -27,4 +35,6 @@
     width: 80%;
     height: 100%;
     background-color: rgb(255, 255, 255);
+    font-family: 'Special Elite', cursive;
+
 }

@@ -20,7 +20,23 @@ li{
 }
 
 .links{
+    font-family: 'Special Elite', cursive;
+
     color: rgb(0, 238, 255);
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.link-signin{
+    font-family: 'Special Elite', cursive;
+
+    color: rgb(0, 238, 255);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 8px;
+    padding-left: 8px;
+    border: solid gray 1px;
+    border-radius: 5px;
     text-decoration: none;
     margin-right: 10px;
 }
@@ -41,11 +57,10 @@ li{
 }
 
 .the-logo{
+    font-family: 'Permanent Marker', cursive;
     display: flex;
     justify-content: flex-start;
     position: absolute;
     top: 15px;
     left: 50px;
 }
-
-
