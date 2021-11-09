@@ -86,8 +86,8 @@ const SongReducer = (state = initialState, action) => {
       delete newState[action.songs];
       return newState;
     case POST_SONG:
-      newState = Object.assign({}, state);
-      newState.songs = action.payload.songs;
+      const songList = newState.songs.map(song => newState[song])
+      songList.push(action.payload.songs)
       return newState;
     default:
       return state;
