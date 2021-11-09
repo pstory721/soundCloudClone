@@ -10,12 +10,20 @@ from app.api.aws_images import (
 song_routes = Blueprint('songs', __name__)
 
 
+<<<<<<< HEAD
 # # Get all songs from the database
 # @song_routes.route("/<int:id>")
 # def all_songs(id):
 #     songs = Song.query.filter(Song.id==id).all()
 #     return {jsonify(songs)}
 
+=======
+# Get all songs from the database
+# @song_routes.route("/<int:id>")
+# def all_songs(id):
+#     songs = Song.query.filter(Song.id==id).all()
+#     return jsonify(songs)
+>>>>>>> 5e0e2ae8696760634d6e14625f523cf69459e329
 
 # Get all songs from the database
 @song_routes.route("/song")
