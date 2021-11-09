@@ -19,15 +19,7 @@ export function Discover() {
                 RECOMMENDED BY US
                 MAP OF MUSIC
             </div>
-
-
-
         </div>
-
-
-
-
-
     </div>
   );
 }
