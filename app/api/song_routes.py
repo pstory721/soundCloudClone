@@ -53,9 +53,9 @@ def song_post():
 
 
 # Get all songs from the database
-@song_routes.route("/")
-def all_songs():
-    songs = Song.query.all()
+@song_routes.route("/<int:id>")
+def all_songs(id):
+    songs = Song.query.filter(Song.id==id).all()
     return jsonify(songs)
 
 

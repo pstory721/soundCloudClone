@@ -6,6 +6,13 @@ from app.forms.comment_form import CommentForm
 comment_routes = Blueprint('comments', __name__)
 
 
+# Get all comments from the database
+@comment_routes.route("song/<int:id>/")
+def all_comments(id):
+    comments = Comments.query.filter(Comments.song_id==id).all()
+    return jsonify(comments)
+
+
 # Posts a new comment to the song
 @comment_routes.route("/add",methods=["POST"])
 @login_required
@@ -40,5 +47,5 @@ def delete_comment(id):
 @comment_routes.route('/<int:id>',methods=["PUT"])
 @login_required
 def edit_comment(id):
-    
+
     return redirect("/")
