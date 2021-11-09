@@ -25,7 +25,7 @@ const DeleteSong = () => {
 };
 
 export const UpdateASong = (input, id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/songs/${id}`, {
+  const response = await csrfFetch(`/api/song/${id}`, {
     method: "PUT",
     body: JSON.stringify(input),
     headers: { "Content-Type": "application/json" },
@@ -37,7 +37,7 @@ export const UpdateASong = (input, id) => async (dispatch) => {
 };
 
 export const GetAllSongs = () => async (dispatch) => {
-  const response = await fetch(`/api/home`);
+  const response = await fetch(`/api/song`);
 
   if (response.ok) {
     const data = await response.json();
@@ -46,7 +46,7 @@ export const GetAllSongs = () => async (dispatch) => {
 };
 
 export const DeleteASong = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/songs/${id}`, {
+  const response = await csrfFetch(`/api/song/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {

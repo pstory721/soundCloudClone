@@ -7,13 +7,24 @@ class Song(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
     artist = db.Column(db.String)
-    length = db.Column(db.Time)
+    length = db.Column(db.Integer)
     likes = db.Column(db.Integer)
     song_url = db.Column(db.String(255))
     image_url = db.Column(db.String(255))
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     users = db.relationship("User", back_populates="songs")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'artist': self.artist,
+            'length':self.length,
+            'likes': self.likes,
+            'song_url':self.song_url,
+            'image_url':self.image_url
+        }
 
 class Comments(db.Model):
     __tablename__ = 'comments'

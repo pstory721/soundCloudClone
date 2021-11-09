@@ -1,22 +1,22 @@
 from app.models import db, Song
-import datetime
+
 
 
 def seed_songs():
     Epic = Song(
-        title='Epic', artist ='Benjamin Tissot', length = datetime.time(0,2,58), likes = 1, song_url = 'test', image_url = 'test', user_id = 1
+        title='Epic', artist ='Benjamin Tissot', length = 2.58, likes = 1, song_url = 'test', image_url = 'https://www.citypng.com/public/uploads/preview/angry-face-cartoon-emoji-emoticon-11583162033dyss1ioj5v.png', user_id = 1
     )
 
     Rise_of_the_Machines = Song(
-        title= 'Rise of the Machines', artist = 'Alexander Vasenin', length = datetime.time(0,0,59), likes = 4, song_url = 'test', image_url = 'test', user_id = 2
+        title= 'Rise of the Machines', artist = 'Alexander Vasenin', length = .59, likes = 4, song_url = 'test', image_url = 'https://www.citypng.com/public/uploads/preview/angry-face-cartoon-emoji-emoticon-11583162033dyss1ioj5v.png', user_id = 2
     )
 
     Midnight_Sky = Song(
-        title='Midnight Sky', artist = 'Anton Vlason', length = datetime.time(0,2,14), likes = 2, song_url = 'test', image_url = 'test', user_id = 3
+        title='Midnight Sky', artist = 'Anton Vlason', length = 2.14, likes = 2, song_url = 'test', image_url = 'https://www.citypng.com/public/uploads/preview/angry-face-cartoon-emoji-emoticon-11583162033dyss1ioj5v.png', user_id = 3
     )
 
     High_Octane = Song(
-        title = 'High Octane', artist = 'Benjamin Tissot', length = datetime.time(0,2,35), likes = 5, song_url = 'test', image_url = 'test', user_id = 1
+        title = 'High Octane', artist = 'Benjamin Tissot', length = 2.35, likes = 5, song_url = 'test', image_url = 'https://www.citypng.com/public/uploads/preview/angry-face-cartoon-emoji-emoticon-11583162033dyss1ioj5v.png', user_id = 1
     )
 
     db.session.add(Epic)
