@@ -10,12 +10,18 @@ from app.api.aws_images import (
 song_routes = Blueprint('songs', __name__)
 
 
-# Get all songs from the database
-@song_routes.route("/<int:id>")
-def all_songs(id):
-    songs = Song.query.filter(Song.id==id).all()
-    return jsonify(songs)
+# # Get all songs from the database
+# @song_routes.route("/<int:id>")
+# def all_songs(id):
+#     songs = Song.query.filter(Song.id==id).all()
+#     return {jsonify(songs)}
 
+
+# Get all songs from the database
+@song_routes.route("/song")
+def all_songs():
+    songs = Song.query.all()
+    return {'songs':[song.to_dict() for song in songs ]}
 
 
 # Post songs to the Database
@@ -60,11 +66,7 @@ def song_post():
     else:
         return "Bad Data"
 
-# Get all songs from the database
-@song_routes.route("/song")
-def all_songs():
-    songs = Song.query.all()
-    return {'songs':[song.to_dict() for song in songs ]}
+
 
 # To delete the song from the database
 
