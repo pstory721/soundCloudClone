@@ -21,17 +21,20 @@
 .other-main{
 }
 
+.playlist-bttn{
+    margin-bottom: 30px;
+}
+
 .lower{
     margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 10px;
 }
 
 .home-body{
-    margin: 0 auto 0;
+    margin: 30px auto 100px;
     width: 80%;
     height: 100%;
     background-color: rgb(255, 255, 255);

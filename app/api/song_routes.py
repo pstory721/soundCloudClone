@@ -11,10 +11,10 @@ song_routes = Blueprint('songs', __name__)
 
 
 # Get all songs from the database
-@song_routes.route("/<int:id>")
-def all_songs(id):
-    songs = Song.query.filter(Song.id==id).all()
-    return jsonify(songs)
+# @song_routes.route("/<int:id>")
+# def all_songs(id):
+#     songs = Song.query.filter(Song.id==id).all()
+#     return jsonify(songs)
 
 
 
