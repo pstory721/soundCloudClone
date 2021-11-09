@@ -9,7 +9,7 @@ from app.api.aws_images import (
 
 song_routes = Blueprint('songs', __name__)
 
-print(current_user)
+
 # Post songs to the Database
 @song_routes.route("/songs/upload", methods=["POST"])
 @login_required
@@ -32,10 +32,12 @@ def song_post():
     url_song = upload_song["url"]
     url_image = upload_image["url"]
 
+    user = current_user.id
+
     if form.validate_on_submit():
         data = form.data
         new_song = Song(
-            user_id=session.User.id,
+            user_id=user,
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
@@ -49,18 +51,20 @@ def song_post():
     else:
         return "Bad Data"
 
+
 # Get all songs from the database
 @song_routes.route("/songs")
 def all_songs():
     songs = Song.query.all()
     return jsonify(songs)
 
+
 # To delete the song from the database
-# @song_routes("/songs/:id", methods=["DELETE"])
-# @login_required
-# def delete_song(id):
-#     current_song = Song["id"]
-#     if current_song["user_id"] not session.User:
-#         return "Cannot complete request", 403
-#     Song[id].delete()
-#     return redirect("/")
+@song_routes("/songs/:id", methods=["DELETE"])
+@login_required
+def delete_song(id):
+    current_song = Song["id"]
+    if current_song["user_id"] not current_user.id:
+        return "Cannot complete request", 403
+    db.session.delete(current_song)
+    return redirect("/")
