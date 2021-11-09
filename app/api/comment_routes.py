@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, redirect
 from flask_login import login_required, current_user
-from app.models.db import Comments
+from app.models import Comments, db
 from app.forms.comment_form import CommentForm
 
 comment_routes = Blueprint('comments', __name__)
@@ -23,4 +23,4 @@ def post_comment():
 @comment_routes.route('/comments/:id',methods=["DELETE"])
 @login_required
 def delete_comment():
-    Comment.query.filter(Comment.id == id).delete()
+    Comments.query.filter(Comments.id == id).delete()

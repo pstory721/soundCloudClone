@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, request, session
+from flask import Blueprint, jsonify, request, session, redirect
 from flask_login import login_required, current_user
-from app.models.db import Song
+from app.models import Song, db
 from app.forms.upload_form import UploadForm
 from app.api.aws_songs import (
     upload_song_to_s3, allowed_song, get_unique_songname)
