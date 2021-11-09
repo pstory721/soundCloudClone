@@ -11,7 +11,7 @@ song_routes = Blueprint('songs', __name__)
 
 
 # Post songs to the Database
-@song_routes.route("/songs/upload", methods=["POST"])
+@song_routes.route("/upload", methods=["POST"])
 @login_required
 def song_post():
     form = UploadForm()
@@ -53,18 +53,26 @@ def song_post():
 
 
 # Get all songs from the database
-@song_routes.route("/songs")
+@song_routes.route("/")
 def all_songs():
     songs = Song.query.all()
     return jsonify(songs)
 
 
 # To delete the song from the database
-@song_routes("/songs/:id", methods=["DELETE"])
+@song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_song(id):
     current_song = Song["id"]
-    if current_song["user_id"] not current_user.id:
+    if current_song["user_id"] not in current_user:
         return "Cannot complete request", 403
     db.session.delete(current_song)
+    return redirect("/")
+
+
+# Edit the uploaded song file
+@song_routes.route('/<int:id>',methods=["PUT"])
+@login_required
+def edit_song(id):
+
     return redirect("/")

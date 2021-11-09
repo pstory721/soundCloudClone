@@ -7,7 +7,7 @@ comment_routes = Blueprint('comments', __name__)
 
 
 # Posts a new comment to the song
-@comment_routes.route("/comments",methods=["POST"])
+@comment_routes.route("/add",methods=["POST"])
 @login_required
 def post_comment():
     form = CommentForm()
@@ -26,11 +26,19 @@ def post_comment():
 
 
 # Delete's a comment made by the user
-@comment_routes.route('/comments/:id',methods=["DELETE"])
+@comment_routes.route('/<int:id>',methods=["DELETE"])
 @login_required
-def delete_comment():
-    current_comment = Commnets["id"]
-    if current_comment["user_id"] not current_user.id:
+def delete_comment(id):
+    current_comment = Comments[id]
+    if current_comment["user_id"] not in current_user:
         return "Cannot complete request", 403
     db.session.delete(current_comment)
+    return redirect("/")
+
+
+# Edit comment made by the user
+@comment_routes.route('/<int:id>',methods=["PUT"])
+@login_required
+def edit_comment(id):
+    
     return redirect("/")
