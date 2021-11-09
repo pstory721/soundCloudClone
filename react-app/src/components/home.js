@@ -8,6 +8,7 @@ export function Home() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const songs = useSelector((state) => state.songs.songs);
+  console.log(songs)
   useEffect(() => {
     dispatch(GetAllSongs());
   }, [dispatch]);
@@ -30,7 +31,13 @@ export function Home() {
       </div>
       <div className="lower">
         <div className="other-main">Heres whats trending in our community</div>
-        <p>THIS IS GOING TO BE A MAP OF CURRENT SONGS</p>
+        {songs?.map((song) => (
+          <span>
+            <img src={`${song.image_url}`} alt="ooops that broke"></img>
+          </span>
+
+
+        ))}
         <button>this will be a link to playlists</button>
       </div>
     </div>
