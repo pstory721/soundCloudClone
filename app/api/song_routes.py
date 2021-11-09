@@ -10,13 +10,6 @@ from app.api.aws_images import (
 song_routes = Blueprint('songs', __name__)
 
 
-# Get all songs from the database
-@song_routes.route("/<int:id>")
-def all_songs(id):
-    songs = Song.query.filter(Song.id==id).all()
-    return jsonify(songs)
-
-
 
 # Post songs to the Database
 @song_routes.route("/upload", methods=["POST"])
@@ -26,7 +19,7 @@ def song_post():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if "song" not in request.files:
-        return {"errors":"Song required"}, 400
+        return {"errors": "Song required"}, 400
 
     song = request.files["song"]
     song.filename = get_unique_songname(song.filename)
@@ -50,8 +43,8 @@ def song_post():
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
-            song_url = url_song,
-            image_url = url_image
+            song_url=url_song,
+            image_url=url_image
         )
         db.session.add(new_song)
         db.session.commit()
@@ -61,12 +54,15 @@ def song_post():
         return "Bad Data"
 
 # Get all songs from the database
+
+
 @song_routes.route("/song")
 def all_songs():
     songs = Song.query.all()
-    return {'songs':[song.to_dict() for song in songs ]}
+    return {'songs': [song.to_dict() for song in songs]}
 
 # To delete the song from the database
+
 
 @song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
@@ -80,7 +76,7 @@ def delete_song(id):
 
 
 # Edit the uploaded song file
-@song_routes.route('/<int:id>/edit',methods=["PUT"])
+@song_routes.route('/<int:id>/edit', methods=["PUT"])
 @login_required
 def edit_song(id):
 
