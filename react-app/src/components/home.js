@@ -38,7 +38,7 @@ export function Home() {
 
 
         ))}
-        <button>this will be a link to playlists</button>
+        <button className='playlist-bttn'>this will be a link to playlists</button>
       </div>
     </div>
   );

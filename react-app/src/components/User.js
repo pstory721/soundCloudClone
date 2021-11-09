@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './user.css';
 
 function User() {
   const [user, setUser] = useState({});
@@ -20,19 +21,20 @@ function User() {
     return null;
   }
 
+
+
   return (
    <div>
       <div>
-        <span> profile pic</span>
-        <h2>{user.name}</h2>
+        <h2 className='username'>{user.username}</h2>
       </div>
-      <ul>
+      <ul className='user-list'>
            <li>Overview</li>
            <li>Likes</li>
            <li>Playlist</li>
            <li>History</li>
        </ul>
-      
+
 
 
 

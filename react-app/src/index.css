@@ -3,4 +3,10 @@ body{
     margin: 0;
     height: 100%;
     background-color: rgb(168, 165, 163);
+    margin-bottom: 10px;
+}
+
+
+#root{
+    height: 100%;
 }

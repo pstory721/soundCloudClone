@@ -10,12 +10,23 @@ from app.api.aws_images import (
 song_routes = Blueprint('songs', __name__)
 
 
+# # Get all songs from the database
+# @song_routes.route("/<int:id>")
+# def all_songs(id):
+#     songs = Song.query.filter(Song.id==id).all()
+#     return {jsonify(songs)}
+
 # Get all songs from the database
 # @song_routes.route("/<int:id>")
 # def all_songs(id):
 #     songs = Song.query.filter(Song.id==id).all()
 #     return jsonify(songs)
 
+# Get all songs from the database
+@song_routes.route("/song")
+def all_songs():
+    songs = Song.query.all()
+    return {'songs':[song.to_dict() for song in songs ]}
 
 # Get all songs from the database
 @song_routes.route("/song")
@@ -68,11 +79,13 @@ def song_post():
 
 
 # To delete the song from the database
+
 @song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_song(id):
     current_song = Song["id"]
     if current_song["user_id"] not in current_user:
+
         return "Cannot complete request", 403
     db.session.delete(current_song)
     return redirect("/")

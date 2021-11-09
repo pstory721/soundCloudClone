@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf.js";
 
+const POST_SONG = "session/PostSongs"
 const PUT_SONG = "session/PutSongs";
 const GET_SONGS = "session/GetSongs";
 const DELETE_SONG = "session/DeleteSong";
@@ -10,6 +11,13 @@ const GetSongs = (data) => {
     payload: data,
   };
 };
+
+const AddSongs = (song) => {
+  return {
+    type:POST_SONG,
+    payload: song,
+  }
+}
 
 const UpdateSong = (song) => {
   return {
@@ -35,6 +43,18 @@ export const UpdateASong = (input, id) => async (dispatch) => {
     dispatch(UpdateSong(UpdatedSong));
   }
 };
+
+export const UploadASong = (input) => async (dispatch) => {
+  const response = await fetch(`/api/song`, {
+    method: "POST",
+    body: JSON.stringify(input),
+    headers: { "Content-Type": "application/json" },
+  });
+  if (response.ok) {
+    const { NewSong } = await response.json();
+    dispatch(UploadASong(NewSong));
+  }
+}
 
 export const GetAllSongs = () => async (dispatch) => {
   const response = await fetch(`/api/song`);
@@ -64,6 +84,10 @@ const SongReducer = (state = initialState, action) => {
     case DELETE_SONG:
       newState = Object.assign({}, state);
       delete newState[action.songs];
+      return newState;
+    case POST_SONG:
+      const songList = newState.songs.map(song => newState[song])
+      songList.push(action.payload.songs)
       return newState;
     default:
       return state;

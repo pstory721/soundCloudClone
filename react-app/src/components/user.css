@@ -1,0 +1,14 @@
+.username{
+    font-family: 'Special Elite', cursive;
+    font-size: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
