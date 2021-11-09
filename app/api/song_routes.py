@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, session, redirect
 from flask_login import login_required, current_user
 from app.models import Song, db
-from app.forms.upload_form import UploadForm
+from app.forms.upload_form import UploadForm, EditSongForm
 from app.api.aws_songs import (
     upload_song_to_s3, allowed_song, get_unique_songname)
 from app.api.aws_images import (
@@ -9,12 +9,21 @@ from app.api.aws_images import (
 
 song_routes = Blueprint('songs', __name__)
 
-print(current_user)
+
+# Get all songs from the database
+@song_routes.route("/<int:id>")
+def all_songs(id):
+    songs = Song.query.filter(Song.id==id).all()
+    return jsonify(songs)
+
+
+
 # Post songs to the Database
-@song_routes.route("/songs/upload", methods=["POST"])
+@song_routes.route("/upload", methods=["POST"])
 @login_required
 def song_post():
     form = UploadForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if "song" not in request.files:
         return {"errors":"Song required"}, 400
@@ -32,10 +41,12 @@ def song_post():
     url_song = upload_song["url"]
     url_image = upload_image["url"]
 
+    user = current_user.id
+
     if form.validate_on_submit():
         data = form.data
         new_song = Song(
-            user_id=session.User.id,
+            user_id=user,
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
@@ -56,11 +67,36 @@ def all_songs():
     return {'songs':[song.to_dict() for song in songs ]}
 
 # To delete the song from the database
-# @song_routes("/songs/:id", methods=["DELETE"])
-# @login_required
-# def delete_song(id):
-#     current_song = Song["id"]
-#     if current_song["user_id"] not session.User:
-#         return "Cannot complete request", 403
-#     Song[id].delete()
-#     return redirect("/")
+@song_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_song(id):
+    current_song = Song["id"]
+    if current_song["user_id"] not in current_user:
+        return "Cannot complete request", 403
+    db.session.delete(current_song)
+    return redirect("/")
+
+
+# Edit the uploaded song file
+@song_routes.route('/<int:id>/edit',methods=["PUT"])
+@login_required
+def edit_song(id):
+
+    current_song = Song[id]
+    if current_song["user_id"] not in current_user:
+        return "Cannot complete request", 403
+
+    form = EditSongForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        song = Song.query.get(id)
+        song.title = form.data['title']
+        song.artist = form.data['artist']
+        song.length = form.data['length']
+        db.session.commit()
+        return song.to_dict()
+    else:
+        return form.errors
+
+    return redirect("/")
