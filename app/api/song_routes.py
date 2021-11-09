@@ -10,11 +10,20 @@ from app.api.aws_images import (
 song_routes = Blueprint('songs', __name__)
 
 
+# Get all songs from the database
+@song_routes.route("/<int:id>")
+def all_songs(id):
+    songs = Song.query.filter(Song.id==id).all()
+    return jsonify(songs)
+
+
+
 # Post songs to the Database
 @song_routes.route("/upload", methods=["POST"])
 @login_required
 def song_post():
     form = UploadForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if "song" not in request.files:
         return {"errors":"Song required"}, 400
@@ -52,13 +61,6 @@ def song_post():
         return "Bad Data"
 
 
-# Get all songs from the database
-@song_routes.route("/<int:id>")
-def all_songs(id):
-    songs = Song.query.filter(Song.id==id).all()
-    return jsonify(songs)
-
-
 # To delete the song from the database
 @song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
@@ -74,5 +76,22 @@ def delete_song(id):
 @song_routes.route('/<int:id>',methods=["PUT"])
 @login_required
 def edit_song(id):
+
+    current_song = Song[id]
+    if current_song["user_id"] not in current_user:
+        return "Cannot complete request", 403
+
+    form = EditSongForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        song = Song.query.get(id)
+        song.title = form.data['title']
+        song.artist = form.data['artist']
+        song.length = form.data['length']
+        db.session.commit()
+        return song.to_dict()
+    else:
+        return form.errors
 
     return redirect("/")

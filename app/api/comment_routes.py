@@ -18,6 +18,8 @@ def all_comments(id):
 @login_required
 def post_comment():
     form = CommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
     user = current_user.id
     if form.validate_on_submit():
         data = form.data
@@ -47,5 +49,20 @@ def delete_comment(id):
 @comment_routes.route('/<int:id>',methods=["PUT"])
 @login_required
 def edit_comment(id):
+
+    current_comment = Comments[id]
+    if current_comment["user_id"] not in current_user:
+        return "Cannot complete request", 403
+
+    form = EditCommentForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        comment = Comments.query.get(id)
+        comment.content = form.data["content"]
+        db.session.commit()
+        return comment.to_dict()
+    else:
+        return form.errors
 
     return redirect("/")

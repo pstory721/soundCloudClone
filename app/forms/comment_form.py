@@ -7,3 +7,5 @@ from app.models import User
 class CommentForm(FlaskForm):
     comment=TextAreaField("Likes")
     submit=SubmitField("Submit")
+
+# class EditCommentForm(FlaskForm):
