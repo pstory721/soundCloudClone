@@ -14,7 +14,7 @@ const GetComments = (data) => {
 
 const AddComments = (comment) => {
   return {
-    type:POST_SONG,
+    type:POST_COMMENT,
     payload: comment,
   }
 }
@@ -36,15 +36,15 @@ const initialState = { comments: [] };
 const CommentReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
-    case GET_SONGS:
+    case GET_COMMENTS:
       newState = Object.assign({}, state);
       newState.songs = action.payload.songs;
       return newState;
-    case DELETE_SONG:
+    case DELETE_COMMENT:
       newState = Object.assign({}, state);
       delete newState[action.songs];
       return newState;
-    case POST_SONG:
+    case POST_COMMENT:
       const songList = newState.songs.map(song => newState[song])
       songList.push(action.payload.songs)
       return newState;

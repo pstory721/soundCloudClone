@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { UploadASong } from "../store/song";
 
 
 function UploadForm({}) {
@@ -18,7 +19,8 @@ function UploadForm({}) {
     const changeHandler = (event) => {
         setSelectedSong(event.target.files[0]);
 		setSelectedImage(event.target.files[0]);
-		setIsSelected(true);
+		setIsSongPicked(true);;
+        setIsFilePicked(true)
 	};
 
     const handleSubmit = (e) => {
@@ -27,7 +29,7 @@ function UploadForm({}) {
         const payload = { title, artist, length, selectedSong, selectedImage }
 
         let newSong = dispatch(UploadASong(payload))
-        
+
         if(newSong){
             history.push(`/`)
         }
@@ -61,7 +63,7 @@ function UploadForm({}) {
                     required
                 />
                 <input type="file" name="song" onChange={changeHandler} />
-			    {isSelected ? (
+			    {isSongPicked ? (
 				    <div>
 					    <p>Filename: {selectedSong.name}</p>
 					    <p>Filetype: {selectedSong.type}</p>
@@ -75,14 +77,14 @@ function UploadForm({}) {
 				    <p>Select a file to show details</p>
 			    )}
                 <input type="file" name="image" onChange={changeHandler} />
-			    {isSelected ? (
+			    {isFilePicked ? (
 				    <div>
-					    <p>Filename: {selectedFile.name}</p>
-					    <p>Filetype: {selectedFile.type}</p>
-					    <p>Size in bytes: {selectedFile.size}</p>
+					    <p>Filename: {selectedImage.name}</p>
+					    <p>Filetype: {selectedImage.type}</p>
+					    <p>Size in bytes: {selectedImage.size}</p>
 					    <p>
 						    lastModifiedDate:{' '}
-						    {selectedFile.lastModifiedDate.toLocaleDateString()}
+						    {selectedImage.lastModifiedDate.toLocaleDateString()}
 					    </p>
 				    </div>
 			    ) : (
