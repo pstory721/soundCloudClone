@@ -60,11 +60,11 @@ def all_songs():
 
 
 # To delete the song from the database
-@song_routes("/songs/:id", methods=["DELETE"])
+@song_routes.route("/songs/:id", methods=["DELETE"])
 @login_required
 def delete_song(id):
     current_song = Song["id"]
-    if current_song["user_id"] not current_user.id:
+    if current_song["user_id"] not in current_user.id:
         return "Cannot complete request", 403
     db.session.delete(current_song)
     return redirect("/")

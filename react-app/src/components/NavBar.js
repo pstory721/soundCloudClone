@@ -1,10 +1,52 @@
 
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React,{useState, useEffect} from 'react';
+import { Link, NavLink, useParams } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import './NavBar.css';
 import LogoutButton from './auth/LogoutButton';
 
 const NavBar = () => {
+  const [user, setUser] = useState({});
+  const { userId }  = useParams();
+  const sessionUser = useSelector((state) => state.session.user);
+
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    (async () => {
+      const response = await fetch(`/api/users/${userId}`);
+      const user = await response.json();
+      setUser(user);
+    })();
+  }, [userId]);
+
+  let signin;
+  if(!sessionUser){
+    signin=<NavLink to='/login' exact={true} activeClassName='active' className='link-signin'>
+    Sign In
+  </NavLink>
+  }
+
+  let create;
+  if(!sessionUser){
+    create = <NavLink to='/sign-up' exact={true} activeClassName='active' className='links'>
+    Create Account
+  </NavLink>
+  }
+
+  let logOut;
+  if(sessionUser){
+    logOut = <LogoutButton/>
+  }
+
+  let profileButton;
+  if(sessionUser){
+    profileButton =  <NavLink to={`/users/${sessionUser.id}`} exact={true} activeClassName='active' className='links'>
+    Profile
+  </NavLink>
+  }
+
   return (
     <nav>
       <div className="nav">
@@ -16,22 +58,16 @@ const NavBar = () => {
       </div>
       <ul>
         <li>
-          <NavLink to='/login' exact={true} activeClassName='active' className='link-signin'>
-            Sign In
-          </NavLink>
+          {signin}
         </li>
         <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active' className='links'>
-            Create Account
-          </NavLink>
+          {create}
         </li>
         <li>
-          <NavLink to='/users' exact={true} activeClassName='active' className='links'>
-            Users
-          </NavLink>
+          {profileButton}
         </li>
         <li>
-          <LogoutButton className='logout'/>
+          {logOut}
         </li>
       </ul>
       </div>
