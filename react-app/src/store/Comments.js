@@ -32,6 +32,48 @@ const DeleteComment = () => {
   };
 };
 
+export const UpdateAComment = (input, id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments/${id}`, {
+    method:"PUT",
+    body: JSON.stringify(input),
+    headers: { "Content-Type": "application/json" },
+  });
+  if (response.ok) {
+    const { UpdatedComment } = await response.json();
+    dispatch(UpdateComment(UpdatedComment));
+  }
+}
+
+export const AddASong = (input) => async (dispatch) => {
+  const response = await fetch(`/api/comments`, {
+    method: "POST",
+    body: JSON.stringify(input),
+    headers: { "Content-Type": "application/json" },
+  });
+  if (response.ok) {
+    const { NewComment } = await response.json();
+    dispatch(AddComments(NewComment));
+  }
+}
+
+export const GetAllComments = () => async (dispatch) => {
+  const response = await fetch(`/api/comments`);
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(GetComments(data));
+  }
+};
+
+export const DeleteASong = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments/${id}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    dispatch(DeleteComment());
+  }
+};
+
 const initialState = { comments: [] };
 const CommentReducer = (state = initialState, action) => {
   let newState;
