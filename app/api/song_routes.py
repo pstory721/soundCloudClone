@@ -67,11 +67,13 @@ def all_songs():
     return {'songs':[song.to_dict() for song in songs ]}
 
 # To delete the song from the database
+
 @song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_song(id):
     current_song = Song["id"]
     if current_song["user_id"] not in current_user:
+
         return "Cannot complete request", 403
     db.session.delete(current_song)
     return redirect("/")

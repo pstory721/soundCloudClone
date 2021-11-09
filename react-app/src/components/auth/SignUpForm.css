@@ -1,0 +1,35 @@
+.sign-up-form{
+    background-color: white;
+    margin: 10px auto 10px;
+    width: 20%;
+    height: 100%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label{
+    font-family: 'Special Elite', cursive;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.input{
+    margin-bottom: 10px;
+}
+
+.signup-button{
+    font-family: 'Special Elite', cursive;
+    font-size: 18px;
+    padding-top: 3px;
+    background-color: rgb(0, 238, 255);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

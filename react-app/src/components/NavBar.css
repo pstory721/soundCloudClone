@@ -1,18 +1,17 @@
 ul {
     list-style-type: none;
+    
 
 }
 li{
     float: left;
 }
 
-.logout{
-    margin-right: 10px;
-}
+
 
 .nav{
     background-color: rgb(37, 37, 37);
-    /* height: 60px; */
+    height: 59px;
     width: 100%;
     display: flex;
     flex-direction:column;
@@ -44,7 +43,7 @@ li{
 .homie{
     font-size: 24px;
     background-color: rgb(39, 100, 110);
-    height: 53px;
+    height: 59px;
     display: flex;
     justify-content: center;
     align-items: center;

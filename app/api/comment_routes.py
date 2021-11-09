@@ -37,9 +37,11 @@ def post_comment():
 # Delete's a comment made by the user
 @comment_routes.route('/<int:id>',methods=["DELETE"])
 @login_required
+
 def delete_comment(id):
     current_comment = Comments[id]
     if current_comment["user_id"] not in current_user:
+
         return "Cannot complete request", 403
     db.session.delete(current_comment)
     return redirect("/")
