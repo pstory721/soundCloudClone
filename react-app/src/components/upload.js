@@ -24,7 +24,10 @@ function UploadForm({}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        let newSong = dispatch(notesAction.writeNote({ title, artist, length, selectedSong, selectedImage}))
+        const payload = { title, artist, length, selectedSong, selectedImage }
+
+        let newSong = dispatch(UploadASong(payload))
+        
         if(newSong){
             history.push(`/`)
         }
