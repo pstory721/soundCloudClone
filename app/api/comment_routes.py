@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, redirect
 from flask_login import login_required, current_user
 from app.models import Comments, db
-from app.forms.comment_form import CommentForm
+from app.forms.comment_form import CommentForm, EditCommentForm
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -46,7 +46,7 @@ def delete_comment(id):
 
 
 # Edit comment made by the user
-@comment_routes.route('/<int:id>',methods=["PUT"])
+@comment_routes.route('/<int:id>/edit',methods=["PUT"])
 @login_required
 def edit_comment(id):
 

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, session, redirect
 from flask_login import login_required, current_user
 from app.models import Song, db
-from app.forms.upload_form import UploadForm
+from app.forms.upload_form import UploadForm, EditSongForm
 from app.api.aws_songs import (
     upload_song_to_s3, allowed_song, get_unique_songname)
 from app.api.aws_images import (
@@ -73,7 +73,7 @@ def delete_song(id):
 
 
 # Edit the uploaded song file
-@song_routes.route('/<int:id>',methods=["PUT"])
+@song_routes.route('/<int:id>/edit',methods=["PUT"])
 @login_required
 def edit_song(id):
 
