@@ -50,10 +50,10 @@ def song_post():
         return "Bad Data"
 
 # Get all songs from the database
-@song_routes.route("/songs")
+@song_routes.route("/song")
 def all_songs():
     songs = Song.query.all()
-    return jsonify(songs)
+    return {'songs':[song.to_dict() for song in songs ]}
 
 # To delete the song from the database
 # @song_routes("/songs/:id", methods=["DELETE"])
