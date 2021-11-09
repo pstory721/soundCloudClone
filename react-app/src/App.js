@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import UploadForm from './components/upload';
 import { authenticate } from './store/session';
 import { Home } from './components/home';
 import { Library } from './components/Library';
