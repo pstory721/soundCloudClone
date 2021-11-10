@@ -32,10 +32,12 @@ def song_post():
     song = request.files["song"]
     print("TESTING -------------------", song)
     song.filename = get_unique_songname(song.filename)
-    image = request.files["image"]
-    image.filename = get_unique_filename(image.filename)
+    # image = request.files["image"]
+    # image.filename = get_unique_filename(image.filename)
     upload_song = upload_song_to_s3(song)
-    upload_image = upload_file_to_s3
+    # upload_image = upload_file_to_s3
+    print("This is the song URL ------------ ",upload_song)
+    # print("This is the image URL ------------ ",upload_image)
 
 
 

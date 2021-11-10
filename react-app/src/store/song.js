@@ -44,17 +44,45 @@ export const UpdateASong = (input, id) => async (dispatch) => {
   }
 };
 
-export const UploadASong = (input) => async (dispatch) => {
-  console.log("this is the file ............ ",input.selectedSong)
-  const response = await csrfFetch(`/api/upload`, {
-    method: "POST",
-    body: JSON.stringify(input),
-    headers: { "Content-Type": "application/json" },
-  });
-  if (response.ok) {
-    const { NewSong } = await response.json();
-    dispatch(UploadASong(NewSong));
+// export const UploadASong = (input) => async (dispatch) => {
+//   console.log("this is the file ............ ",input.selectedSong)
+//   console.log("string ...............", input)
+//   const response = await fetch(`/api/upload`, {
+//     method: "POST",
+//     body: JSON.stringify(input),
+//     // headers: { "Content-Type": "application/json" },
+//   });
+//   if (response.ok) {
+//     console.log("THis has worked+++++")
+//     const { NewSong } = await response.json();
+//     dispatch(UploadASong(NewSong));
+//   }
+// }
+
+export const UploadASong = (form, song, image) => async (dispatch) => {
+  console.log("beginning..... ", form)
+  const formData = new FormData()
+  if(song) {
+      formData.append("song", song)};
+
+
+  formData.append('title', form.title)
+  formData.append('artist', form.artist)
+  formData.append('length', form.length)
+  // formData.append('image', image)
+  for (let value of formData.values()) {
+    console.log(value);
   }
+  // formData.append('about', form.about)
+
+  const response = await fetch(`/api/upload`, {
+      method: "POST",
+      body: formData
+  });
+
+  const data = await response.json()
+  dispatch(AddSongs(data))
+
 }
 
 export const GetAllSongs = () => async (dispatch) => {
