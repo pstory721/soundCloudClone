@@ -7,13 +7,13 @@ import { AddAComment } from "../store/Comments";
 
 function CommentForm({}) {
     const dispatch = useDispatch()
-    const [contents, setContents] = useState("")
+    const [content, setContent] = useState("")
     const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        let newNote = dispatch(AddAComment({ contents }))
+        let newNote = dispatch(AddAComment({ content }))
         if(newNote){
             history.push(`/`)
         }
@@ -25,8 +25,8 @@ function CommentForm({}) {
             <textarea
                     id='comment'
                     type="textarea"
-                    value={contents}
-                    onChange={(e) => setContents(e.target.value)}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                     placeholder="Your Comment here"
             />
             </label>

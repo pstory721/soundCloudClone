@@ -45,9 +45,9 @@ export const UpdateAComment = (input, id) => async (dispatch) => {
 }
 
 export const AddAComment = (form) => async (dispatch) => {
-  console.log("Beginning........", form.contents)
+  console.log("Beginning........", form.content)
   const formData = new FormData()
-  formData.append('contents', form.contents)
+  formData.append('content', form.content)
 
   for (let value of formData.values()) {
     console.log("..... ",value);
@@ -97,9 +97,8 @@ const CommentReducer = (state = initialState, action) => {
       delete newState[action.songs];
       return newState;
     case POST_COMMENT:
-      const songList = newState.songs.map(song => newState[song])
-      songList.push(action.payload.songs)
-      return newState;
+      newState[action.payload.id] = action.payload
+      return newState
     default:
       return state;
   }

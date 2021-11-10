@@ -24,7 +24,7 @@ def post_comment():
     user = current_user.id
     if form.validate_on_submit():
         data = form.data
-        print(data)
+        print("++++++++++",data)
         new_comment = Comments(
             user_id = user,
             content = data["content"]
