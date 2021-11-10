@@ -17,7 +17,6 @@ def all_songs():
     songs = Song.query.all()
     return {'songs':[song.to_dict() for song in songs ]}
 
-
 # Post songs to the Database
 @song_routes.route('/upload', methods=["POST"])
 @login_required
@@ -55,13 +54,14 @@ def song_post():
         )
         db.session.add(new_song)
         db.session.commit()
-        return redirect("/")
+        return redirect("/discover")
 
     else:
         return "Bad Data"
 
 
 # To delete the song from the database
+
 
 @song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
@@ -75,7 +75,7 @@ def delete_song(id):
 
 
 # Edit the uploaded song file
-@song_routes.route('/<int:id>/edit',methods=["PUT"])
+@song_routes.route('/<int:id>/edit', methods=["PUT"])
 @login_required
 def edit_song(id):
 
