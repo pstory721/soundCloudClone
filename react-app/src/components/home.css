@@ -19,10 +19,17 @@
 }
 
 .other-main{
+    font-size: 24px;
 }
 
 .playlist-bttn{
+    font-family: 'Special Elite', cursive;
+    padding-top: 7px;
+    border-radius: 5px;
+    background-color: rgb(0, 238, 255);
+    font-size: 24px;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 .lower{
@@ -40,4 +47,32 @@
     background-color: rgb(255, 255, 255);
     font-family: 'Special Elite', cursive;
 
+}
+
+.trend-image{
+    width: 160px;
+    height: 160px;
+}
+
+.the-trends{
+    overflow-x: hidden;
+    margin: 4px 4px;
+    padding-left: 40px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    width: 550px;
+    height: 200px;
+    scrollbar-width: thin;
+    scrollbar-color: #6969dd;
+    scrollbar-gutter: stable;
+
+}
+
+.the-trends:hover{
+    overflow-x: scroll;
 }

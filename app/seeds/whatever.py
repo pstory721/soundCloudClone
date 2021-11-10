@@ -19,6 +19,14 @@ def seed_songs():
         title = 'High Octane', artist = 'Benjamin Tissot', length = 2.35, likes = 5, song_url = 'test', image_url = 'https://www.citypng.com/public/uploads/preview/angry-face-cartoon-emoji-emoticon-11583162033dyss1ioj5v.png', user_id = 1
     )
 
+    High_Octane1 = Song(
+        title = 'High Octane1', artist = 'Benjamin Tissot', length = 2.35, likes = 5, song_url = 'test', image_url = 'https://www.citypng.com/public/uploads/preview/angry-face-cartoon-emoji-emoticon-11583162033dyss1ioj5v.png', user_id = 1
+    )
+
+    High_Octane2 = Song(
+        title = 'High Octane2', artist = 'Benjamin Tissot', length = 2.35, likes = 5, song_url = 'test', image_url = 'https://www.citypng.com/public/uploads/preview/angry-face-cartoon-emoji-emoticon-11583162033dyss1ioj5v.png', user_id = 1
+    )
+
     db.session.add(Epic)
     db.session.add(Rise_of_the_Machines)
     db.session.add(Midnight_Sky)
