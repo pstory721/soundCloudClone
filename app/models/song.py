@@ -20,11 +20,12 @@ class Song(db.Model):
             'id': self.id,
             'title': self.title,
             'artist': self.artist,
-            'length':self.length,
+            'length': self.length,
             'likes': self.likes,
-            'song_url':self.song_url,
-            'image_url':self.image_url
+            'song_url': self.song_url,
+            'image_url': self.image_url
         }
+
 
 class Comments(db.Model):
     __tablename__ = 'comments'
@@ -34,12 +35,29 @@ class Comments(db.Model):
     song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
     content = db.Column(db.String)
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'song_id': self.song_id,
+            'content': self.content,
+        }
+
+
 class Likes(db.Model):
     __tablename__ = 'likes'
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'song_id': self.song_id
+        }
+
 
 class Playlist(db.Model):
     __tablename__ = 'playlists'
@@ -48,3 +66,11 @@ class Playlist(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
     title = db.Column(db.String)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'song_id': self.song_id,
+            'content': self.title
+        }
