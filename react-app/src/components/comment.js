@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { AddAComment } from "../store/Comments";
 
 
 function CommentForm({}) {
     const dispatch = useDispatch()
+    const [content, setContent] = useState("")
     const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        let newNote = dispatch(notesAction.writeNote({ noteBookId, title, contents}))
+        let newNote = dispatch(AddAComment({ content }))
         if(newNote){
             history.push(`/`)
         }
@@ -23,7 +25,7 @@ function CommentForm({}) {
             <textarea
                     id='comment'
                     type="textarea"
-                    value={contents}
+                    value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="Your Comment here"
             />

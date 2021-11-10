@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, redirect
+from flask import Blueprint, jsonify, request, redirect
 from flask_login import login_required, current_user
 from app.models import Comments, db
 from app.forms.comment_form import CommentForm, EditCommentForm
@@ -14,15 +14,17 @@ def all_comments(id):
 
 
 # Posts a new comment to the song
-@comment_routes.route("/add",methods=["POST"])
+@comment_routes.route('/add',methods=["POST"])
 @login_required
 def post_comment():
+    print("stuffs.........")
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print("dis be the form yo........",form)
     user = current_user.id
     if form.validate_on_submit():
         data = form.data
+        print("++++++++++",data)
         new_comment = Comments(
             user_id = user,
             content = data["content"]
