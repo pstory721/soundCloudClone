@@ -44,7 +44,7 @@ export const UpdateAComment = (input, id) => async (dispatch) => {
   }
 }
 
-export const AddASong = (input) => async (dispatch) => {
+export const AddAComment = (input) => async (dispatch) => {
   const response = await fetch(`/api/comments`, {
     method: "POST",
     body: JSON.stringify(input),
