@@ -25,7 +25,7 @@ const DeletePlaylist = () => {
 };
 
 export const UpdateAPlaylist = (input, id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/song/${id}`, {
+  const response = await csrfFetch(`/api/playlist/${id}`, {
     method: "PUT",
     body: JSON.stringify(input),
     headers: { "Content-Type": "application/json" },
@@ -37,7 +37,7 @@ export const UpdateAPlaylist = (input, id) => async (dispatch) => {
 };
 
 export const GetAllPlaylist = () => async (dispatch) => {
-  const response = await fetch(`/api/song`);
+  const response = await fetch(`/api/playlist`);
 
   if (response.ok) {
     const data = await response.json();
@@ -46,7 +46,7 @@ export const GetAllPlaylist = () => async (dispatch) => {
 };
 
 export const DeleteAPlaylist = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/song/${id}`, {
+  const response = await csrfFetch(`/api/playlist/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {
@@ -69,4 +69,4 @@ const PlaylistReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default Playlist;
+export default PlaylistReducer;
