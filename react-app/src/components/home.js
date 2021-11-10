@@ -27,8 +27,8 @@ export function Home() {
       <div>
         <div className="discover">
           <h2 className='more'>Discover more with angry cloud</h2>
-          <p className="other-main">heres some stuff about angrycloud</p>
-          <button className="other-main">Start uploading today "this will probloy be a link"</button>
+          <p className="other-main">Angry Cloud is a place to share angry music as well as discover them!</p>
+          <button className="bttn-upload">Start uploading today!</button>
         </div>
       </div>
 
