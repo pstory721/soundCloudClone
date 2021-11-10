@@ -17,7 +17,6 @@ def all_songs():
     songs = Song.query.all()
     return {'songs':[song.to_dict() for song in songs ]}
 
-
 # Post songs to the Database
 @song_routes.route('/upload', methods=["POST"])
 @login_required
@@ -26,7 +25,9 @@ def song_post():
     form = UploadForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+
     print("TESTING +++++++++++++++++++", request.files.to_dict())
+
     song = request.files["song"]
     print("TESTING -------------------", song)
     song.filename = get_unique_songname(song.filename)
@@ -50,6 +51,7 @@ def song_post():
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
+
             song_url = response,
             # image_url = url_image
         )
@@ -63,6 +65,7 @@ def song_post():
 
 # To delete the song from the database
 
+
 @song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_song(id):
@@ -75,7 +78,7 @@ def delete_song(id):
 
 
 # Edit the uploaded song file
-@song_routes.route('/<int:id>/edit',methods=["PUT"])
+@song_routes.route('/<int:id>/edit', methods=["PUT"])
 @login_required
 def edit_song(id):
 

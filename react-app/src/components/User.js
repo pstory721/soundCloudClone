@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, NavLink } from 'react-router-dom';
+import { GetAllSongs } from "../store/song";
 import './user.css';
 
 function User() {
   const [user, setUser] = useState({});
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const { userId }  = useParams();
+  const songs = useSelector((state) => state.songs.songs);
+  console.log(songs)
+  useEffect(() => {
+    dispatch(GetAllSongs());
+  }, [dispatch]);
 
   useEffect(() => {
     if (!userId) {
@@ -21,7 +30,13 @@ function User() {
     return null;
   }
 
-
+  function toggle_visibility(id) {
+    let something = document.getElementById(id);
+    if(something.style.display === 'block')
+       something.style.display = 'none';
+    else
+       something.style.display = 'block';
+ }
 
   return (
    <div>
@@ -29,11 +44,23 @@ function User() {
         <h2 className='username'>{user.username}</h2>
       </div>
       <ul className='user-list'>
-           <li>Overview</li>
-           <li>Likes</li>
-           <li>Playlist</li>
-           <li>History</li>
-       </ul>
+          <li className='lis'>
+            <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('foo')}>
+              All
+            </NavLink>
+              <div className='all-content' id="foo">
+              {songs?.map((song) => (
+              <div className='shiz-giggles' >
+                <ul>
+                <li className='li-images'><img className='user-all' src={`${song.image_url}`} alt="ooops that broke"></img></li>
+                </ul>
+              </div>))}
+              </div>
+          </li>
+          <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>Likes</NavLink></li>
+          <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>Playlist</NavLink></li>
+          <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>History</NavLink></li>
+      </ul>
 
 
 

@@ -1,10 +1,12 @@
-import React, {  useEffect }  from "react";
+import React, {  useEffect, useState }  from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { GetAllSongs } from "../store/song";
+import Playlist from './Playlist.js';
 import "./home.css";
 
 export function Home() {
+  const [showPlaylist, setShowPlaylist] = useState(false);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const songs = useSelector((state) => state.songs.songs);
@@ -13,13 +15,20 @@ export function Home() {
     dispatch(GetAllSongs());
   }, [dispatch]);
 
+  let playlist;
+  if(!sessionUser){
+    playlist = <button className='playlist-bttn'>Playlist</button>
+  }
+
+  if (sessionUser) return <Redirect to="/discover" />;
+
   return (
     <div className="home-body">
       <div>
         <div className="discover">
           <h2 className='more'>Discover more with angry cloud</h2>
-          <p className="other-main">heres some stuff about angrycloud</p>
-          <button className="other-main">Start uploading today "this will probloy be a link"</button>
+          <p className="other-main">Angry Cloud is a place to share angry music as well as discover them!</p>
+          <button className="bttn-upload">Start uploading today!</button>
         </div>
       </div>
 
@@ -31,15 +40,19 @@ export function Home() {
       </div>
       <div className="lower">
         <div className="other-main">Heres whats trending in our community</div>
+        <div className='the-trends'>
         {songs?.map((song) => (
-          <span>
-            <img src={`${song.image_url}`} alt="ooops that broke"></img>
+          <span >
+            <img className='trend-image' src={`${song.image_url}`} alt="ooops that broke"></img>
           </span>
 
 
         ))}
-        <button className='playlist-bttn'>this will be a link to playlists</button>
-      </div>
+        </div >
+        <button onClick={() => setShowPlaylist(!showPlaylist)} className='playlist-bttn' >Playlist</button>
+        {showPlaylist && <Playlist setShowPlaylist={setShowPlaylist}/>}
+
+        </div>
     </div>
   );
 }

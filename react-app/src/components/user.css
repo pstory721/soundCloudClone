@@ -7,8 +7,49 @@
 }
 
 .user-list{
-    display: flex;
+    /* display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    align-items: center; */
+    position: absolute;
+    text-align: center;
+    left: 545px;
+
+    list-style: none;
+}
+
+#foo{
+    display: none;
+}
+
+.shiz-giggles{
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
+    float: left;
+}
+
+.all-content{
+        position: absolute;
+        left: 20px;
+        float: left;
+}
+
+.lis {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    float: left;
+}
+
+.lis-text{
+    font-family: 'Special Elite', cursive;
+    text-decoration: none;
+    color: rgb(0, 238, 255);
+}
+
+.user-all{
+
+    width: 120px;
+    height: 120px;
 }
