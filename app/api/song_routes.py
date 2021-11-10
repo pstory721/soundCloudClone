@@ -27,6 +27,7 @@ def song_post():
 
     # if "song" not in request.files:
     #     return {"errors":"Song required"}, 400
+    # error reason found, no data being passed to the post, working on why and fix
     print("TESTING +++++++++++++++++++", request.files.to_dict())
     song = request.files["song"]
     print("TESTING -------------------", song)
