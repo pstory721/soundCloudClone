@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import UploadForm from './components/upload';
+import CommentForm from './components/comment'
 import { authenticate } from './store/session';
 import { Home } from './components/home';
 import { Library } from './components/Library';
@@ -52,6 +54,12 @@ function App() {
         </Route>
         <Route path='/library' exact={true} >
         <Library />
+        </Route>
+        <Route path='/upload' exact={true} >
+          <UploadForm />
+        </Route>
+        <Route path='/comment' exact={true} >
+          <CommentForm />
         </Route>
       </Switch>
       <Footer />

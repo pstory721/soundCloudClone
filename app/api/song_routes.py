@@ -6,9 +6,9 @@ from app.api.aws_songs import (
     upload_song_to_s3, allowed_song, get_unique_songname)
 from app.api.aws_images import (
     upload_file_to_s3, allowed_file, get_unique_filename)
+import boto3
 
 song_routes = Blueprint('songs', __name__)
-
 
 
 # Get all songs from the database
@@ -18,27 +18,29 @@ def all_songs():
     return {'songs':[song.to_dict() for song in songs ]}
 
 # Post songs to the Database
-@song_routes.route("/upload", methods=["POST"])
+@song_routes.route('/upload', methods=["POST"])
 @login_required
 def song_post():
+    s3 = boto3.client("s3")
     form = UploadForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if "song" not in request.files:
-        return {"errors": "Song required"}, 400
+
+    print("TESTING +++++++++++++++++++", request.files.to_dict())
 
     song = request.files["song"]
+    print("TESTING -------------------", song)
     song.filename = get_unique_songname(song.filename)
-    image = request.files["image"]
-    image.filename = get_unique_filename(image.filename)
-    upload_song = upload_song_to_s3(song)
-    upload_image = upload_file_to_s3
+    s3.upload_fileobj(song, 'soundcloudclone', song.filename,
+                                ExtraArgs={
+                                    'ACL': 'public-read',
+                                    'ContentType': song.content_type
+                                })
+    response = s3.generate_presigned_url('get_object',
+                                                Params={'Bucket': 'soundcloudclone',
+                                                        'Key': song.filename})
 
-    if "url" not in upload_song or upload_image:
-        return upload_song or upload_image, 400
-
-    url_song = upload_song["url"]
-    url_image = upload_image["url"]
+    print("This is the song URL ------------ ",response)
 
     user = current_user.id
 
@@ -49,8 +51,9 @@ def song_post():
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
-            song_url=url_song,
-            image_url=url_image
+
+            song_url = response,
+            # image_url = url_image
         )
         db.session.add(new_song)
         db.session.commit()

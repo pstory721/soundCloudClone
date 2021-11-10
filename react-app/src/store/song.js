@@ -44,20 +44,44 @@ export const UpdateASong = (input, id) => async (dispatch) => {
   }
 };
 
-export const UploadASong = (input) => async (dispatch) => {
-  const response = await fetch(`/api/song`, {
-    method: "POST",
-    body: JSON.stringify(input),
-    headers: { "Content-Type": "application/json" },
+// export const UploadASong = (input) => async (dispatch) => {
+//   console.log("this is the file ............ ",input.selectedSong)
+//   console.log("string ...............", input)
+//   const response = await fetch(`/api/upload`, {
+//     method: "POST",
+//     body: JSON.stringify(input),
+//     // headers: { "Content-Type": "application/json" },
+//   });
+//   if (response.ok) {
+//     console.log("THis has worked+++++")
+//     const { NewSong } = await response.json();
+//     dispatch(UploadASong(NewSong));
+//   }
+// }
+
+export const UploadASong = (form, song, image) => async (dispatch) => {
+  const formData = new FormData()
+  if(song) {
+      formData.append("song", song)};
+
+
+  formData.append('title', form.title)
+  formData.append('artist', form.artist)
+  formData.append('length', form.length)
+  // formData.append('image', image)
+
+  const response = await fetch(`/api/upload`, {
+      method: "POST",
+      body: formData
   });
-  if (response.ok) {
-    const { NewSong } = await response.json();
-    dispatch(UploadASong(NewSong));
-  }
+
+  const data = await response.json()
+  dispatch(AddSongs(data))
+
 }
 
 export const GetAllSongs = () => async (dispatch) => {
-  const response = await fetch(`/api/song`);
+  const response = await csrfFetch(`/api/song`);
 
   if (response.ok) {
     const data = await response.json();
