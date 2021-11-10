@@ -21,18 +21,22 @@ def all_songs():
 @song_routes.route("/upload", methods=["POST"])
 @login_required
 def song_post():
+
     form = UploadForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if "song" not in request.files:
-        return {"errors":"Song required"}, 400
-
+    # if "song" not in request.files:
+    #     return {"errors":"Song required"}, 400
+    print("TESTING +++++++++++++++++++", request.files.to_dict())
     song = request.files["song"]
+    print("TESTING -------------------", song)
     song.filename = get_unique_songname(song.filename)
     image = request.files["image"]
     image.filename = get_unique_filename(image.filename)
     upload_song = upload_song_to_s3(song)
     upload_image = upload_file_to_s3
+
+
 
     if "url" not in upload_song or upload_image:
         return upload_song or upload_image, 400

@@ -45,7 +45,8 @@ export const UpdateASong = (input, id) => async (dispatch) => {
 };
 
 export const UploadASong = (input) => async (dispatch) => {
-  const response = await fetch(`/api/song`, {
+  console.log("this is the file ............ ",input.selectedSong)
+  const response = await csrfFetch(`/api/upload`, {
     method: "POST",
     body: JSON.stringify(input),
     headers: { "Content-Type": "application/json" },
@@ -57,7 +58,7 @@ export const UploadASong = (input) => async (dispatch) => {
 }
 
 export const GetAllSongs = () => async (dispatch) => {
-  const response = await fetch(`/api/song`);
+  const response = await csrfFetch(`/api/song`);
 
   if (response.ok) {
     const data = await response.json();

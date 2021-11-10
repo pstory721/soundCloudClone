@@ -54,6 +54,9 @@ function App() {
         <Route path='/library' exact={true} >
         <Library />
         </Route>
+        <Route path='/upload' exact={true} >
+          <UploadForm />
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>
