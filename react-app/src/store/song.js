@@ -60,7 +60,6 @@ export const UpdateASong = (input, id) => async (dispatch) => {
 // }
 
 export const UploadASong = (form, song, image) => async (dispatch) => {
-  console.log("beginning..... ", form)
   const formData = new FormData()
   if(song) {
       formData.append("song", song)};
@@ -70,10 +69,6 @@ export const UploadASong = (form, song, image) => async (dispatch) => {
   formData.append('artist', form.artist)
   formData.append('length', form.length)
   // formData.append('image', image)
-  for (let value of formData.values()) {
-    console.log(value);
-  }
-  // formData.append('about', form.about)
 
   const response = await fetch(`/api/upload`, {
       method: "POST",

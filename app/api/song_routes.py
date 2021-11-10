@@ -19,7 +19,7 @@ def all_songs():
 
 
 # Post songs to the Database
-@song_routes.route("/upload", methods=["POST"])
+@song_routes.route('/upload', methods=["POST"])
 @login_required
 def song_post():
     s3 = boto3.client("s3")

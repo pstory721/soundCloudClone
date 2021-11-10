@@ -44,12 +44,22 @@ export const UpdateAComment = (input, id) => async (dispatch) => {
   }
 }
 
-export const AddAComment = (input) => async (dispatch) => {
-  const response = await fetch(`/api/comments`, {
+export const AddAComment = (form) => async (dispatch) => {
+  console.log("Beginning........", form.contents)
+  const formData = new FormData()
+  formData.append('contents', form.contents)
+
+  for (let value of formData.values()) {
+    console.log("..... ",value);
+ }
+
+  const response = await fetch(`/api/add`, {
     method: "POST",
-    body: JSON.stringify(input),
-    headers: { "Content-Type": "application/json" },
+    body: formData,
   });
+
+  console.log("things........", response)
+
   if (response.ok) {
     const { NewComment } = await response.json();
     dispatch(AddComments(NewComment));

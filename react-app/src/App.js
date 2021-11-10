@@ -58,9 +58,9 @@ function App() {
         <Route path='/upload' exact={true} >
           <UploadForm />
         </Route>
-        {/*<Route path='/comment' exact={true} >
+        <Route path='/comment' exact={true} >
           <CommentForm />
-        </Route> */}
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>
