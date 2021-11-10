@@ -12,6 +12,7 @@ import { authenticate } from './store/session';
 import { Home } from './components/home';
 import { Library } from './components/Library';
 import { Discover } from './components/discover';
+import { SongPage } from './components/song-page';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,6 +53,9 @@ function App() {
         </Route>
         <Route path='/library' exact={true} >
         <Library />
+        </Route>
+        <Route path='/song-page/:id' exact={true} >
+        <SongPage />
         </Route>
       </Switch>
       <Footer />

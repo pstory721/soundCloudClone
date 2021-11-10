@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf.js";
 const POST_SONG = "session/PostSongs"
 const PUT_SONG = "session/PutSongs";
 const GET_SONGS = "session/GetSongs";
+const GET_A_SONG = "session/GetASong";
 const DELETE_SONG = "session/DeleteSong";
 
 const GetSongs = (data) => {
@@ -11,6 +12,14 @@ const GetSongs = (data) => {
     payload: data,
   };
 };
+
+const GetASong = (song) => {
+  return {
+    type:GET_A_SONG,
+    payload: song,
+  };
+};
+
 
 const AddSongs = (song) => {
   return {
@@ -43,7 +52,14 @@ export const UpdateASong = (input, id) => async (dispatch) => {
     dispatch(UpdateSong(UpdatedSong));
   }
 };
+export const GetOneSong = (id) => async (dispatch) => {
+  const response = await fetch(`/api/song/${id}`);
 
+  if (response.ok) {
+    const song = await response.json();
+    dispatch(GetASong(song));
+  }
+};
 export const UploadASong = (input) => async (dispatch) => {
   const response = await fetch(`/api/song`, {
     method: "POST",
@@ -73,13 +89,17 @@ export const DeleteASong = (id) => async (dispatch) => {
     dispatch(DeleteSong());
   }
 };
-const initialState = { songs: [] };
+const initialState = { songs: [],singleSong:[] };
 const SongReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case GET_SONGS:
       newState = Object.assign({}, state);
       newState.songs = action.payload.songs;
+      return newState;
+      case GET_A_SONG:
+      newState = Object.assign({}, state);
+      newState.singleSong = action.payload.singleSong;
       return newState;
     case DELETE_SONG:
       newState = Object.assign({}, state);

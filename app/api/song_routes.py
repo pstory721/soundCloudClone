@@ -9,7 +9,10 @@ from app.api.aws_images import (
 
 song_routes = Blueprint('songs', __name__)
 
-
+@song_routes.route("/song/<int:id>")
+def single_songs(id):
+    singleSong = Song.query.filter(Song.id == id).first()
+    return {'singleSong':singleSong.to_dict()}
 
 # Get all songs from the database
 @song_routes.route("/song")
