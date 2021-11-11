@@ -39,8 +39,9 @@ def song_post():
     response = s3.generate_presigned_url('get_object',
                                                 Params={'Bucket': 'soundcloudclone',
                                                         'Key': song.filename})
-
-    print("This is the song URL ------------ ",response)
+    index = response.index("?")
+    url = response[0:index]
+    print("This is the song URL ------------ ",url)
 
     user = current_user.id
 
@@ -51,13 +52,12 @@ def song_post():
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
-
-            song_url = response,
+            song_url = url,
             # image_url = url_image
         )
         db.session.add(new_song)
         db.session.commit()
-        return redirect("/")
+        return redirect("/discover")
 
     else:
         return "Bad Data"

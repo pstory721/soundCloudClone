@@ -1,0 +1,55 @@
+#player{
+    background-color: white;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    /* margin: 100px center 100px; */
+    margin-bottom: 56px;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+    align-items: center;
+
+}
+
+.rhap_container{
+    display: flex;
+    align-items: center;
+}
+
+.rhap_progress-section{
+    display: flex;
+}
+
+.rhap_controls-section{
+    display: flex;
+}
+
+.rhap_progress-container{
+    width:90%;
+    background-color: rgba(137, 43, 226, 0);
+    height: 15px;
+}
+
+.rhap_progress-bar{
+    position: relative;
+    width: 90%;
+    background-color: rgb(128, 128, 128);
+    height:5px;
+}
+
+.rhap_progress-filled{
+    position: absolute;
+    z-index: 1;
+    background-color: crimson;
+    height: 100%;
+}
+
+.rhap_progress-indicator{
+    position: absolute;
+    z-index: 2;
+    height: 8px;
+    width: 8px;
+    background-color: crimson;
+    border-radius: 4px;
+}
