@@ -1,6 +1,6 @@
 import React, {  useEffect, useState }  from "react";
 import { useDispatch, useSelector } from "react-redux";
-import GetAllPlaylist from '../store/playlist';
+import getAllPlaylist from '../store/playlist';
 import './Playlist-page.css';
 
 
@@ -11,8 +11,8 @@ function RealPlaylist(){
     console.log(playlist);
 
     useEffect(() => {
-        dispatch(GetAllPlaylist());
-    }, [dispatch]);
+        dispatch(getAllPlaylist());
+    }, []);
 
     return (
         <>
