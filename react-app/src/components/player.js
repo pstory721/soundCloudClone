@@ -5,6 +5,7 @@ import './player.css';
 
 function Player(){
     return (
+    <div className='player-div'>
     <div id="player">
         <AudioPlayer
         autoPlay
@@ -12,6 +13,7 @@ function Player(){
         onPlay={e => console.log("onPlay")}
         showSkipControls={true}
         />
+    </div>
     </div>
     )
 };

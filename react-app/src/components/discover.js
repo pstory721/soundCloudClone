@@ -26,7 +26,7 @@ export function Discover() {
         </div>
         <h2> TRENDING NOW: </h2>
         <div>{songs?.map((song) => (
-          <span >
+          <span onClick={() => history.push(`/song-page/${song.id}`)}>
             <img className='trend-image' src={`${song.image_url}`} alt="ooops that broke"></img>
           </span>
 
@@ -34,7 +34,7 @@ export function Discover() {
         ))}</div>
         <h2> RECOMMENDED BY US: </h2>
         <div>{songs?.map((song) => (
-          <span >
+          <span onClick={() => history.push(`/song-page/${song.id}`)}>
             <img className='trend-image' src={`${song.image_url}`} alt="ooops that broke"></img>
           </span>
 

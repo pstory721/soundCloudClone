@@ -1,24 +1,35 @@
 .username{
     font-family: 'Special Elite', cursive;
     font-size: 42px;
-    display: flex;
+    margin-top: 120px;
+    margin-bottom: 350px;
+    /* display: flex;
     align-items: center;
+    justify-content: center; */
+}
+
+.all-user{
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .user-list{
-    /* display: flex;
+    display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
     position: absolute;
     text-align: center;
-    left: 545px;
+    /* left: 545px; */
 
     list-style: none;
 }
 
 #foo{
+    display: none;
+}
+#play{
     display: none;
 }
 
@@ -29,9 +40,24 @@
     float: left;
 }
 
-.all-content{
+.all-songs{
         position: absolute;
         left: 20px;
+        float: left;
+}
+.song-back{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.308);
+}
+
+
+.all-playlist{
+    position: absolute;
+        left: 80px;
         float: left;
 }
 

@@ -4,12 +4,11 @@ const PUT_PLAYLIST = "session/PutPlaylist";
 const GET_PLAYLIST = "session/GetPlaylist";
 const DELETE_PLAYLIST = "session/DeletePlaylist";
 
-const GetPlaylist = (data) => {
-  return {
-    type: GET_PLAYLIST,
-    payload: data,
-  };
-};
+const getPlaylist = (data) => ({
+  type: GET_PLAYLIST,
+  payload: data,
+})
+
 
 const UpdatePlaylist = (playlist) => {
   return {
@@ -40,9 +39,9 @@ export const GetAllPlaylist = () => async (dispatch) => {
   const response = await fetch(`/api/playlist`);
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(GetPlaylist(data));
   }
+  const data = await response.json();
+  dispatch(getPlaylist(data));
 };
 
 export const DeleteAPlaylist = (id) => async (dispatch) => {
@@ -53,10 +52,10 @@ export const DeleteAPlaylist = (id) => async (dispatch) => {
     dispatch(DeletePlaylist());
   }
 };
-const initialState = { playlist: [] };
-const PlaylistReducer = (state = initialState, action) => {
+// const initialState = { playlist: [] };
+export default function PlaylistReducer(state = {}, action) {
   let newState;
-  switch (action.type) {
+  switch (action?.type) {
     case GET_PLAYLIST:
       newState = Object.assign({}, state);
       newState.playlist = action.payload.playlist;
@@ -68,5 +67,4 @@ const PlaylistReducer = (state = initialState, action) => {
     default:
       return state;
   }
-};
-export default PlaylistReducer;
+}
