@@ -8,8 +8,8 @@ function Playlist({ setShowPlaylist }) {
     <div className="the-modal">
       <div
         className="shadow-background"
-        onClick={() => setShowPlaylist(false)}
-      ></div>
+        onClick={() => setShowPlaylist(false)}>
+      </div>
       <div className="playlist-modal">
         <p>To view playlist:</p>
         <NavLink
@@ -22,8 +22,8 @@ function Playlist({ setShowPlaylist }) {
         </NavLink>
         <p>Don't have an account?</p>
         <NavLink to='/sign-up' exact={true} activeClassName='active' className='signup-modal'>
-    Create Account
-  </NavLink>
+          Create Account
+        </NavLink>
       </div>
     </div>
   );
