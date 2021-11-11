@@ -26,6 +26,7 @@ def song_post():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     song = request.files["song"]
+
     image = request.files["image"]
 
     song.filename = get_unique_songname(song.filename)
