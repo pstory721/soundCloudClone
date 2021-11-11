@@ -11,10 +11,12 @@ import User from './components/User';
 import UploadForm from './components/upload';
 import CommentForm from './components/comment';
 import Player from './components/player';
+import UpdateForm from './components/edit_upload';
 import { authenticate } from './store/session';
 import { Home } from './components/home';
 import { Library } from './components/Library';
 import { Discover } from './components/discover';
+// import Song from "../../app/models"
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -61,6 +63,9 @@ function App() {
         </Route>
         <Route path='/comment' exact={true} >
           <CommentForm />
+        </Route>
+        <Route path='/update/:song_id' exact={true} >
+          <UpdateForm />
         </Route>
       </Switch>
       <Player />

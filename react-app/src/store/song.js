@@ -33,7 +33,8 @@ const DeleteSong = () => {
 };
 
 export const UpdateASong = (input, id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/song/${id}`, {
+  console.log("Hitting the store...........", id)
+  const response = await csrfFetch(`/api/${id}/update`, {
     method: "PUT",
     body: JSON.stringify(input),
     headers: { "Content-Type": "application/json" },

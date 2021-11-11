@@ -25,11 +25,8 @@ def song_post():
     form = UploadForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-
-    print("TESTING +++++++++++++++++++", request.files.to_dict())
-
     song = request.files["song"]
-    print("TESTING -------------------", song)
+
     song.filename = get_unique_songname(song.filename)
     s3.upload_fileobj(song, 'soundcloudclone', song.filename,
                                 ExtraArgs={
@@ -41,7 +38,6 @@ def song_post():
                                                         'Key': song.filename})
     index = response.index("?")
     url = response[0:index]
-    print("This is the song URL ------------ ",url)
 
     user = current_user.id
 
@@ -78,15 +74,17 @@ def delete_song(id):
 
 
 # Edit the uploaded song file
-@song_routes.route('/<int:id>/edit', methods=["PUT"])
+@song_routes.route('/<int:id>/update', methods=["PUT"])
 @login_required
 def edit_song(id):
-
+    print("starting...............",id)
     current_song = Song[id]
+
     if current_song["user_id"] not in current_user:
         return "Cannot complete request", 403
 
     form = EditSongForm()
+    print("this is the form............", form)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
