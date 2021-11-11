@@ -4,7 +4,7 @@ import { Link, NavLink, useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import './NavBar.css';
 import LogoutButton from './auth/LogoutButton';
-
+ // test
 const NavBar = () => {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
@@ -46,6 +46,12 @@ const NavBar = () => {
     Profile
   </NavLink>
   }
+  let uploadButton;
+  if(sessionUser){
+    uploadButton =  <NavLink to={'/upload'} activeClassName='active' className='links'>
+    Upload
+  </NavLink>
+  }
 
   return (
     <nav>
@@ -62,6 +68,7 @@ const NavBar = () => {
         </li>
         <li>
           {create}
+          {uploadButton}
         </li>
         <li>
           {profileButton}
