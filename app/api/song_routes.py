@@ -25,7 +25,9 @@ def song_post():
     form = UploadForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+
     print("TESTING +++++++++++++++++++", request.files.to_dict())
+
     song = request.files["song"]
     print("TESTING -------------------", song)
     song.filename = get_unique_songname(song.filename)
