@@ -78,10 +78,10 @@ def delete_song(id):
 @login_required
 def edit_song(id):
     print("starting...............",id)
-    current_song = Song[id]
-
-    if current_song["user_id"] not in current_user:
-        return "Cannot complete request", 403
+    current_song = Song.query.filter(Song.id == id).all()
+    print("the song++++++++++", current_song)
+    # if current_song["user_id"] not in current_user:
+    #     return "Cannot complete request", 403
 
     form = EditSongForm()
     print("this is the form............", form)

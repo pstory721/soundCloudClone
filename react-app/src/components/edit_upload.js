@@ -18,8 +18,8 @@ function UpdateForm({}) {
 	const [isSongPicked, setIsSongPicked] = useState(false);
     // const [isFilePicked, setIsFilePicked] = useState(false);
     const history = useHistory()
-
-    console.log("+++++++++++++++++",id.song_id)
+    let item = parseInt(id.song_id)
+    console.log("+++++++++++++++++", typeof(item))
 
     const changeHandler = (event) => {
         setSelectedSong(event.target.files[0]);
@@ -33,7 +33,7 @@ function UpdateForm({}) {
 
         const payload = { title, artist, length }
         console.log("PAYLOAD",payload)
-        let newSong = await dispatch(UpdateASong(payload,id))
+        let newSong = await dispatch(UpdateASong(payload,item))
 
         if(newSong){
             history.push(`/`)
