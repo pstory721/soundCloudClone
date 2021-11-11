@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, NavLink } from 'react-router-dom';
 import { GetAllSongs } from "../store/song";
+import RealPlaylist from './Playlist-page';
 import './user.css';
 
 function User() {
@@ -39,16 +40,16 @@ function User() {
  }
 
   return (
-   <div>
+   <div className='all-user'>
       <div>
         <h2 className='username'>{user.username}</h2>
       </div>
       <ul className='user-list'>
           <li className='lis'>
-            <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('foo')}>
+            <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('song')}>
               All
             </NavLink>
-              <div className='all-content' id="foo">
+              <div className='all-songs' id="song">
               {songs?.map((song) => (
               <div className='shiz-giggles' >
                 <ul>
@@ -58,7 +59,14 @@ function User() {
               </div>
           </li>
           <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>Likes</NavLink></li>
-          <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>Playlist</NavLink></li>
+          <li className='lis'>
+            <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('play')}>
+              Playlist
+            </NavLink >
+              <div className='all-playlist' id="play">
+                <RealPlaylist/>
+              </div>
+          </li>
           <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>History</NavLink></li>
       </ul>
 

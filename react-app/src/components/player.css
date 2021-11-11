@@ -1,15 +1,23 @@
 #player{
     background-color: white;
-    position: absolute;
+    border-radius: 10px;
+    position: fixed;
     bottom:0;
-    width: 100%;
-    /* margin: 100px center 100px; */
+    width: 30%;
     margin-bottom: 56px;
     display: flex;
-    /* flex-direction: row; */
     justify-content: center;
     align-items: center;
+    text-align: center;
+    /* flex-direction: row; */
 
+}
+
+.player-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0;
 }
 
 .rhap_container{
@@ -41,7 +49,7 @@
 .rhap_progress-filled{
     position: absolute;
     z-index: 1;
-    background-color: crimson;
+    background-color: tomato;
     height: 100%;
 }
 
@@ -50,6 +58,20 @@
     z-index: 2;
     height: 8px;
     width: 8px;
-    background-color: crimson;
+    background-color: tomato;
     border-radius: 4px;
+}
+
+button{
+    text-align: center;
+    font-size: 20px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+    padding-right:9px;
+    padding-left: 9px;
+    background-color: rgb(0, 238, 255);
+    color: tomato;
 }

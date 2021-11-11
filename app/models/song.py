@@ -74,3 +74,18 @@ class Playlist(db.Model):
             'song_id': self.song_id,
             'content': self.title
         }
+
+
+class Playlist_Join(db.Model):
+    __tablename__ = 'playlist_join'
+
+    id = db.Column(db.Integer, primary_key=True)
+    song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
+    playlist_id = db.Column(db.Integer, db.ForeignKey("playlists.id"))
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'song_id': self.song_id,
+            'playlist_id': self.playlist_id
+        }
