@@ -8,7 +8,7 @@ function Player(){
     <div id="player">
         <AudioPlayer
         autoPlay
-        src={'https://soundcloudclone.s3.amazonaws.com/59de75b50dd5495a83cab404e721a62d.mp3'}
+        src={''}
         onPlay={e => console.log("onPlay")}
         showSkipControls={true}
         />

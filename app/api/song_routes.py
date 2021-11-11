@@ -26,6 +26,7 @@ def song_post():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     song = request.files["song"]
+    image = request.files["image"]
 
     song.filename = get_unique_songname(song.filename)
     s3.upload_fileobj(song, 'soundcloudclone', song.filename,
@@ -36,8 +37,19 @@ def song_post():
     response = s3.generate_presigned_url('get_object',
                                                 Params={'Bucket': 'soundcloudclone',
                                                         'Key': song.filename})
+    image.filename = get_unique_songname(image.filename)
+    s3.upload_fileobj(image, 'soundcloudclone', image.filename,
+                                ExtraArgs={
+                                    'ACL': 'public-read',
+                                    'ContentType': image.content_type
+                                })
+    response2 = s3.generate_presigned_url('get_object',
+                                                Params={'Bucket': 'soundcloudclone',
+                                                        'Key': image.filename})
     index = response.index("?")
-    url = response[0:index]
+    url_song = response[0:index]
+    index2 = response2.index("?")
+    url_image = response2[0:index]
 
     user = current_user.id
 
@@ -48,8 +60,8 @@ def song_post():
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
-            song_url = url,
-            # image_url = url_image
+            song_url = url_song,
+            image_url = url_image
         )
         db.session.add(new_song)
         db.session.commit()
@@ -60,8 +72,6 @@ def song_post():
 
 
 # To delete the song from the database
-
-
 @song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_song(id):

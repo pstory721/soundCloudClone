@@ -13,14 +13,20 @@ function UploadForm({}) {
     const [selectedSong, setSelectedSong] = useState();
     const [selectedImage, setSelectedImage] = useState();
 	const [isSongPicked, setIsSongPicked] = useState(false);
-    // const [isFilePicked, setIsFilePicked] = useState(false);
+    const [isFilePicked, setIsFilePicked] = useState(false);
     const history = useHistory()
 
+
+    let the_song;
+    let the_image;
     const changeHandler = (event) => {
         setSelectedSong(event.target.files[0]);
-		// setSelectedImage(event.target.files[0]);
-		setIsSongPicked(true);;
-        // setIsFilePicked(true)
+		setIsSongPicked(true);
+	};
+
+    const changeHandler2 = (event) => {
+		setSelectedImage(event.target.files[0]);
+        setIsFilePicked(true)
 	};
 
     const handleSubmit = async (e) => {
@@ -28,7 +34,7 @@ function UploadForm({}) {
 
         const payload = { title, artist, length }
         console.log("PAYLOAD",payload)
-        let newSong = await dispatch(UploadASong(payload, selectedSong))
+        let newSong = await dispatch(UploadASong(payload, selectedSong, selectedImage))
 
         if(newSong){
             history.push(`/`)
@@ -76,20 +82,12 @@ function UploadForm({}) {
 			    ) : (
 				    <p>Select a file to show details</p>
 			    )}
-                {/* <input type="file" name="image" onChange={changeHandler} />
+                <input type="file" name="image" onChange={changeHandler2} />
 			    {isFilePicked ? (
-				    <div>
-					    <p>Filename: {selectedImage.name}</p>
-					    <p>Filetype: {selectedImage.type}</p>
-					    <p>Size in bytes: {selectedImage.size}</p>
-					    <p>
-						    lastModifiedDate:{' '}
-						    {selectedImage.lastModifiedDate.toLocaleDateString()}
-					    </p>
-				    </div>
+				    <p>Image selected</p>
 			    ) : (
 				    <p>Select a file to show details</p>
-			    )} */}
+			    )}
             </label>
             <button id="submit" type="submit">Submit</button>
         </form>
