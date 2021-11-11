@@ -48,7 +48,7 @@ const NavBar = () => {
   }
   let uploadButton;
   if(sessionUser){
-    uploadButton =  <NavLink to={`/upload}`} exact={true} activeClassName='active' className='links'>
+    uploadButton =  <NavLink to={'/upload'} activeClassName='active' className='links'>
     Upload
   </NavLink>
   }
