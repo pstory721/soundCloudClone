@@ -1,6 +1,6 @@
 import React, {  useEffect, useState }  from "react";
 import { useDispatch, useSelector } from "react-redux";
-import GetAllPlaylist from '../store/playlist';
+import {GetAllPlaylist} from '../store/playlist';
 import './Playlist-page.css';
 
 
