@@ -19,7 +19,6 @@ function UpdateForm({}) {
     // const [isFilePicked, setIsFilePicked] = useState(false);
     const history = useHistory()
     let item = parseInt(id.song_id)
-    console.log("+++++++++++++++++", typeof(item))
 
     const changeHandler = (event) => {
         setSelectedSong(event.target.files[0]);

@@ -9,5 +9,5 @@ class CommentForm(FlaskForm):
     submit=SubmitField("Submit")
 
 class EditCommentForm(FlaskForm):
-    content = TextAreaField("Content")
+    content = TextAreaField("content")
     submit = SubmitField("Submit")

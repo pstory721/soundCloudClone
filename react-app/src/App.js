@@ -12,6 +12,7 @@ import UploadForm from './components/upload';
 import CommentForm from './components/comment';
 import Player from './components/player';
 import UpdateForm from './components/edit_upload';
+import EditForm from './components/edit_comment';
 import { authenticate } from './store/session';
 import { Home } from './components/home';
 import { Library } from './components/Library';
@@ -66,6 +67,9 @@ function App() {
         </Route>
         <Route path='/update/:song_id' exact={true} >
           <UpdateForm />
+        </Route>
+        <Route path='/edit/:comment_id' exact={true} >
+          <EditForm />
         </Route>
       </Switch>
       <Player />
