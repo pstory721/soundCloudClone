@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 import {UpdateASong} from "../store/song"
 
 function UpdateForm({}) {
     const dispatch = useDispatch()
+    const id  = useParams();
+    const sessionUser = useSelector((state) => state.session.user);
+    const singleSong = useSelector((state) => state.songs.singleSong);
     const [title,setTitle] = useState("");
     const [artist,setArtist] = useState("")
     const [length,setLength] = useState(0)
@@ -14,6 +18,8 @@ function UpdateForm({}) {
 	const [isSongPicked, setIsSongPicked] = useState(false);
     // const [isFilePicked, setIsFilePicked] = useState(false);
     const history = useHistory()
+
+    console.log("+++++++++++++++++",id.song_id)
 
     const changeHandler = (event) => {
         setSelectedSong(event.target.files[0]);
@@ -27,7 +33,7 @@ function UpdateForm({}) {
 
         const payload = { title, artist, length }
         console.log("PAYLOAD",payload)
-        let newSong = await dispatch(UpdateASong(payload))
+        let newSong = await dispatch(UpdateASong(payload,id))
 
         if(newSong){
             history.push(`/`)
