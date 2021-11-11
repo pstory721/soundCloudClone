@@ -33,14 +33,10 @@ const DeleteComment = () => {
 };
 
 export const UpdateAComment = (input, id) => async (dispatch) => {
-  console.log("starting.............",input)
-  // let newID = id[comment_id]
   let item = parseInt(id.comment_id);
   const response = await csrfFetch(`/api/${item}/edit`, {
     method:"PUT",
     body: JSON.stringify(input),
-    // body: input,
-    // headers: { "Content-Type": "application/json" },
   });
 
   if (response.ok) {
@@ -50,20 +46,13 @@ export const UpdateAComment = (input, id) => async (dispatch) => {
 }
 
 export const AddAComment = (form) => async (dispatch) => {
-  console.log("Beginning........", form.content)
   const formData = new FormData()
   formData.append('content', form.content)
-
-  for (let value of formData.values()) {
-    console.log("..... ",value);
- }
 
   const response = await fetch(`/api/add`, {
     method: "POST",
     body: formData,
   });
-
-  console.log("things........", response)
 
   if (response.ok) {
     const { NewComment } = await response.json();

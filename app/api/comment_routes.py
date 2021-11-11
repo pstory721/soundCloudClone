@@ -17,14 +17,11 @@ def all_comments(id):
 @comment_routes.route('/add',methods=["POST"])
 @login_required
 def post_comment():
-    print("stuffs.........")
     form = CommentForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print("dis be the form yo........",form)
     user = current_user.id
     if form.validate_on_submit():
         data = form.data
-        print("++++++++++",data)
         new_comment = Comments(
             user_id = user,
             content = data["content"]
@@ -58,12 +55,10 @@ def edit_comment(id):
     #     return "Cannot complete request", 403
 
     form = EditCommentForm()
-    print("==============",form)
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         comment = Comments.query.get(id)
-        print("+++++++++++++++",form.data)
         comment.content = form.data["content"]
         db.session.commit()
         return comment.to_dict()
