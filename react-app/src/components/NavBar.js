@@ -4,7 +4,7 @@ import { Link, NavLink, useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import './NavBar.css';
 import LogoutButton from './auth/LogoutButton';
-
+ // test
 const NavBar = () => {
   const [user, setUser] = useState({});
   const { userId }  = useParams();

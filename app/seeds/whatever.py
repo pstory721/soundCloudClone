@@ -1,5 +1,21 @@
-from app.models import db, Song
+from app.models import db, Song, Playlist, Playlist_Join
 
+
+
+def seed_playlist_join():
+    Test = Playlist_Join(
+        song_id = 1, playlist_id = 1
+    )
+    db.session.add(Test)
+    db.session.commit()
+
+
+def seed_playlist():
+    Test = Playlist(
+        title='Test', user_id = 1, song_id = 1
+    )
+    db.session.add(Test)
+    db.session.commit()
 
 
 def seed_songs():
@@ -26,6 +42,7 @@ def seed_songs():
     High_Octane2 = Song(
         title = 'High Octane2', artist = 'Benjamin Tissot', length = 2.35, likes = 5, song_url = 'test', image_url = 'https://www.citypng.com/public/uploads/preview/angry-face-cartoon-emoji-emoticon-11583162033dyss1ioj5v.png', user_id = 1
     )
+
 
     db.session.add(Epic)
     db.session.add(Rise_of_the_Machines)
