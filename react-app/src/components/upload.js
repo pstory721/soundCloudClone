@@ -16,9 +16,6 @@ function UploadForm({}) {
     const [isFilePicked, setIsFilePicked] = useState(false);
     const history = useHistory()
 
-
-    let the_song;
-    let the_image;
     const changeHandler = (event) => {
         setSelectedSong(event.target.files[0]);
 		setIsSongPicked(true);
@@ -38,7 +35,7 @@ function UploadForm({}) {
         let newSong = await dispatch(UploadASong(payload, selectedSong, selectedImage))
 
         if(newSong){
-            history.push(`/discover`)
+            history.push(`/`)
         }
     }
 

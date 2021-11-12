@@ -99,7 +99,7 @@ export const GetAllSongs = () => async (dispatch) => {
 
 export const DeleteASong = (id) => async (dispatch) => {
   console.log("starting.........", id)
-  const response = await csrfFetch(`/api/${id}`, {
+  const response = await fetch(`/api/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {

@@ -85,11 +85,12 @@ def song_post():
 def delete_song(id):
     print("starting route...........", id)
     song = Song.query.get(id)
-    if current_song["user_id"] not in current_user:
+    # if current_song["user_id"] not in current_user:
 
-        return "Cannot complete request", 403
-    db.session.delete(current_song)
-    return redirect("/")
+    #     return "Cannot complete request", 403
+    db.session.delete(song)
+    db.session.commit()
+    return song.to_dict()
 
 
 # Edit the uploaded song file
