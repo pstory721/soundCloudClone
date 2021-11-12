@@ -52,13 +52,13 @@ export const DeleteAPlaylist = (id) => async (dispatch) => {
     dispatch(DeletePlaylist());
   }
 };
-// const initialState = { playlist: [] };
-export default function PlaylistReducer(state = {}, action) {
+const initialState = { playlist: [] };
+export default function PlaylistReducer(state = initialState, action) {
   let newState;
   switch (action?.type) {
     case GET_PLAYLIST:
       newState = Object.assign({}, state);
-      newState.playlist = action.payload.playlist;
+      newState.playlist = action.payload.playlists;
       return newState;
     case DELETE_PLAYLIST:
       newState = Object.assign({}, state);

@@ -6,7 +6,7 @@ import './Playlist-page.css';
 
 function RealPlaylist(){
     const dispatch = useDispatch();
-    const playlist = useSelector((state) => state.playlist);
+    const playlist = useSelector((state) => state.playlist.playlist);
 
 
     useEffect(() => {
@@ -15,7 +15,9 @@ function RealPlaylist(){
 
     return (
         <>
-        <h1>{playlist.playlist} test</h1>
+        <h1>{playlist?.map((list)=>(
+            <div>{list.content}{list.song_id}{list.user_id}</div>
+        ))} test</h1>
         </>
     )
 }
