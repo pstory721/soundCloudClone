@@ -5,7 +5,7 @@ from app.models import User
 
 
 class UploadForm(FlaskForm):
-
+    
     title=StringField("Title")
     artist=StringField("Artist")
     length=IntegerField("Length")

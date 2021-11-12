@@ -10,12 +10,14 @@ import boto3
 
 song_routes = Blueprint('songs', __name__)
 
+
+# Get all songs from the database
 @song_routes.route("/song/<int:id>")
 def single_songs(id):
     singleSong = Song.query.filter(Song.id == id).first()
     return {'singleSong':singleSong.to_dict()}
 
-# Get all songs from the database
+
 @song_routes.route("/song")
 def all_songs():
     songs = Song.query.all()
@@ -29,11 +31,10 @@ def song_post():
     form = UploadForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-
-    print("TESTING +++++++++++++++++++", request.files.to_dict())
-
     song = request.files["song"]
-    print("TESTING -------------------", song)
+
+    image = request.files["image"]
+
     song.filename = get_unique_songname(song.filename)
     s3.upload_fileobj(song, 'soundcloudclone', song.filename,
                                 ExtraArgs={
@@ -43,9 +44,19 @@ def song_post():
     response = s3.generate_presigned_url('get_object',
                                                 Params={'Bucket': 'soundcloudclone',
                                                         'Key': song.filename})
+    image.filename = get_unique_songname(image.filename)
+    s3.upload_fileobj(image, 'soundcloudclone', image.filename,
+                                ExtraArgs={
+                                    'ACL': 'public-read',
+                                    'ContentType': image.content_type
+                                })
+    response2 = s3.generate_presigned_url('get_object',
+                                                Params={'Bucket': 'soundcloudclone',
+                                                        'Key': image.filename})
     index = response.index("?")
-    url = response[0:index]
-    print("This is the song URL ------------ ",url)
+    url_song = response[0:index]
+    index2 = response2.index("?")
+    url_image = response2[0:index]
 
     user = current_user.id
 
@@ -56,39 +67,39 @@ def song_post():
             title=data["title"],
             artist=data["artist"],
             length=data["length"],
-            song_url = url,
-            # image_url = url_image
+            song_url = url_song,
+            image_url = url_image
         )
         db.session.add(new_song)
         db.session.commit()
-        return redirect("/discover")
+        return new_song.to_dict()
+
 
     else:
         return "Bad Data"
 
 
 # To delete the song from the database
-
-
 @song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_song(id):
-    current_song = Song["id"]
-    if current_song["user_id"] not in current_user:
+    print("starting route...........", id)
+    song = Song.query.get(id)
+    # if current_song["user_id"] not in current_user:
 
-        return "Cannot complete request", 403
-    db.session.delete(current_song)
-    return redirect("/")
+    #     return "Cannot complete request", 403
+    db.session.delete(song)
+    db.session.commit()
+    return song.to_dict()
 
 
 # Edit the uploaded song file
-@song_routes.route('/<int:id>/edit', methods=["PUT"])
+@song_routes.route('/<int:id>/update', methods=["PUT"])
 @login_required
 def edit_song(id):
-
-    current_song = Song[id]
-    if current_song["user_id"] not in current_user:
-        return "Cannot complete request", 403
+    current_song = Song.query.filter(Song.id == id).all()
+    # if current_song["user_id"] not in current_user:
+    #     return "Cannot complete request", 403
 
     form = EditSongForm()
     form['csrf_token'].data = request.cookies['csrf_token']

@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     songs = db.relationship('Song', back_populates='users',cascade="all, delete")
+    comments = db.relationship('Comments', back_populates='users',cascade="all, delete")
 
     @property
     def password(self):
