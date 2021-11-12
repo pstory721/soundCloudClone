@@ -1,12 +1,12 @@
 import React, {  useEffect, useState }  from "react";
 import { useDispatch, useSelector } from "react-redux";
-import getAllPlaylist from '../store/playlist';
+import {GetAllPlaylist} from '../store/playlist';
 import './Playlist-page.css';
 
 
 function RealPlaylist(){
     const dispatch = useDispatch();
-    const playlist = useSelector((state) => state.playlist);
+    const playlist = useSelector((state) => state.playlist.playlist);
 
     console.log(playlist);
 
@@ -16,7 +16,9 @@ function RealPlaylist(){
 
     return (
         <>
-        <h1>{playlist.playlist} test</h1>
+        <h1>{playlist?.map((list)=>(
+            <div>{list.content}{list.song_id}{list.user_id}</div>
+        ))} test</h1>
         </>
     )
 }

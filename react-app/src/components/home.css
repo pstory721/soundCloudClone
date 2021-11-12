@@ -3,26 +3,70 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: rgb(0, 238, 255);
 }
 
 .more{
     font-size: 30px;
     font-family: 'Permanent Marker', cursive;
+
+}
+
+.joe{
+    border: none;
+    white-space: nowrap;
+    border-color: transparent;
+    font-size: 24px;
+    border-radius: 6px;
+    background-color: transparent;
+    /* width: 60%; */
+    height: 50px;
 }
 
 .the-search{
     margin-top: 100px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+.bttn-upload{
+    color: black;
+    background-color: rgb(0, 238, 255);
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding-top: 8px;
+    font-family: 'Special Elite', cursive;
+    font-size: 24px;
+}
+
+.work{
+    /* width: 50%; */
+    border-radius: 10px;
+    background-color: rgb(211, 211, 211);
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.bttn-upload{
-    background-color: rgb(0, 238, 255);
-    border-radius: 5px;
-    padding-top: 4px;
-    font-family: 'Special Elite', cursive;
-    font-size: 24px;
+
+.pats-bttn{
+    border: none;
+    width: 45px;
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    /* visibility: hidden; */
+    /* z-index: -1; */
+}
+
+.pats-img{
+    width: 20px;
+    height: 20px;
 }
 
 .other-main{
@@ -50,7 +94,7 @@
 }
 
 .home-body{
-    margin: 30px auto 100px;
+    margin: 30px auto 130px;
     width: 60%;
     height: 100%;
     background-color: rgb(255, 255, 255);
@@ -84,4 +128,9 @@
 
 .the-trends:hover{
     overflow-x: scroll;
+}
+
+.pats-div{
+    background-color: rgb(58, 58, 58);
+    margin-bottom: 30px;
 }

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { UploadASong } from "../store/song";
+import './upload.css'
 
 
 function UploadForm({}) {
@@ -36,42 +37,48 @@ function UploadForm({}) {
     }
 
     return (
+        <div className='upload'>
         <form className="SongForm" onSubmit={handleSubmit}>
+            <div className='inner'>
+
             <label className="noteForms">
                 <input
+                    className='input'
                     id='title'
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Title"
                     required
-                />
+                /><br></br>
                 <input
+                className='input'
                     id='artist'
                     type="text"
                     value={artist}
                     onChange={(e) => setArtist(e.target.value)}
                     placeholder="Artist name"
                     required
-                />
+                /><br></br>
                 <input
+                className='input'
                     id='length'
                     type="number"
                     value={length}
                     onChange={(e) => setLength(e.target.value)}
                     placeholder="Track Length"
                     required
-                />
+                /><br></br>
                 <input type="file" name="song" onChange={changeHandler} />
 			    {isSongPicked ? (
-				    <div>
-					    <p>Filename: {selectedSong.name}</p>
-					    <p>Filetype: {selectedSong.type}</p>
+				    <div className='picked'>
+					    {/* <p>Filename: {selectedSong.name}</p> */}
+					    {/* <p>Filetype: {selectedSong.type}</p>
 					    <p>Size in bytes: {selectedSong.size}</p>
 					    <p>
 						    lastModifiedDate:{' '}
 						    {selectedSong.lastModifiedDate.toLocaleDateString()}
-					    </p>
+					    </p> */}
 				    </div>
 			    ) : (
 				    <p>Select a file to show details</p>
@@ -91,8 +98,10 @@ function UploadForm({}) {
 				    <p>Select a file to show details</p>
 			    )} */}
             </label>
-            <button id="submit" type="submit">Submit</button>
+            <button id="submit" type="submit" >Submit</button>
+            </div>
         </form>
+        </div>
     )
 }
 

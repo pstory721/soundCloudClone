@@ -24,7 +24,7 @@ export function Home() {
 
   return (
     <div className="home-body">
-      <div>
+      <div className='pats-div'>
         <div className="discover">
           <h2 className='more'>Discover more with angry cloud</h2>
           <p className="other-main">Angry Cloud is a place to share angry music as well as discover them!</p>
@@ -33,10 +33,10 @@ export function Home() {
       </div>
 
       <div className='the-search'>
-        <form action="GET">
-          <input placeholder="Search for your favorite artist,tracks,or bands"></input>
-          <button>Submit</button>
-        </form>
+          <div className='work'>
+          <input className='joe' placeholder="Search for your favorite artist,tracks,or bands"></input>
+          <button onClick={() => setShowPlaylist(!showPlaylist)} className='pats-bttn'><img className='pats-img' src='https://res.cloudinary.com/dzjkwepju/image/upload/v1636685077/Styckr/1200px-Magnifying_glass_icon.svg_swnjm6.png' alt='glass'></img></button>
+          </div>
       </div>
       <div className="lower">
         <div className="other-main">Heres whats trending in our community</div>
