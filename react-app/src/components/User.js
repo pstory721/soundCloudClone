@@ -31,12 +31,19 @@ function User() {
     return null;
   }
 
-  function toggle_visibility(id) {
+  function toggle_visibility(id, id2) {
     let something = document.getElementById(id);
-    if(something.style.display === 'block')
-       something.style.display = 'none';
-    else
-       something.style.display = 'block';
+    let somethingElse = document.getElementById(id2);
+    if(something.style.display === 'block' && somethingElse.style.display === 'none'){
+      something.style.display = 'none';
+      somethingElse.style.display = 'block';
+
+    }
+    else{
+
+      something.style.display = 'block';
+      somethingElse.style.display = 'none';
+    }
  }
 
   return (
@@ -46,7 +53,7 @@ function User() {
       </div>
       <ul className='user-list'>
           <li className='lis'>
-            <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('song')}>
+            <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('song', 'play')}>
               All
             </NavLink>
               <div className='all-songs' id="song">
@@ -60,7 +67,7 @@ function User() {
           </li>
           <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>Likes</NavLink></li>
           <li className='lis'>
-            <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('play')}>
+            <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('play', 'song')}>
               Playlist
             </NavLink >
               <div className='all-playlist' id="play">
