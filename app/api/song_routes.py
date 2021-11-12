@@ -12,6 +12,10 @@ song_routes = Blueprint('songs', __name__)
 
 
 # Get all songs from the database
+@song_routes.route("/song/<int:id>")
+def single_songs(id):
+    singleSong = Song.query.filter(Song.id == id).first()
+    return {'singleSong':singleSong.to_dict()}
 @song_routes.route("/song")
 def all_songs():
     songs = Song.query.all()
@@ -66,7 +70,7 @@ def song_post():
         )
         db.session.add(new_song)
         db.session.commit()
-        return redirect("/discover")
+        return redirect("/")
 
     else:
         return "Bad Data"
