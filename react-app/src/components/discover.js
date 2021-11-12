@@ -2,9 +2,11 @@ import React,{  useEffect }  from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { GetAllSongs } from "../store/song";
+import {usePlayer} from '../context/playerContext';
 import "./discover.css";
 
 export function Discover() {
+  const {src, setSrc} = usePlayer();
     let history = useHistory();
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs.songs);
@@ -22,6 +24,11 @@ export function Discover() {
         {songs?.map((song) => (
           <span onClick={() => history.push(`/song-page/${song.id}`)}>
             <img className='trend-image' src={`${song.image_url}`} alt="ooops that broke"></img>
+          </span>
+        ))}
+          {songs?.map((song) => (
+          <span >
+            <button onClick={()=> setSrc(song.song_url)}></button>
           </span>
         ))}
         <div className='lines'></div>
