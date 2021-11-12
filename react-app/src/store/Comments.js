@@ -5,10 +5,10 @@ const PUT_COMMENT = "session/PutComments";
 const GET_COMMENTS = "session/GetComments";
 const DELETE_COMMENT = "session/DeleteComments";
 
-const GetComments = (data) => {
+const GetComments = (comments) => {
   return {
     type: GET_COMMENTS,
-    payload: data,
+    comments,
   };
 };
 
@@ -65,9 +65,9 @@ export const GetAllComments = (id) => async (dispatch) => {
   const response = await fetch(`/api/get/${id}`);
 
   if (response.ok) {
-    const data = await response.json();
-    console.log("the data..........",data)
-    dispatch(GetComments(data));
+    const comments = await response.json();
+    console.log("the data..........",comments)
+    dispatch(GetComments(comments));
   }
 };
 
@@ -87,17 +87,21 @@ const CommentReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_COMMENTS:
       newState = Object.assign({}, state);
-      newState.comments = action.payload.comments;
+      newState.comments = action.comments;
       return newState;
     case DELETE_COMMENT:
       newState = Object.assign({}, state);
       delete newState[action.comments];
       return newState;
     case POST_COMMENT:
-      state.comments.push(action.comment)
-      return {
-        ...state, comments: [...state.comments, action.comment]
-      }
+      newState={...state}
+      const commentlist = newState.comments.map(comment => newState[comment])
+      commentlist.push(action.comment)
+      return newState;
+      // state.comments.push(action.comment)
+      // return {
+      //   ...state, comments: [state.comments, action.comment]
+      // }
     default:
       return state;
   }

@@ -51,6 +51,7 @@ def delete_comment(id):
 
     #     return "Cannot complete request", 403
     db.session.delete(comment)
+    db.session.commit()
     return comment.to_dict()
 
 
