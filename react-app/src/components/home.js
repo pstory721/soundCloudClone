@@ -10,7 +10,7 @@ export function Home() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const songs = useSelector((state) => state.songs.songs);
-  console.log(songs)
+
   useEffect(() => {
     dispatch(GetAllSongs());
   }, [dispatch]);

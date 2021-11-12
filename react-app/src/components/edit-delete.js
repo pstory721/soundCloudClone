@@ -13,8 +13,8 @@ export function EditDelete2() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    let newNote = dispatch(UpdateAComment({ content }));
+    let payload = { content, id}
+    let newNote = dispatch(UpdateAComment(payload));
     setShowForm(false);
     if (newNote) {
       history.push(`/`);
