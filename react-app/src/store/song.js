@@ -123,6 +123,7 @@ const SongReducer = (state = initialState, action) => {
       delete newState[action.songs];
       return newState;
     case POST_SONG:
+      newState={...state}
       const songList = newState.songs.map(song => newState[song])
       songList.push(action.songs)
       return newState;
