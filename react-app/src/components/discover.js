@@ -2,7 +2,7 @@ import React,{  useEffect }  from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { GetAllSongs } from "../store/song";
-import "./home.css";
+import "./discover.css";
 
 export function Discover() {
     let history = useHistory();
@@ -14,17 +14,20 @@ export function Discover() {
 
 
   return (
-    <div>
+    <div className='discover-page'>
       <div>
         <div>
         <h2> TOP 50: </h2>
+        <p className='the-ps'>The most played tracks on Angry Cloud</p>
         {songs?.map((song) => (
           <span onClick={() => history.push(`/song-page/${song.id}`)}>
             <img className='trend-image' src={`${song.image_url}`} alt="ooops that broke"></img>
           </span>
         ))}
+        <div className='lines'></div>
         </div>
         <h2> TRENDING NOW: </h2>
+        <p className='the-ps'>Music trending now</p>
         <div>{songs?.map((song) => (
           <span onClick={() => history.push(`/song-page/${song.id}`)}>
             <img className='trend-image' src={`${song.image_url}`} alt="ooops that broke"></img>
@@ -32,7 +35,9 @@ export function Discover() {
 
 
         ))}</div>
-        <h2> RECOMMENDED BY US: </h2>
+        <div className='lines'></div>
+        <h2> RECOMMENDED BY US</h2>
+        <p className='the-ps'>Music we like when we're angry:</p>
         <div>{songs?.map((song) => (
           <span onClick={() => history.push(`/song-page/${song.id}`)}>
             <img className='trend-image' src={`${song.image_url}`} alt="ooops that broke"></img>

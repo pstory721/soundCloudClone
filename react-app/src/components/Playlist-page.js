@@ -16,7 +16,9 @@ function RealPlaylist(){
 
     return (
         <>
-        {/* <h1>{playlist.playlist} test</h1> */}
+        <h1>{playlist?.map((list)=>(
+            <div>{list.content}{list.song_id}{list.user_id}</div>
+        ))} test</h1>
         </>
     )
 }

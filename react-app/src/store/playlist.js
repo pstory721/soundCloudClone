@@ -58,7 +58,7 @@ export default function PlaylistReducer(state = initialState, action) {
   switch (action?.type) {
     case GET_PLAYLIST:
       newState = Object.assign({}, state);
-      newState.playlist = action.payload.playlist;
+      newState.playlist = action.payload.playlists;
       return newState;
     case DELETE_PLAYLIST:
       newState = Object.assign({}, state);

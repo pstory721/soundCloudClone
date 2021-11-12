@@ -1,0 +1,21 @@
+.login-stuff{
+    display: flex;
+    font-family: 'Special Elite', cursive;
+    font-size: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 225px;
+    background-color: white;
+    margin: 100px auto 100px;
+    width: 20%;
+}
+
+.break{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+#pad{
+    margin-top:10px;
+}

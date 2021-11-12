@@ -10,8 +10,11 @@
 
 .all-user{
     display: flex;
+    width: 60%;
+    margin: 100px auto 50px;
     justify-content: center;
     align-items: center;
+    background-color: white;
 }
 
 .user-list{
@@ -70,8 +73,9 @@
 
 .lis-text{
     font-family: 'Special Elite', cursive;
+    font-size: 24px;
     text-decoration: none;
-    color: rgb(0, 238, 255);
+    color: rgb(0, 0, 0);
 }
 
 .user-all{
