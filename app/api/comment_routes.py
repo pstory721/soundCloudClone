@@ -10,7 +10,7 @@ comment_routes = Blueprint('comments', __name__)
 @comment_routes.route("song/<int:id>/")
 def all_comments(id):
     comments = Comments.query.filter(Comments.song_id==id).all()
-    return jsonify(comments)
+    return {'comments':comments.to_dict()}
 
 
 # Posts a new comment to the song
