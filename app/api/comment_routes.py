@@ -11,12 +11,12 @@ comment_routes = Blueprint('comments', __name__)
 @comment_routes.route("/get/<int:id>")
 def all_comments(id):
     comments = Comments.query.filter(Comments.song_id == id)
-    the_comments = dict()
-    for index, comment in enumerate(comments):
-        print("The comment", comment.id)
-        the_comments[comment.id] = comment.content
-        print("the comments,,,,,,", the_comments)
-    return the_comments
+	return [comment.to_dict() for comment in comments]
+    # comments = Comments.query.filter(Comments.song_id == id)
+    # the_comments = dict()
+    # for index, comment in enumerate(comments):
+    #     the_comments[comment.id] = comment.content
+    # return the_comments
 
 
 # Posts a new comment to the song
@@ -24,7 +24,6 @@ def all_comments(id):
 @login_required
 def post_comment():
     form = CommentForm()
-    print("this is the form.......", form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     user = current_user.id
     if form.validate_on_submit():
