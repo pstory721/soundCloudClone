@@ -8,7 +8,6 @@ function RealPlaylist(){
     const dispatch = useDispatch();
     const playlist = useSelector((state) => state.playlist);
 
-    console.log(playlist);
 
     useEffect(() => {
         dispatch(GetAllPlaylist());

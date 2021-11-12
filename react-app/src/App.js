@@ -65,9 +65,6 @@ function App() {
         <Route path='/upload' exact={true} >
           <UploadForm />
         </Route>
-        <Route path='/comment' exact={true} >
-          <CommentForm />
-        </Route>
         <Route path='/update/:song_id' exact={true} >
           <UpdateForm />
         </Route>

@@ -3,17 +3,20 @@ import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { AddAComment } from "../store/Comments";
+import { EditDelete2 } from "./edit-delete";
 
 
-function CommentForm({}) {
+function CommentForm({song_id}) {
     const dispatch = useDispatch()
     const [content, setContent] = useState("")
     const history = useHistory()
+    const [songId,setSongId] = useState(song_id)
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        let newNote = dispatch(AddAComment({ content }))
+        let payload = {content, songId}
+        let newNote = dispatch(AddAComment(payload))
         if(newNote){
             history.push(`/`)
         }
@@ -31,6 +34,7 @@ function CommentForm({}) {
             />
             </label>
             <button id="submit" type="submit">Submit</button>
+            <EditDelete2 song_id={songId}/>
         </form>
     )
 }

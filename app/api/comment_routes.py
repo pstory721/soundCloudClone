@@ -18,32 +18,34 @@ def all_comments(id):
 @login_required
 def post_comment():
     form = CommentForm()
+    print("this is the form.......", form.data)
     form['csrf_token'].data = request.cookies['csrf_token']
     user = current_user.id
     if form.validate_on_submit():
         data = form.data
         new_comment = Comments(
             user_id = user,
-            content = data["content"]
+            content = data["content"],
+            song_id = data["song_id"]
         )
         db.session.add(new_comment)
         db.session.commit()
-        return redirect("/")
+        return new_comment.to_dict()
     else:
         return "Bad Data"
 
 
 # Delete's a comment made by the user
-@comment_routes.route('/<int:id>',methods=["DELETE"])
+@comment_routes.route('/destroy/<int:id>',methods=["DELETE"])
 @login_required
-
 def delete_comment(id):
-    current_comment = Comments[id]
-    if current_comment["user_id"] not in current_user:
+    print("starting comment delete route......", id)
+    comment = Comments.query.get(id)
+    # if current_comment["user_id"] not in current_user:
 
-        return "Cannot complete request", 403
-    db.session.delete(current_comment)
-    return redirect("/")
+    #     return "Cannot complete request", 403
+    db.session.delete(comment)
+    return comment.to_dict()
 
 
 # Edit comment made by the user
@@ -64,4 +66,3 @@ def edit_comment(id):
         return comment.to_dict()
     else:
         return form.errors
-

@@ -15,7 +15,7 @@ const GetComments = (data) => {
 const AddComments = (comment) => {
   return {
     type:POST_COMMENT,
-    payload: comment,
+    comment,
   }
 }
 
@@ -48,6 +48,7 @@ export const UpdateAComment = (input, id) => async (dispatch) => {
 export const AddAComment = (form) => async (dispatch) => {
   const formData = new FormData()
   formData.append('content', form.content)
+  formData.append("song_id",form.songId)
 
   const response = await fetch(`/api/add`, {
     method: "POST",
@@ -70,7 +71,8 @@ export const GetAllComments = () => async (dispatch) => {
 };
 
 export const DeleteAComment = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/comments/${id}`, {
+  console.log("starting comment delete......", id)
+  const response = await csrfFetch(`/api/destroy/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {
@@ -81,7 +83,7 @@ export const DeleteAComment = (id) => async (dispatch) => {
 const initialState = { comments: [] };
 const CommentReducer = (state = initialState, action) => {
   let newState;
-  switch (action.type) {  
+  switch (action.type) {
     case GET_COMMENTS:
       newState = Object.assign({}, state);
       newState.comments = action.payload.comments;
@@ -91,7 +93,8 @@ const CommentReducer = (state = initialState, action) => {
       delete newState[action.comments];
       return newState;
     case POST_COMMENT:
-      newState[action.payload.id] = action.payload
+      newState={...state}
+      newState[action.comment] = action.payload
       return newState
     default:
       return state;

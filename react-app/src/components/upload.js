@@ -25,9 +25,7 @@ function UploadForm({}) {
 	};
 
     const changeHandler2 = (event) => {
-        console.log(event.target.files)
-        console.log(event.target.files[0])
-        console.log(event.target.files[1])
+
 		setSelectedImage(event.target.files[0]);
         setIsFilePicked(true)
 	};
@@ -36,7 +34,7 @@ function UploadForm({}) {
         e.preventDefault();
 
         const payload = { title, artist, length }
-        console.log("PAYLOAD",payload)
+
         let newSong = await dispatch(UploadASong(payload, selectedSong, selectedImage))
 
         if(newSong){

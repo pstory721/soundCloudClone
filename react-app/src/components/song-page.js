@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { GetOneSong } from "../store/song";
 import { EditDelete2 } from "./edit-delete";
+import CommentForm from './comment.js'
 
 export function SongPage() {
   const { id } = useParams();
@@ -24,7 +25,7 @@ export function SongPage() {
         <div>
             {singleSong.title}
             {/* {userCheck} */}
-            <EditDelete2 />
+            <CommentForm song_id={id}/>
         </div>
     </div>
   );

@@ -31,7 +31,6 @@ function UpdateForm({}) {
         e.preventDefault();
 
         const payload = { title, artist, length }
-        console.log("PAYLOAD",payload)
         let newSong = await dispatch(UpdateASong(payload,item))
 
         if(newSong){

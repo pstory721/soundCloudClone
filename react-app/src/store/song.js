@@ -80,10 +80,9 @@ export const UploadASong = (form, song, image) => async (dispatch) => {
       method: "POST",
       body: formData
   });
-  console.log("this is the response",response)
+
   if (response.ok) {
     const songs = await response.json()
-    console.log("this is the data.....",songs)
     dispatch(AddSongs(songs))
   }
 
@@ -99,13 +98,16 @@ export const GetAllSongs = () => async (dispatch) => {
 };
 
 export const DeleteASong = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/song/${id}`, {
+  console.log("starting.........", id)
+  const response = await csrfFetch(`/api/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {
     dispatch(DeleteSong());
   }
 };
+
+
 const initialState = { songs: [],singleSong:[] };
 const SongReducer = (state = initialState, action) => {
   let newState;
