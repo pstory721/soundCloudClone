@@ -11,7 +11,7 @@ function RealPlaylist(){
     console.log(playlist);
 
     useEffect(() => {
-        dispatch(getAllPlaylist());
+        dispatch(GetAllPlaylist());
     }, []);
 
     return (

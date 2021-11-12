@@ -6,7 +6,7 @@ import {usePlayer} from '../context/playerContext';
 import "./discover.css";
 
 export function Discover() {
-  const {src, setSrc} = usePlayer();
+  const {leSong, setLeSong} = usePlayer();
     let history = useHistory();
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs.songs);
@@ -28,7 +28,7 @@ export function Discover() {
         ))}
           {songs?.map((song) => (
           <span >
-            <button onClick={()=> setSrc(song.song_url)}></button>
+            <button onClick={()=> setLeSong(song.song_url)}></button>
           </span>
         ))}
         <div className='lines'></div>
