@@ -65,4 +65,3 @@ def edit_comment(id):
     else:
         return form.errors
 
-    return redirect("/")

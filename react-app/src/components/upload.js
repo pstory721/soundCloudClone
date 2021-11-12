@@ -40,7 +40,7 @@ function UploadForm({}) {
         let newSong = await dispatch(UploadASong(payload, selectedSong, selectedImage))
 
         if(newSong){
-            history.push(`/`)
+            history.push(`/discover`)
         }
     }
 

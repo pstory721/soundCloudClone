@@ -21,10 +21,10 @@ const GetASong = (song) => {
 };
 
 
-const AddSongs = (song) => {
+const AddSongs = (songs) => {
   return {
     type:POST_SONG,
-    payload: song,
+    songs,
   }
 }
 
@@ -80,10 +80,11 @@ export const UploadASong = (form, song, image) => async (dispatch) => {
       method: "POST",
       body: formData
   });
-
+  console.log("this is the response",response)
   if (response.ok) {
-    const data = await response.json()
-    dispatch(AddSongs(data))
+    const songs = await response.json()
+    console.log("this is the data.....",songs)
+    dispatch(AddSongs(songs))
   }
 
 }
@@ -123,7 +124,7 @@ const SongReducer = (state = initialState, action) => {
       return newState;
     case POST_SONG:
       const songList = newState.songs.map(song => newState[song])
-      songList.push(action.payload.songs)
+      songList.push(action.songs)
       return newState;
     default:
       return state;
