@@ -56,16 +56,17 @@ export const AddAComment = (form) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const { NewComment } = await response.json();
+    const NewComment  = await response.json();
     dispatch(AddComments(NewComment));
   }
 }
 
-export const GetAllComments = () => async (dispatch) => {
-  const response = await fetch(`/api/comments`);
+export const GetAllComments = (id) => async (dispatch) => {
+  const response = await fetch(`/api/get/${id}`);
 
   if (response.ok) {
     const data = await response.json();
+    console.log("the data..........",data)
     dispatch(GetComments(data));
   }
 };
@@ -93,8 +94,8 @@ const CommentReducer = (state = initialState, action) => {
       delete newState[action.comments];
       return newState;
     case POST_COMMENT:
-      newState={...state}
-      newState[action.comment] = action.payload
+      newState={...state,comments:[...state.comments]}
+      newState.comments.push(action.comment)
       return newState
     default:
       return state;

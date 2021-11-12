@@ -19,7 +19,7 @@ export function SongPage() {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(GetAllComments());
+    dispatch(GetAllComments(id));
   }, [dispatch]);
 
   console.log(allComments)
@@ -41,7 +41,9 @@ export function SongPage() {
       >
         Delete Song
       </button>
-            {/* {userCheck} */}
+      {/* {allComments.map((comment)=>(
+            <div>{comment.content}</div>
+      ))} */}
             <CommentForm song_id={id}/>
         </div>
     </div>

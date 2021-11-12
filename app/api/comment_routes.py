@@ -2,15 +2,21 @@ from flask import Blueprint, jsonify, request, redirect
 from flask_login import login_required, current_user
 from app.models import Comments, db
 from app.forms.comment_form import CommentForm, EditCommentForm
+import json
 
 comment_routes = Blueprint('comments', __name__)
 
 
 # Get all comments from the database
-@comment_routes.route("song/<int:id>/")
+@comment_routes.route("/get/<int:id>")
 def all_comments(id):
-    comments = Comments.query.all()
-    return comments
+    comments = Comments.query.filter(Comments.song_id == id)
+    the_comments = dict()
+    for index, comment in enumerate(comments):
+        print("The comment", comment.id)
+        the_comments[comment.id] = comment.content
+        print("the comments,,,,,,", the_comments)
+    return the_comments
 
 
 # Posts a new comment to the song
