@@ -107,8 +107,6 @@ def edit_song(id):
     if form.validate_on_submit():
         song = Song.query.get(id)
         song.title = form.data['title']
-        song.artist = form.data['artist']
-        song.length = form.data['length']
         db.session.commit()
         return song.to_dict()
     else:
