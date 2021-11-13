@@ -40,6 +40,7 @@ def post_comment():
 def delete_comment(id):
     print("starting comment delete route......", id)
     comment = Comments.query.get(id)
+    print("this is the comment", comment)
     # if current_comment["user_id"] not in current_user:
 
     #     return "Cannot complete request", 403

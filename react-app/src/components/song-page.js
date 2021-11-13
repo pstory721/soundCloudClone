@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { DeleteASong, GetOneSong } from "../store/song";
 import { EditDelete2 } from "./edit-delete";
 import CommentForm from './comment.js'
 import { DeleteAComment, GetAllComments } from "../store/Comments";
+
 import './song-page.css';
+
+import EditForm from "./edit_comment";
+
 
 export function SongPage() {
   const { id } = useParams();
@@ -13,6 +17,7 @@ export function SongPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const singleSong = useSelector((state) => state.songs.singleSong);
   const allComments = useSelector((state) => state.comment.comments)
+
   console.log(singleSong)
 
   let userCheck;
@@ -26,6 +31,9 @@ export function SongPage() {
     Delete Song
   </button>;
   }
+
+  const [showForm, setShowForm] = useState(false);
+
 
   useEffect(() => {
     dispatch(GetOneSong(id));
@@ -45,10 +53,24 @@ export function SongPage() {
         </div>
         <div>
           {allComments?.map((comment) =>
-            <div> {comment.content} </div>
-
-          )}
+            <div>
+              {comment.content}
+              <button
+        id="splashlinkbuttons"
+        onClick={() => {
+          dispatch(DeleteAComment(comment.id));
+        }}
+      >
+        Delete Comment
+      </button>
+      <button onClick={() => setShowForm(true)} id="splashlinkbuttons">
+        Edit
+      </button>
+      {showForm && (
+        <EditForm id={comment.id} />
+      )}
         </div>
-    </div>
-  );
-}
+  )};
+  </div>
+  </div>
+  )}
