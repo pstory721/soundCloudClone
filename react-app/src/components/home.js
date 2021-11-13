@@ -28,7 +28,7 @@ export function Home() {
         <div className="discover">
           <h2 className='more'>Discover more with angry cloud</h2>
           <p className="other-main">Angry Cloud is a place to share angry music as well as discover them!</p>
-          <button className="bttn-upload">Start uploading today!</button>
+          <button onClick={() => setShowPlaylist(!showPlaylist)} className="bttn-upload">Start uploading today!</button>
         </div>
       </div>
 
