@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { AddAComment } from "../store/Comments";
-import { EditDelete2 } from "./edit-delete";
+import { useParams } from "react-router";
+import {UpdateAComment} from "../store/Comments"
 
-
-function CommentForm({song_id}) {
-    const dispatch = useDispatch()
+function EditForm({}){
+    const dispatch = useDispatch();
+    const id  = useParams();
+    const history = useHistory();
     const [content, setContent] = useState("")
-    const history = useHistory()
-    const [songId,setSongId] = useState(song_id)
+    let item = parseInt(id.comment_id)
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let payload = {content, songId}
-        let newNote = dispatch(AddAComment(payload))
+        const payload = { content }
+        let newNote = dispatch(UpdateAComment(payload,id))
         if(newNote){
-            history.push(`/discover`)
+            history.push(`/`)
         }
     }
 
@@ -34,10 +34,8 @@ function CommentForm({song_id}) {
             />
             </label>
             <button id="submit" type="submit">Submit</button>
-            <EditDelete2 song_id={songId}/>
         </form>
     )
 }
 
-
-export default CommentForm;
+export default EditForm;

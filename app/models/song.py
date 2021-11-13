@@ -14,6 +14,7 @@ class Song(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     users = db.relationship("User", back_populates="songs")
+    comments = db.relationship('Comments', back_populates='songs',cascade="all, delete")
 
     def to_dict(self):
         return {
@@ -32,7 +33,10 @@ class Comments(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    users = db.relationship("User", back_populates="comments")
     song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
+    songs = db.relationship('Song', back_populates='comments')
+
     content = db.Column(db.String)
 
     def to_dict(self):

@@ -11,7 +11,6 @@ function User() {
   const sessionUser = useSelector((state) => state.session.user);
   const { userId }  = useParams();
   const songs = useSelector((state) => state.songs.songs);
-  console.log(songs)
   useEffect(() => {
     dispatch(GetAllSongs());
   }, [dispatch]);

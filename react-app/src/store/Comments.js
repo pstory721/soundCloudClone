@@ -5,17 +5,17 @@ const PUT_COMMENT = "session/PutComments";
 const GET_COMMENTS = "session/GetComments";
 const DELETE_COMMENT = "session/DeleteComments";
 
-const GetComments = (data) => {
+const GetComments = (comments) => {
   return {
     type: GET_COMMENTS,
-    payload: data,
+    comments,
   };
 };
 
 const AddComments = (comment) => {
   return {
     type:POST_COMMENT,
-    payload: comment,
+    comment,
   }
 }
 
@@ -33,11 +33,12 @@ const DeleteComment = () => {
 };
 
 export const UpdateAComment = (input, id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/comments/${id}`, {
+  let item = parseInt(id.comment_id);
+  const response = await csrfFetch(`/api/${item}/edit`, {
     method:"PUT",
     body: JSON.stringify(input),
-    headers: { "Content-Type": "application/json" },
   });
+
   if (response.ok) {
     const { UpdatedComment } = await response.json();
     dispatch(UpdateComment(UpdatedComment));
@@ -45,38 +46,32 @@ export const UpdateAComment = (input, id) => async (dispatch) => {
 }
 
 export const AddAComment = (form) => async (dispatch) => {
-  console.log("Beginning........", form.content)
   const formData = new FormData()
   formData.append('content', form.content)
-
-  for (let value of formData.values()) {
-    console.log("..... ",value);
- }
+  formData.append("song_id",form.songId)
 
   const response = await fetch(`/api/add`, {
     method: "POST",
     body: formData,
   });
 
-  console.log("things........", response)
-
   if (response.ok) {
-    const { NewComment } = await response.json();
+    const NewComment  = await response.json();
     dispatch(AddComments(NewComment));
   }
 }
 
-export const GetAllComments = () => async (dispatch) => {
-  const response = await fetch(`/api/comments`);
+export const GetAllComments = (id) => async (dispatch) => {
+  const response = await fetch(`/api/get/${id}`);
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(GetComments(data));
+    const comments = await response.json();
+    dispatch(GetComments(comments));
   }
 };
 
 export const DeleteAComment = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/comments/${id}`, {
+  const response = await csrfFetch(`/api/destroy/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {
@@ -87,18 +82,18 @@ export const DeleteAComment = (id) => async (dispatch) => {
 const initialState = { comments: [] };
 const CommentReducer = (state = initialState, action) => {
   let newState;
-  switch (action.type) {  
+  switch (action.type) {
     case GET_COMMENTS:
       newState = Object.assign({}, state);
-      newState.comments = action.payload.comments;
+      newState.comments = action.comments;
       return newState;
     case DELETE_COMMENT:
       newState = Object.assign({}, state);
       delete newState[action.comments];
       return newState;
     case POST_COMMENT:
-      newState[action.payload.id] = action.payload
-      return newState
+      case POST_COMMENT:
+        return { ...state, comments: [...state.comments, action.comment] };
     default:
       return state;
   }

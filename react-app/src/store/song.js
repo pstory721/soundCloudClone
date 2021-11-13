@@ -21,10 +21,10 @@ const GetASong = (song) => {
 };
 
 
-const AddSongs = (song) => {
+const AddSongs = (songs) => {
   return {
     type:POST_SONG,
-    payload: song,
+    songs,
   }
 }
 
@@ -52,6 +52,7 @@ export const UpdateASong = (input, id) => async (dispatch) => {
     dispatch(UpdateSong(UpdatedSong));
   }
 };
+
 export const GetOneSong = (id) => async (dispatch) => {
   const response = await fetch(`/api/song/${id}`);
 
@@ -64,8 +65,11 @@ export const GetOneSong = (id) => async (dispatch) => {
 export const UploadASong = (form, song, image) => async (dispatch) => {
   const formData = new FormData()
   if(song) {
-      formData.append("song", song)};
-
+      formData.append("song", song)
+  };
+  if(image){
+    formData.append("image", image)
+  }
 
   formData.append('title', form.title)
   formData.append('artist', form.artist)
@@ -77,8 +81,10 @@ export const UploadASong = (form, song, image) => async (dispatch) => {
       body: formData
   });
 
-  const data = await response.json()
-  dispatch(AddSongs(data))
+  if (response.ok) {
+    const songs = await response.json()
+    dispatch(AddSongs(songs))
+  }
 
 }
 
@@ -92,13 +98,16 @@ export const GetAllSongs = () => async (dispatch) => {
 };
 
 export const DeleteASong = (id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/song/${id}`, {
+  console.log("starting.........", id)
+  const response = await fetch(`/api/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {
     dispatch(DeleteSong());
   }
 };
+
+
 const initialState = { songs: [],singleSong:[] };
 const SongReducer = (state = initialState, action) => {
   let newState;
@@ -116,8 +125,9 @@ const SongReducer = (state = initialState, action) => {
       delete newState[action.songs];
       return newState;
     case POST_SONG:
+      newState={...state}
       const songList = newState.songs.map(song => newState[song])
-      songList.push(action.payload.songs)
+      songList.push(action.songs)
       return newState;
     default:
       return state;

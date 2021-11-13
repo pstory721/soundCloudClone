@@ -35,7 +35,7 @@ export const UpdateAPlaylist = (input, id) => async (dispatch) => {
   }
 };
 
-export const getAllPlaylist = () => async (dispatch) => {
+export const GetAllPlaylist = () => async (dispatch) => {
   const response = await fetch(`/api/playlist`);
 
   if (response.ok) {
