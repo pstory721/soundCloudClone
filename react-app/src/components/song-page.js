@@ -22,12 +22,6 @@ export function SongPage() {
     dispatch(GetAllComments(id));
   }, [dispatch]);
 
-<<<<<<< HEAD
-  console.log("here are all the comments...........",allComments.comments)
-  let newComment = Object.entries(allComments.comments)
-  console.log(newComment)
-=======
->>>>>>> 490007ff286bb37afc7a889e20cf0fa69ec7c154
 
   return (
     <div>
