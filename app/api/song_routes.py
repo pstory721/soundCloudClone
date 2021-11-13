@@ -83,7 +83,6 @@ def song_post():
 @song_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_song(id):
-    print("starting route...........", id)
     song = Song.query.get(id)
     # if current_song["user_id"] not in current_user:
 
