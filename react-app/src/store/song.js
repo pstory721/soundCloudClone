@@ -42,7 +42,7 @@ const DeleteSong = () => {
 };
 
 export const UpdateASong = (input, id) => async (dispatch) => {
-  const response = await csrfFetch(`/api/song/${id}`, {
+  const response = await csrfFetch(`/api/${id}/update`, {
     method: "PUT",
     body: JSON.stringify(input),
     headers: { "Content-Type": "application/json" },
@@ -74,7 +74,7 @@ export const UploadASong = (form, song, image) => async (dispatch) => {
   formData.append('title', form.title)
   formData.append('artist', form.artist)
   formData.append('length', form.length)
-  // formData.append('image', image)
+
 
   const response = await fetch(`/api/upload`, {
       method: "POST",
@@ -98,7 +98,6 @@ export const GetAllSongs = () => async (dispatch) => {
 };
 
 export const DeleteASong = (id) => async (dispatch) => {
-  console.log("starting.........", id)
   const response = await fetch(`/api/${id}`, {
     method: "DELETE",
   });

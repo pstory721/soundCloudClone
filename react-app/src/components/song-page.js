@@ -25,11 +25,11 @@ export function SongPage() {
     userCheck = <button
     id="splashlinkbuttons"
     onClick={() => {
-      dispatch(DeleteASong(id));
+      dispatch(DeleteASong(id))
     }}
   >
     Delete Song
-  </button>;
+  </button>
   }
 
   const [showForm, setShowForm] = useState(false);
@@ -58,7 +58,7 @@ export function SongPage() {
               <button
         id="splashlinkbuttons"
         onClick={() => {
-          dispatch(DeleteAComment(comment.id));
+          dispatch(DeleteAComment(comment.id))
         }}
       >
         Delete Comment
@@ -70,7 +70,7 @@ export function SongPage() {
         <EditForm id={comment.id} />
       )}
         </div>
-  )};
+  )}
   </div>
   </div>
   )}

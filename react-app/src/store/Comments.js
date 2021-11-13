@@ -33,10 +33,10 @@ const DeleteComment = () => {
 };
 
 export const UpdateAComment = (input, id) => async (dispatch) => {
-  let item = parseInt(id.comment_id);
-  const response = await csrfFetch(`/api/${item}/edit`, {
+  const response = await fetch(`/api/${id}/edit`, {
     method:"PUT",
     body: JSON.stringify(input),
+    headers: { "Content-Type": "application/json" },
   });
 
   if (response.ok) {
@@ -92,7 +92,6 @@ const CommentReducer = (state = initialState, action) => {
       delete newState[action.comments];
       return newState;
     case POST_COMMENT:
-      case POST_COMMENT:
         return { ...state, comments: [...state.comments, action.comment] };
     default:
       return state;

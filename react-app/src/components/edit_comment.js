@@ -5,12 +5,11 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import {UpdateAComment} from "../store/Comments"
 
-function EditForm({comment_id}){
+function EditForm({id}){
     const dispatch = useDispatch();
-    const id  = useParams();
     const history = useHistory();
     const [content, setContent] = useState("")
-    let item = parseInt(id.comment_id)
+    console.log(id)
 
     const handleSubmit = (e) => {
         e.preventDefault();
