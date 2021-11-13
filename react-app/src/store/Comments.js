@@ -66,13 +66,11 @@ export const GetAllComments = (id) => async (dispatch) => {
 
   if (response.ok) {
     const comments = await response.json();
-    console.log("the data..........",comments)
     dispatch(GetComments(comments));
   }
 };
 
 export const DeleteAComment = (id) => async (dispatch) => {
-  console.log("starting comment delete......", id)
   const response = await csrfFetch(`/api/destroy/${id}`, {
     method: "DELETE",
   });
@@ -94,14 +92,8 @@ const CommentReducer = (state = initialState, action) => {
       delete newState[action.comments];
       return newState;
     case POST_COMMENT:
-      newState={...state}
-      const commentlist = newState.comments.map(comment => newState[comment])
-      commentlist.push(action.comment)
-      return newState;
-      // state.comments.push(action.comment)
-      // return {
-      //   ...state, comments: [state.comments, action.comment]
-      // }
+      case POST_COMMENT:
+        return { ...state, comments: [...state.comments, action.comment] };
     default:
       return state;
   }

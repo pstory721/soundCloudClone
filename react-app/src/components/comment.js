@@ -18,7 +18,7 @@ function CommentForm({song_id}) {
         let payload = {content, songId}
         let newNote = dispatch(AddAComment(payload))
         if(newNote){
-            history.push(`/`)
+            history.push(`/discover`)
         }
     }
 

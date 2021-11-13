@@ -11,7 +11,7 @@ export function SongPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const singleSong = useSelector((state) => state.songs.singleSong);
-  const allComments = useSelector((state) => state.comment)
+  const allComments = useSelector((state) => state.comment.comments)
 
 
   useEffect(() => {
@@ -22,9 +22,12 @@ export function SongPage() {
     dispatch(GetAllComments(id));
   }, [dispatch]);
 
+<<<<<<< HEAD
   console.log("here are all the comments...........",allComments.comments)
   let newComment = Object.entries(allComments.comments)
   console.log(newComment)
+=======
+>>>>>>> 490007ff286bb37afc7a889e20cf0fa69ec7c154
 
   return (
     <div>
@@ -39,6 +42,12 @@ export function SongPage() {
         Delete Song
       </button>
             <CommentForm song_id={id}/>
+        </div>
+        <div>
+          {allComments?.map((comment) =>
+            <div> {comment.content} </div>
+
+          )}
         </div>
     </div>
   );
