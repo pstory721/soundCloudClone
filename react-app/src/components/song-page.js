@@ -23,7 +23,8 @@ export function SongPage() {
   }, [dispatch]);
 
   console.log("here are all the comments...........",allComments.comments)
-
+  let newComment = Object.entries(allComments.comments)
+  console.log(newComment)
 
   return (
     <div>

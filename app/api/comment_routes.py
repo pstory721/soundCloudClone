@@ -10,13 +10,13 @@ comment_routes = Blueprint('comments', __name__)
 # Get all comments from the database
 @comment_routes.route("/get/<int:id>")
 def all_comments(id):
-    comments = Comments.query.filter(Comments.song_id == id)
-	return [comment.to_dict() for comment in comments]
     # comments = Comments.query.filter(Comments.song_id == id)
-    # the_comments = dict()
-    # for index, comment in enumerate(comments):
-    #     the_comments[comment.id] = comment.content
-    # return the_comments
+	# return {"comments":[comments.to_dict() for comment in comments]}
+    comments = Comments.query.filter(Comments.song_id == id)
+    the_comments = dict()
+    for index, comment in enumerate(comments):
+        the_comments[comment.id] = comment.content
+    return the_comments
 
 
 # Posts a new comment to the song
