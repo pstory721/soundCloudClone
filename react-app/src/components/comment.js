@@ -34,7 +34,6 @@ function CommentForm({song_id}) {
             />
             </label>
             <button id="submit" type="submit">Submit</button>
-            <EditDelete2 song_id={songId}/>
         </form>
     )
 }

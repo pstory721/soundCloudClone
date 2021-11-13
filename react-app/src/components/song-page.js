@@ -5,6 +5,7 @@ import { DeleteASong, GetOneSong } from "../store/song";
 import { EditDelete2 } from "./edit-delete";
 import CommentForm from './comment.js'
 import { DeleteAComment, GetAllComments } from "../store/Comments";
+import './song-page.css';
 
 export function SongPage() {
   const { id } = useParams();
@@ -12,7 +13,19 @@ export function SongPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const singleSong = useSelector((state) => state.songs.singleSong);
   const allComments = useSelector((state) => state.comment.comments)
+  console.log(singleSong)
 
+  let userCheck;
+  if (sessionUser.id === singleSong?.user_id) {
+    userCheck = <button
+    id="splashlinkbuttons"
+    onClick={() => {
+      dispatch(DeleteASong(id));
+    }}
+  >
+    Delete Song
+  </button>;
+  }
 
   useEffect(() => {
     dispatch(GetOneSong(id));
@@ -24,17 +37,10 @@ export function SongPage() {
 
 
   return (
-    <div>
+    <div className='song-page'>
         <div>
             {singleSong.title}
-            <button
-        id="splashlinkbuttons"
-        onClick={() => {
-          dispatch(DeleteASong(id));
-        }}
-      >
-        Delete Song
-      </button>
+            {userCheck}
             <CommentForm song_id={id}/>
         </div>
         <div>

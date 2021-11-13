@@ -24,7 +24,8 @@ class Song(db.Model):
             'length': self.length,
             'likes': self.likes,
             'song_url': self.song_url,
-            'image_url': self.image_url
+            'image_url': self.image_url,
+            'user_id': self.user_id
         }
 
 
