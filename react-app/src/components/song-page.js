@@ -2,6 +2,7 @@ import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { DeleteASong, GetOneSong } from "../store/song";
+import {UpdateForm} from './edit_upload';
 import { EditDelete2 } from "./edit-delete";
 import CommentForm from './comment.js'
 import { DeleteAComment, GetAllComments } from "../store/Comments";
@@ -31,6 +32,10 @@ export function SongPage() {
     Delete Song
   </button>;
   }
+  let otherCheck;
+  if (sessionUser.id === singleSong?.user_id) {
+    otherCheck = <UpdateForm id={singleSong.id}/>
+  }
 
   const [showForm, setShowForm] = useState(false);
 
@@ -49,6 +54,7 @@ export function SongPage() {
         <div>
             {singleSong.title}
             {userCheck}
+            {otherCheck}
             <CommentForm song_id={id}/>
         </div>
         <div>
@@ -70,7 +76,7 @@ export function SongPage() {
         <EditForm id={comment.id} />
       )}
         </div>
-  )};
+  )}
   </div>
   </div>
   )}

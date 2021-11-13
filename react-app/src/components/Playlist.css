@@ -5,6 +5,7 @@
     border: solid 4px rgb(0, 238, 255);
     border-radius: 85px;
     position: absolute;
+    bottom: 400px;
     width: 335px;
     height: 260px;
     display: flex;
