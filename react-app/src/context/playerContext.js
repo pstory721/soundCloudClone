@@ -5,11 +5,11 @@ export const usePlayer = ()=> useContext(PlayerContext);
 
 
 export default function PlayerProvider({children}){
-    const [src, setSrc] = useState('');
+    const [leSong, setLeSong] = useState('');
 
     return (
         <PlayerContext.Provider
-        value = {{src, setSrc}}
+        value = {{leSong, setLeSong}}
         >
             {children}
         </PlayerContext.Provider>
