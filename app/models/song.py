@@ -64,23 +64,6 @@ class Likes(db.Model):
         }
 
 
-class Playlist(db.Model):
-    __tablename__ = 'playlists'
-
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
-    title = db.Column(db.String)
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'user_id': self.user_id,
-            'song_id': self.song_id,
-            'content': self.title
-        }
-
-
 class Playlist_Join(db.Model):
     __tablename__ = 'playlist_join'
 
@@ -93,4 +76,22 @@ class Playlist_Join(db.Model):
             'id': self.id,
             'song_id': self.song_id,
             'playlist_id': self.playlist_id
+        }
+
+class Playlist(db.Model):
+    __tablename__ = 'playlists'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
+    title = db.Column(db.String)
+    songs = db.relationship("Song", secondary=Playlist_Join.__table__)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'song_id': self.song_id,
+            'content': self.title,
+            'songs': [song.to_dict() for song in self.songs],
         }
