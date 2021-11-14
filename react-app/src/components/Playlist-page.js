@@ -1,25 +1,29 @@
-import React, {  useEffect, useState }  from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {GetAllPlaylist} from '../store/playlist';
-import './Playlist-page.css';
+import { GetAllPlaylist } from "../store/playlist";
+import "./Playlist-page.css";
 
+function RealPlaylist() {
+  const dispatch = useDispatch();
+  const playlist = useSelector((state) => state.playlist.playlist);
+  console.log(playlist);
 
-function RealPlaylist(){
-    const dispatch = useDispatch();
-    const playlist = useSelector((state) => state.playlist.playlist);
-console.log(playlist)
+  useEffect(() => {
+    dispatch(GetAllPlaylist());
+  }, []);
 
-    useEffect(() => {
-        dispatch(GetAllPlaylist());
-    }, []);
-
-    return (
-        <>
-        <h1>{playlist?.map((list)=>(
-            <div>{list.content}{list.song_id}{list.user_id}</div>
-        ))} test</h1>
-        </>
-    )
+  return (
+    <div>
+      {playlist?.map((list) => (
+        <div>
+          <h1>{list.content}</h1>
+          {list.songs?.map((song) => (
+            <div>{song.title}</div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default RealPlaylist;
