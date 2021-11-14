@@ -1,9 +1,29 @@
 .song-page{
-    margin: 100px auto 100px;
+    margin: 100px auto 250px;
     width: 30%;
     background-color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.solo-song{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-stuff{
+    margin-bottom: 10px;
+}
+
+.the-comment{
+    text-align: center;
+    border-radius: 5px;
+    width: auto;
+    padding: 2px;
+    border: solid 1px;
+}

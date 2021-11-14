@@ -42,6 +42,7 @@ function UploadForm({}) {
 
     return (
         <div className='upload'>
+            <h1 className='upload-labs1'>Upload A Song!</h1>
         <form className="SongForm" onSubmit={handleSubmit}>
             <div className='inner'>
 
@@ -73,6 +74,7 @@ function UploadForm({}) {
                     placeholder="Track Length"
                     required
                 /><br></br>
+                <label className='upload-labs'> Choose Song!<br></br></label>
                 <input type="file" name="song" onChange={changeHandler} />
 			    {isSongPicked ? (
 				    <div className='picked'>
@@ -85,13 +87,14 @@ function UploadForm({}) {
 					    </p> */}
 				    </div>
 			    ) : (
-				    <p>Select a file to show details</p>
+				    <p></p>
 			    )}
+                <label className='upload-labs'> Choose Album Art!<br></br></label>
                 <input type="file" name="image" onChange={changeHandler2} />
 			    {isFilePicked ? (
 				    <p>Image selected</p>
 			    ) : (
-				    <p>Select a file to show details</p>
+				    <p></p>
 			    )}
             </label>
             <button id="submit" type="submit" >Submit</button>

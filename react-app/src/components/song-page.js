@@ -53,7 +53,8 @@ export function SongPage() {
 
   return (
     <div className='song-page'>
-        <div>
+        <div className='solo-song'>
+            <img src={singleSong.image_url} width='200px' height='200px' alt='art'></img><br></br>
             {singleSong.title}
             {userCheck}
             {otherCheck}
@@ -61,24 +62,17 @@ export function SongPage() {
         </div>
         <div>
           {allComments?.map((comment) =>
-            <div>
-              {comment.content}
-              <button
-        id="splashlinkbuttons"
-        onClick={() => {
-          dispatch(DeleteAComment(comment.id))
-        }}
-      >
-        Delete Comment
-      </button>
-      <button onClick={() => setShowForm(true)} id="splashlinkbuttons">
-        Edit
-      </button>
-      {showForm && (
-        <EditForm id={comment.id} />
-      )}
+            <div className='comment-stuff'>
+              {/* <p>{comment.user_id}</p> */}
+              <p className="the-comment">{comment.content}</p>
+              <button id="splashlinkbuttons" onClick={() => {dispatch(DeleteAComment(comment.id))}}>
+                Delete Comment
+              </button>
+              <button onClick={() => setShowForm(true)} id="splashlinkbuttons">
+                Edit
+              </button>
+          {showForm && (<EditForm id={comment.id} />)}
+        </div>)}
         </div>
-  )}
-  </div>
-  </div>
+    </div>
   )}

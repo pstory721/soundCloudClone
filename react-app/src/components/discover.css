@@ -13,10 +13,10 @@
 .lines{
     background-color: rgb(197, 197, 197);
     border-radius: 100px;
-    margin: 45px auto 45px;
+    margin: 415px auto 45px;
     text-align: center;
     height: 1px;
-    width: 90%;
+    width: 70%;
 }
 
 .play-bttn{
@@ -31,8 +31,12 @@
 }
 
 .trend-image{
-    margin-left: 5px;
-    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .song-bttn{
@@ -44,25 +48,52 @@
     height: 29px;
 }
 
+.overflow{
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 240px;
+    width: 900px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-right: 40px;
+    margin-left: 40px;
+    float: left;
+    flex-direction: row;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.overflow:hover{
+    overflow-y: auto;
+}
+
 .songs-bttns{
-     /* height: 100px; */
+    /* overflow-x: hidden;
+     height: 240px;
+     width: 500px;
      margin-top: 40px;
+     margin-right: 40px;
+     margin-left: 40px;
      float: left;
-     flex-direction: column;
+     flex-direction: row;
      display:flex;
      flex-wrap: wrap;
      justify-content: center;
-     align-items: center;
+     align-items: center; */
 }
 
 .lines-trend{
     background-color: rgb(197, 197, 197);
     border-radius: 100px;
-    margin: 500px auto 45px;
+    margin:385px auto 45px;
     height: 1px;
-    width: 90%;
+    width: 70%;
 }
 
 .trending{
     text-align: center;
+    margin-top: 35px;
 }
