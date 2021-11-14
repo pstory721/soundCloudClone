@@ -16,6 +16,14 @@
     align-items: center;
 }
 
+.x{
+    font-size: 12px;
+}
+
+.e{
+    font-size: 12px;
+}
+
 .comment-stuff{
     margin-bottom: 10px;
 }
