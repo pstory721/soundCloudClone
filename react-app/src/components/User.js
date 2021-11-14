@@ -73,7 +73,7 @@ function User() {
                 <RealPlaylist/>
               </div>
           </li>
-          <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>History</NavLink></li>
+          {/* <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>History</NavLink></li> */}
       </ul>
 
 

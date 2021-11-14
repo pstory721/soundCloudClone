@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
 import {UpdateAComment} from "../store/Comments"
 
 function EditForm({id}){
     const dispatch = useDispatch();
     const history = useHistory();
+    const songId = useParams();
     const [content, setContent] = useState("")
-    console.log(id)
+    console.log(songId)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const payload = { content }
-        let newNote = dispatch(UpdateAComment(payload,id))
-        if(newNote){
-            history.push(`/`)
-        }
+        const payload = { content}
+        dispatch(UpdateAComment(payload, id))
+
+        history.push(`/song-page/${songId.id}`);
     }
 
     return (

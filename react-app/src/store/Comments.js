@@ -91,6 +91,10 @@ const CommentReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       delete newState[action.comments];
       return newState;
+    case PUT_COMMENT:
+      newState = Object.assign({}, state);
+      newState.comments.push(state.comments.filter(({id}) => id === action.comment));
+      return newState;
     case POST_COMMENT:
         return { ...state, comments: [...state.comments, action.comment] };
     default:
