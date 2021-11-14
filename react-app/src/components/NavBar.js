@@ -1,14 +1,25 @@
-
+import * as sessionActions from '../store/session';
 import React,{useState, useEffect} from 'react';
 import { Link, NavLink, useParams } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import './NavBar.css';
 import LogoutButton from './auth/LogoutButton';
  // test
 const NavBar = () => {
+  const [credential, setCredential] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch()
   const [user, setUser] = useState({});
   const { userId }  = useParams();
   const sessionUser = useSelector((state) => state.session.user);
+
+  const demoLogin = async () => {
+    setCredential('demo@aa.io');
+    setPassword('password');
+    return dispatch(
+      sessionActions.login('demo@aa.io', 'password')
+    );
+  }
 
   useEffect(() => {
     if (!userId) {
@@ -20,6 +31,11 @@ const NavBar = () => {
       setUser(user);
     })();
   }, [userId]);
+
+  let demo;
+  if(!sessionUser){
+    demo = <button className='demo' onClick={demoLogin}>Demo Login</button>
+  }
 
   let signin;
   if(!sessionUser){
@@ -63,6 +79,9 @@ const NavBar = () => {
         </Link>
       </div>
       <ul>
+        <li>
+          {demo}
+        </li>
         <li>
           {signin}
         </li>

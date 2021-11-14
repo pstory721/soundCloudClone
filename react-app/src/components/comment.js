@@ -16,10 +16,10 @@ function CommentForm({song_id}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         let payload = {content, songId}
-        let newNote = dispatch(AddAComment(payload))
-        if(newNote){
-            history.push(`/discover`)
-        }
+        dispatch(AddAComment(payload))
+
+        history.push(`/song-page/${songId}`)
+
     }
 
     return (

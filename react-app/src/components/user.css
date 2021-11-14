@@ -47,10 +47,18 @@
 }
 
 .all-songs{
+        overflow-y: hidden;
+        width:450px;
+        height: 200px;
         position: absolute;
-        left: 20px;
+        left: -45px;
         float: left;
 }
+
+.all-songs:hover{
+    overflow-y:scroll;
+}
+
 .song-back{
     position: fixed;
     top: 0;

@@ -28,16 +28,15 @@ function UploadForm({}) {
         setIsFilePicked(true)
 	};
 
-    const handleSubmit = async (e) => {
+    const handleSubmit =  (e) => {
         e.preventDefault();
 
-        const payload = { title, artist, length }
+        let payload = { title, artist, length }
 
-        let newSong = await dispatch(UploadASong(payload, selectedSong, selectedImage))
+        dispatch(UploadASong(payload, selectedSong, selectedImage))
 
-        if(newSong){
-            history.push(`/`)
-        }
+        history.push(`/discover`)
+
     }
 
     return (

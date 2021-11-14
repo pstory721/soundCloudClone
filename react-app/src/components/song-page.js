@@ -22,13 +22,18 @@ export function SongPage() {
 
   console.log(singleSong)
 
+  const handleDelete = (e)=> {
+    // e.preventDefault();
+    dispatch(DeleteASong(id))
+      history.push(`/discover`)
+  }
+
   let userCheck;
   if (sessionUser.id === singleSong?.user_id) {
     userCheck = <button
     id="splashlinkbuttons"
     onClick={() => {
-      dispatch(DeleteASong(id))
-      // history.push(`/discover`)
+      handleDelete()
     }}
   >
     Delete Song
@@ -40,6 +45,7 @@ export function SongPage() {
   }
 
   const [showForm, setShowForm] = useState(false);
+
 
 
   useEffect(() => {
@@ -65,10 +71,13 @@ export function SongPage() {
             <div className='comment-stuff'>
               {/* <p>{comment.user_id}</p> */}
               <p className="the-comment">{comment.content}</p>
-              <button id="splashlinkbuttons" onClick={() => {dispatch(DeleteAComment(comment.id))}}>
-                Delete Comment
+              <button className='x' id="splashlinkbuttons" onClick={() => {
+                dispatch(DeleteAComment(comment.id))
+                history.push(`/song-page/${singleSong.id}`)
+                }}>
+                X
               </button>
-              <button onClick={() => setShowForm(true)} id="splashlinkbuttons">
+              <button className='e' onClick={() => setShowForm(true)} id="splashlinkbuttons">
                 Edit
               </button>
           {showForm && (<EditForm id={comment.id} />)}
