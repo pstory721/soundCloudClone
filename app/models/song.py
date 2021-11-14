@@ -12,6 +12,7 @@ class Song(db.Model):
     song_url = db.Column(db.String(255))
     image_url = db.Column(db.String(255))
 
+    playlist_joins = db.relationship("Playlist_Join", cascade="all, delete")
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     users = db.relationship("User", back_populates="songs")
     comments = db.relationship('Comments', back_populates='songs',cascade="all, delete")
@@ -68,7 +69,7 @@ class Playlist_Join(db.Model):
     __tablename__ = 'playlist_join'
 
     id = db.Column(db.Integer, primary_key=True)
-    song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
+    song_id = db.Column(db.Integer, db.ForeignKey("songs.id" ,ondelete="CASCADE"))
     playlist_id = db.Column(db.Integer, db.ForeignKey("playlists.id"))
 
     def to_dict(self):
@@ -83,7 +84,6 @@ class Playlist(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
     title = db.Column(db.String)
     songs = db.relationship("Song", secondary=Playlist_Join.__table__)
 

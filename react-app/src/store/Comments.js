@@ -26,9 +26,10 @@ const UpdateComment = (comment) => {
   };
 };
 
-const DeleteComment = () => {
+const DeleteComment = (comments) => {
   return {
     type: DELETE_COMMENT,
+    comments
   };
 };
 
@@ -75,7 +76,7 @@ export const DeleteAComment = (id) => async (dispatch) => {
     method: "DELETE",
   });
   if (response.ok) {
-    dispatch(DeleteComment());
+    dispatch(DeleteComment(id));
   }
 };
 
@@ -88,6 +89,7 @@ const CommentReducer = (state = initialState, action) => {
       newState.comments = action.comments;
       return newState;
     case DELETE_COMMENT:
+      console.log(action.type)
       newState = Object.assign({}, state);
       delete newState[action.comments];
       return newState;

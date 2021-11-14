@@ -8,7 +8,7 @@ import {usePlayer} from '../context/playerContext';
 
 function Player(){
     const {leSong, setLeSong} = usePlayer();
-    
+
 
     return (
     <div className='player-div'>
@@ -18,6 +18,7 @@ function Player(){
         src={leSong}
         onPlay={e => console.log("onPlay")}
         showSkipControls={true}
+        showFilledVolume={true}
         />
     </div>
     </div>

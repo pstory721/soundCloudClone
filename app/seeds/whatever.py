@@ -20,7 +20,7 @@ def seed_playlist_join():
 
 def seed_playlist():
     Test = Playlist(
-        title='Rap', user_id = 1, song_id = 2,
+        title='Rap', user_id = 1
     )
     db.session.add(Test)
     db.session.commit()
