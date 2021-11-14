@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import UploadForm from './components/upload';
 import Player from './components/player';
 import { authenticate } from './store/session';
 import { Home } from './components/home';
@@ -57,6 +58,9 @@ function App() {
         </Route>
         <Route path='/song-page/:id' exact={true} >
         <SongPage />
+        </Route>
+        <Route path='/upload' exact={true} >
+        < UploadForm/>
         </Route>
       </Switch>
       <Player />

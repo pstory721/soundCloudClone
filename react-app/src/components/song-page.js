@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory, Redirect  } from "react-router-dom";
 import { DeleteASong, GetOneSong } from "../store/song";
 import {UpdateForm} from './edit_upload';
 import { EditDelete2 } from "./edit-delete";
@@ -13,6 +13,7 @@ import EditForm from "./edit_comment";
 
 
 export function SongPage() {
+  const history = useHistory();
   const { id } = useParams();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -27,6 +28,7 @@ export function SongPage() {
     id="splashlinkbuttons"
     onClick={() => {
       dispatch(DeleteASong(id))
+      // history.push(`/discover`)
     }}
   >
     Delete Song

@@ -19,21 +19,23 @@ export function Discover() {
     <div className='discover-page'>
       <div>
         <div>
-        <h2> TOP 50: </h2>
+        <h2 className='trending'> TOP 50: </h2>
         <p className='the-ps'>The most played tracks on Angry Cloud</p>
+        <div >
         {songs?.map((song) => (
-          <span onClick={() => history.push(`/song-page/${song.id}`)}>
+          <div className='songs-bttns' onClick={() => history.push(`/song-page/${song.id}`)}>
             <img className='trend-image' src={`${song.image_url}`} alt="ooops that broke"></img>
-          </span>
-        ))}
+            <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png" alt='play'></img> </button>
+          </div>
+          ))}
           {songs?.map((song) => (
           <span >
-            <button onClick={()=> setLeSong(song.song_url)}></button>
           </span>
-        ))}
-        <div className='lines'></div>
+          ))}
         </div>
-        <h2> TRENDING NOW: </h2>
+        <div className='lines-trend'></div>
+        </div>
+        <h2 className='trending'> TRENDING NOW: </h2>
         <p className='the-ps'>Music trending now</p>
         <div>{songs?.map((song) => (
           <span onClick={() => history.push(`/song-page/${song.id}`)}>
@@ -43,7 +45,7 @@ export function Discover() {
 
         ))}</div>
         <div className='lines'></div>
-        <h2> RECOMMENDED BY US</h2>
+        <h2 className='trending'> RECOMMENDED BY US</h2>
         <p className='the-ps'>Music we like when we're angry:</p>
         <div>{songs?.map((song) => (
           <span onClick={() => history.push(`/song-page/${song.id}`)}>

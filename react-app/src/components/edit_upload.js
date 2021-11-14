@@ -28,15 +28,12 @@ export function UpdateForm({id}) {
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Title"
+                    placeholder="New Title"
                     required
                 />
                  </label>
-            <button id="submit" type="submit">Submit</button>
+            <button id="submit" type="submit">Change Title</button>
         </form>
         </div>
     )
 }
-
-
-

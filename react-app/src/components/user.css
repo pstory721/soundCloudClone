@@ -1,7 +1,7 @@
 .username{
     font-family: 'Special Elite', cursive;
     font-size: 42px;
-    margin-top: 120px;
+    margin-top: -100px;
     margin-bottom: 350px;
     /* display: flex;
     align-items: center;
@@ -11,7 +11,7 @@
 .all-user{
     display: flex;
     width: 60%;
-    height: 60%;
+    height: 600px;
     margin: 100px auto 50px;
     justify-content: center;
     align-items: center;
@@ -24,6 +24,8 @@
     justify-content: center;
     align-items: center;
     position: absolute;
+    margin-top: -180px;
+    /* top: 40px; */
     text-align: center;
     /* left: 545px; */
 
@@ -74,13 +76,19 @@
 
 .lis-text{
     font-family: 'Special Elite', cursive;
+    margin-bottom: 10px;
     font-size: 24px;
     text-decoration: none;
     color: rgb(0, 0, 0);
 }
 
 .user-all{
-
+    /* margin: 10px; */
+    /* border: solid 10px white; */
     width: 120px;
     height: 120px;
+}
+
+.li-images{
+    margin-right: 10px;
 }

@@ -64,7 +64,7 @@ function User() {
               </div>))}
               </div>
           </li>
-          <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>Likes</NavLink></li>
+          {/* <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>Likes</NavLink></li> */}
           <li className='lis'>
             <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('play', 'song')}>
               Playlist

@@ -31,6 +31,7 @@ pylint = "*"
 rope = "*"
 psycopg2-binary = "*"
 boto3 = "*"
+botocore = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
