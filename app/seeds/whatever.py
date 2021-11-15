@@ -12,9 +12,69 @@ def seed_playlist_join():
     Test3 = Playlist_Join(
         song_id = 4, playlist_id = 1,
     )
+    Test4 = Playlist_Join(
+        song_id = 6, playlist_id = 2,
+    )
+    Test5 = Playlist_Join(
+        song_id = 8, playlist_id = 2,
+    )
+    Test6 = Playlist_Join(
+        song_id = 11, playlist_id = 2,
+    )
+    Test7 = Playlist_Join(
+        song_id = 5, playlist_id = 2,
+    )
+    Test8 = Playlist_Join(
+        song_id = 15, playlist_id = 2,
+    )
+    Test9 = Playlist_Join(
+        song_id = 12, playlist_id = 2,
+    )
+    Test10 = Playlist_Join(
+        song_id = 20, playlist_id = 2,
+    )
+    Test11 = Playlist_Join(
+        song_id = 17, playlist_id = 2,
+    )
+    Test12 = Playlist_Join(
+        song_id = 7, playlist_id = 2,
+    )
+    Test13 = Playlist_Join(
+        song_id = 14, playlist_id = 2,
+    )
+    Test14 = Playlist_Join(
+        song_id = 17, playlist_id = 2,
+    )
+    Test15 = Playlist_Join(
+        song_id = 3, playlist_id = 2,
+    )
+    Test16 = Playlist_Join(
+        song_id = 22, playlist_id = 2,
+    )
+    Test17 = Playlist_Join(
+        song_id = 25, playlist_id = 2,
+    )
+    Test18 = Playlist_Join(
+        song_id = 26, playlist_id = 2,
+    )
     db.session.add(Test)
     db.session.add(Test2)
     db.session.add(Test3)
+    db.session.add(Test4)
+    db.session.add(Test5)
+    db.session.add(Test6)
+    db.session.add(Test7)
+    db.session.add(Test8)
+    db.session.add(Test9)
+    db.session.add(Test10)
+    db.session.add(Test11)
+    db.session.add(Test12)
+    db.session.add(Test13)
+    db.session.add(Test14)
+    db.session.add(Test15)
+    db.session.add(Test16)
+    db.session.add(Test17)
+    db.session.add(Test18)
     db.session.commit()
 
 
@@ -22,7 +82,19 @@ def seed_playlist():
     Test = Playlist(
         title='Rap', user_id = 1
     )
+    Testbla = Playlist(
+        title='top 10', user_id = 1
+    )
+    Testblu = Playlist(
+        title='Trending now', user_id = 3
+    )
+    Testbleg = Playlist(
+        title='Reccomended by us', user_id = 1
+    )
     db.session.add(Test)
+    db.session.add(Testbla)
+    db.session.add(Testblu)
+    db.session.add(Testbleg)
     db.session.commit()
 
 
@@ -99,7 +171,47 @@ def seed_songs():
         title='Give It Up', artist ='MADGRRL', length = 3.14, likes = 225, song_url ="https://res.cloudinary.com/dveuedvvm/video/upload/v1636938807/HardStep_MADGRRL_-_GIVE_IT_UP_xztkbc.mp4",
         image_url = "https://res.cloudinary.com/dveuedvvm/image/upload/v1636939488/madgrrl-give-it-up_t7z9q5.jpg", user_id = 4
     )
-   
+
+    Venom = Song(
+        title='Venom', artist = 'GHOSTEMANE', length = 2.06, likes = 20, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938882/Styckr/GHOSTEMANE_-_VENOM_s4fg7q.mp4', image_url = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636939164/Styckr/91YhSqj7PUL._SS500__gixlaj.jpg',
+        user_id = 2
+    )
+    Mercury = Song(
+        title='Mercury', artist = 'GHOSTEMANE', length = 2.05, likes = 38, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938876/Styckr/GHOSTEMANE_-_Mercury_ovxgyo.mp4', image_url = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636939312/Styckr/34dcc3c1bd9510414b6d321af0bd1d1b_da1g8r.jpg',
+        user_id = 2
+    )
+    Nihil = Song(
+        title='Nihil', artist = 'GHOSTEMANE', length = 2.48, likes = 41, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938878/Styckr/GHOSTEMANE_-_Nihil_rwmvmw.mp4', image_url = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636939408/Styckr/artworks-000417587730-zqc3hf-t500x500_a9rg1v.jpg',
+        user_id = 2
+    )
+    Andromeda = Song(
+        title = 'Andromeda', artist = 'GHOSTEMANE', length = 2.07, likes = 16, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938873/Styckr/GHOSTEMANE_-_Andromeda_Official_Video_b094mp.mp4', image_url = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636939528/Styckr/819biVRjfrL._SS500__oy5qgp.jpg',
+        user_id = 2
+    )
+    KYOTO = Song(
+        title = 'KYOTO', artist='Skrillex', length = 3.20, likes = 79, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938887/Styckr/SKRILLEX_-_KYOTO_FT._SIRAH_t3v9m9.mp4', image_url = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636939651/Styckr/220px-Skrillex_-_Bangarang__EP_mno0cb.png',
+        user_id = 3
+    )
+    First_Of_The_Year_Equinox = Song(
+        title= 'First of the Year Exquinox', artist = 'Skrillex', length = 3.14, likes = 43, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938885/Styckr/Skrillex_-_First_Of_The_Year_Equinox_Official_Music_Video_dfpmff.mp4', image_url = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636939806/Styckr/artworks-000010757559-s028go-t500x500_ycshiw.jpg',
+        user_id = 3
+    )
+    PA_PA_YA = Song(
+        title = 'PA PA YA', artist = 'BABYMETAL', length = 3.55, likes = 13, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938866/Styckr/BABYMETAL_-_PA_PA_YA_feat._F.HERO_OFFICIAL_kgcqb3.mp4', image_url = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636939944/Styckr/220px-Babymetal_Pa_Pa_Ya__digital_single_cover_hod5hl.jpg',
+        user_id = 2
+    )
+    Squeeze = Song(
+        title = 'Squeeze', artist ='GHOSTEMANE', length = 3.14, likes = 62, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938880/Styckr/GHOSTEMANE_-_Squeeze_eetwjy.mp4', image_urn = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636940045/Styckr/71DYG_Ft5-L._AC_UL600_SR600_600__edqpxv.jpg',
+        user_id = 2
+    )
+    Duality = Song(
+        title = 'Duality', artist ='Slipknot', length = 3.33, likes = 99, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938891/Styckr/Slipknot_-_Duality_OFFICIAL_VIDEO_ynu5u5.mp4', image_url = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636940152/Styckr/R-581973-1345822174-7830.jpeg_ja37i6.jpg',
+        user_id = 4
+    )
+    Before_I_Forget = Song(
+        title= 'Before I Forget', artist='Slipknot', length = 4.01, likes = 71, song_url = 'https://res.cloudinary.com/dzjkwepju/video/upload/v1636938889/Styckr/Slipknot_-_Before_I_Forget_OFFICIAL_VIDEO_t6czbu.mp4', image_url = 'https://res.cloudinary.com/dzjkwepju/image/upload/v1636940266/Styckr/13b50ed3d58945178c9f0b6767bd2feb_nkkn7m.jpg',
+        user_id = 4
+    )
 
     db.session.add(Epic)
     db.session.add(Carolltan)
@@ -119,5 +231,15 @@ def seed_songs():
     db.session.add(second)
     db.session.add(Triv)
     db.session.add(Mad)
+    db.session.add(Venom)
+    db.session.add(Mercury)
+    db.session.add(Nihil)
+    db.session.add(Andromeda)
+    db.session.add(KYOTO)
+    db.session.add(First_Of_The_Year_Equinox)
+    db.session.add(PA_PA_YA)
+    db.session.add(Squeeze)
+    db.session.add(Duality)
+    db.session.add(Before_I_Forget)
 
     db.session.commit()
