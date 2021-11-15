@@ -77,7 +77,7 @@ export function SongPage() {
                 }}>
                 X
               </button>
-              <button className='e' onClick={() => setShowForm(true)} id="splashlinkbuttons">
+              <button className='e' onClick={() => showForm === false ? setShowForm(true) : setShowForm(false)} id="splashlinkbuttons">
                 Edit
               </button>
           {showForm && (<EditForm id={comment.id} />)}

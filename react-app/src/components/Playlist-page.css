@@ -1,0 +1,22 @@
+.content{
+    font-family: 'Special Elite', cursive;
+    margin-top: 240px;
+}
+
+.song-title{
+    font-family: 'Special Elite', cursive;
+}
+
+.playlist-list{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: hidden;
+    height: 350px;
+    overflow-x: hidden;
+}
+
+.playlist-list:hover{
+    overflow-y: scroll;
+}

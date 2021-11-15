@@ -13,12 +13,15 @@ function RealPlaylist() {
   }, []);
 
   return (
-    <div>
+    <div  >
       {playlist?.map((list) => (
-        <div>
-          <h1>{list.content}</h1>
+        <div className='playlist-list'>
+          <h1 className='content'>{list.content}</h1>
           {list.songs?.map((song) => (
-            <div>{song.title}</div>
+            <div>
+              <p className='song-title'>{song.title}</p>
+              <img src={song.image_url} alt='art' width='100px' height='100px' />
+              </div>
           ))}
         </div>
       ))}
