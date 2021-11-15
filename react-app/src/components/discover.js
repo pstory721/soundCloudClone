@@ -10,6 +10,7 @@ export function Discover() {
     let history = useHistory();
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs.songs);
+  const playlist = useSelector((state) => state.playlist.playlist);
   useEffect(() => {
     dispatch(GetAllSongs());
   }, [dispatch]);
@@ -19,10 +20,10 @@ export function Discover() {
     <div className='discover-page'>
       <div>
         <div>
-        <h2 className='trending'> TOP 50: </h2>
+        <h2 className='trending'> TOP 10: </h2>
         <p className='the-ps'>The most played tracks on Angry Cloud</p>
         <div className='overflow'>
-        {songs?.map((song) => (
+        {songs?.filter(song => song.id < 10).map((song) => (
           <div className='songs-bttns' >
             <img className='trend-image' onClick={() => history.push(`/song-page/${song.id}`)} src={`${song.image_url}`} alt="ooops that broke"></img>
             <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png" alt='play'></img> </button>
@@ -38,7 +39,7 @@ export function Discover() {
         <h2 className='trending'> TRENDING NOW: </h2>
         <p className='the-ps'>Music trending now</p>
         <div className='overflow'>
-        {songs?.map((song) => (
+        {songs?.filter(song => song.id > 10 && song.id< 21).map((song) => (
           <div className='songs-bttns' >
             <img className='trend-image' onClick={() => history.push(`/song-page/${song.id}`)} src={`${song.image_url}`} alt="ooops that broke"></img>
             <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png" alt='play'></img> </button>
@@ -53,7 +54,7 @@ export function Discover() {
         <h2 className='trending'> RECOMMENDED BY US</h2>
         <p className='the-ps'>Music we like when we're angry:</p>
         <div className='overflow'>
-        {songs?.map((song) => (
+        {songs?.filter(song => song.id > 21).map((song) => (
           <div className='songs-bttns' >
             <img className='trend-image' onClick={() => history.push(`/song-page/${song.id}`)} src={`${song.image_url}`} alt="ooops that broke"></img>
             <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png" alt='play'></img> </button>
