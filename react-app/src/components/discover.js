@@ -51,10 +51,10 @@ export function Discover() {
           ))}
         </div>
         <div className='lines'></div>
-        <h2 className='trending'> RECOMMENDED BY US</h2>
-        <p className='the-ps'>Music we like when we're angry:</p>
+        <h2 className='trending'> ALL SONGS</h2>
+        <p className='the-ps'>All the angriest Songs</p>
         <div className='overflow'>
-        {songs?.filter(song => song.id > 21).map((song) => (
+        {songs?.map((song) => (
           <div className='songs-bttns' >
             <img className='trend-image' onClick={() => history.push(`/song-page/${song.id}`)} src={`${song.image_url}`} alt="ooops that broke"></img>
             <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png" alt='play'></img> </button>
