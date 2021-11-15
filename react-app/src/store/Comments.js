@@ -41,7 +41,7 @@ export const UpdateAComment = (input, id) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const { UpdatedComment } = await response.json();
+    const  UpdatedComment  = await response.json();
     dispatch(UpdateComment(UpdatedComment));
   }
 }
@@ -94,8 +94,8 @@ const CommentReducer = (state = initialState, action) => {
       return newState;
     case PUT_COMMENT:
     newState = Object.assign({}, state);
-    const index = state.comments.findIndex(c => c.id === action.UpdatedComment.id);
-    newState.comments = [...state.comments.slice(0, index), action.UpdatedComment, ...state.comments.slice(index + 1)];
+    const index = state.comments.findIndex(c => c.id === action.comment.id);
+    newState.comments = [...state.comments.slice(0, index), action.comment, ...state.comments.slice(index + 1)];
     return newState;
     case POST_COMMENT:
         return { ...state, comments: [...state.comments, action.comment] };
