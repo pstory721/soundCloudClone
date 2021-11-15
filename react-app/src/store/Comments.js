@@ -93,9 +93,10 @@ const CommentReducer = (state = initialState, action) => {
       newState.comments = state.comments.filter(({ id }) => id !== action.comments);
       return newState;
     case PUT_COMMENT:
-      newState = Object.assign({}, state);
-      newState.comments.push(state.comments.filter(({id}) => id === action.comment));
-      return newState;
+    newState = Object.assign({}, state);
+    const index = state.comments.findIndex(c => c.id === action.UpdatedComment.id);
+    newState.comments = [...state.comments.slice(0, index), action.UpdatedComment, ...state.comments.slice(index + 1)];
+    return newState;
     case POST_COMMENT:
         return { ...state, comments: [...state.comments, action.comment] };
     default:
