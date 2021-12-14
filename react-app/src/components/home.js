@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { GetAllSongs } from "../store/song";
 import Playlist from './Playlist.js';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import "./home.css";
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 export function Home() {
   const [showPlaylist, setShowPlaylist] = useState(false);
@@ -38,21 +40,32 @@ export function Home() {
           <button onClick={() => setShowPlaylist(!showPlaylist)} className='pats-bttn'><img className='pats-img' src='https://res.cloudinary.com/dzjkwepju/image/upload/v1636685077/Styckr/1200px-Magnifying_glass_icon.svg_swnjm6.png' alt='glass'></img></button>
           </div>
       </div>
-      <div className="lower">
-        <div className="other-main">Heres whats trending in our community</div>
-        <div className='the-trends'>
-        {songs?.map((song) => (
-          <span >
-            <img className='trend-image' src={`${song.image_url}`} alt="ooops that broke"></img>
-          </span>
+      <CarouselProvider
+        naturalSlideWidth={100}
+        naturalSlideHeight={125}
+        totalSlides={28}
+      >
+      <div className="the -trends">
+        <div className="">Heres whats trending in our community</div>
+        <div>
 
+        <Slider>
+        {songs?.map((song) => (
+          <Slide index={song.id} className="size" >
+            <ButtonBack className="btn-back"/>
+            <img className="slider" src={`${song.image_url}`} alt="ooops that broke"></img>
+            <ButtonNext className="btn-next"/>
+          </Slide>
 
         ))}
+        </Slider>
+
         </div >
         <button onClick={() => setShowPlaylist(!showPlaylist)} className='playlist-bttn' >Playlist</button>
         {showPlaylist && <Playlist setShowPlaylist={setShowPlaylist}/>}
 
         </div>
+        </CarouselProvider>
     </div>
   );
 }

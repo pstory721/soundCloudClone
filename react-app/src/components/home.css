@@ -134,3 +134,31 @@
     background-color: rgb(58, 58, 58);
     margin-bottom: 30px;
 }
+ .slider{
+    height:600px;
+    width:1150px;
+}
+.btn-back{
+    position : absolute;
+    background-color: transparent;
+    height: 100px;
+    width: 80px;
+    left: 0;
+    top: 300px;
+    transform: scaleX(-1);
+    background-image: url("https://res.cloudinary.com/dveuedvvm/image/upload/v1639443472/Untitled_design_24_ydbbcd.png");
+    background-size: 80px;
+    background-repeat: no-repeat;
+}
+.btn-next{
+    position : absolute;
+    background-color: transparent;
+    right: 0;
+    height: 90px;
+    width: 80px;
+    top: 300px;
+
+    background-image: url("https://res.cloudinary.com/dveuedvvm/image/upload/v1639443472/Untitled_design_24_ydbbcd.png");
+    background-size: 80px;
+    background-repeat: no-repeat;
+}
