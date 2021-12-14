@@ -1,0 +1,12 @@
+.submit{
+    position: relative;
+    margin-top: 20px;
+    bottom: 12px;
+}
+
+.CommentForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

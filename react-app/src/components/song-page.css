@@ -1,7 +1,9 @@
 .song-page{
     margin: 100px auto 250px;
     width: 30%;
-    background-color: white;
+    background-color: rgb(155, 155, 155);
+    border: 5px groove rgb(35, 177, 0);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,6 +16,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.new-song-bttn{
+position: relative;
+right: 50px;
+}
+
+.song-title{
+    text-align: center;
 }
 
 .x{

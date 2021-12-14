@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { AddAComment } from "../store/Comments";
 import { EditDelete2 } from "./edit-delete";
+import './comment.css'
 
 
 function CommentForm({song_id}) {
@@ -23,8 +24,8 @@ function CommentForm({song_id}) {
     }
 
     return (
+            <div className="comment-form">
         <form className="CommentForm" onSubmit={handleSubmit}>
-            <label className="noteForms">
             <textarea
                     id='comment'
                     type="textarea"
@@ -32,9 +33,10 @@ function CommentForm({song_id}) {
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="Your Comment here"
             />
-            </label>
-            <button id="submit" type="submit">Submit</button>
+
+            <button className="submit" type="submit">Submit</button>
         </form>
+            </div>
     )
 }
 
