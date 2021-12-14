@@ -1,7 +1,9 @@
 .discover-page{
     margin-top: 40px;
     width: 55%;
-    background-color: white;
+    background-color: rgba(155, 155, 155, 0.705);
+    border: 5px groove rgb(177, 145, 0);
+    border-radius: 10px;
     margin: 50px auto 150px;
     font-family: 'Special Elite', cursive;
     display: flex;
@@ -46,8 +48,8 @@
     margin-top: 5px;
     margin-left: 120px;
     margin-bottom: 5px;
-    width: 29px;
-    height: 29px;
+    width: 40px;
+    height: 40px;
 }
 
 .overflow{

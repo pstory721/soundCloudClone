@@ -66,7 +66,7 @@ export function SongPage() {
             <img src={singleSong.image_url} width='200px' height='200px' alt='art'></img><br></br>
           <div className='new-song-bttn'>
           <div className='songs-bttns' >
-            <button className='song-bttn' onClick={()=> setLeSong(singleSong.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png" alt='play'></img> </button>
+            <button className='song-bttn' onClick={()=> setLeSong(singleSong.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1639445654/Styckr/Untitled_design_26_mgyaki.png" alt='play'></img> </button>
           </div>
           </div>
         </div>

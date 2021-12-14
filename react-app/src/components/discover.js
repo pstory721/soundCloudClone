@@ -26,7 +26,7 @@ export function Discover() {
         {songs?.filter(song => song.id < 10).map((song) => (
           <div className='songs-bttns' >
             <img className='trend-image' onClick={() => history.push(`/song-page/${song.id}`)} src={`${song.image_url}`} alt="ooops that broke"></img>
-            <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png" alt='play'></img> </button>
+            <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1639445654/Styckr/Untitled_design_26_mgyaki.png" alt='play'></img> </button>
           </div>
           ))}
           {songs?.map((song) => (
@@ -42,7 +42,7 @@ export function Discover() {
         {songs?.filter(song => song.id > 10 && song.id< 21).map((song) => (
           <div className='songs-bttns' >
             <img className='trend-image' onClick={() => history.push(`/song-page/${song.id}`)} src={`${song.image_url}`} alt="ooops that broke"></img>
-            <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png" alt='play'></img> </button>
+            <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1639445654/Styckr/Untitled_design_26_mgyaki.png" alt='play'></img> </button>
           </div>
           ))}
           {songs?.map((song) => (
@@ -57,7 +57,7 @@ export function Discover() {
         {songs?.map((song) => (
           <div className='songs-bttns' >
             <img className='trend-image' onClick={() => history.push(`/song-page/${song.id}`)} src={`${song.image_url}`} alt="ooops that broke"></img>
-            <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png" alt='play'></img> </button>
+            <button className='song-bttn' onClick={()=> setLeSong(song.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1639445654/Styckr/Untitled_design_26_mgyaki.png" alt='play'></img> </button>
           </div>
           ))}
           {songs?.map((song) => (
