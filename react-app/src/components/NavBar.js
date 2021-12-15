@@ -74,7 +74,7 @@ const NavBar = () => {
       <div className="nav">
       <div className="the-logo">
         <Link to="/" className="homie">
-          <img src='https://res.cloudinary.com/dzjkwepju/image/upload/v1639440204/Styckr/Untitled_design_16_s6ieeg.png' alt='logo'/>
+          <img src='https://res.cloudinary.com/dzjkwepju/image/upload/v1639522469/Styckr/Untitled_design_27_icrk1f.png' alt='logo'/>
            AngryCloud
         </Link>
       </div>

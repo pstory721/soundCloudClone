@@ -11,7 +11,7 @@ li{
 
 .demo{
     border-top-color: white;
-    color: black;
+    color: rgb(255, 208, 0);
     font-family: 'Special Elite', cursive;
     font-size: 14px;
 }
@@ -30,7 +30,7 @@ li{
 .links{
     font-family: 'Special Elite', cursive;
 
-    color: rgb(0, 238, 255);
+    color: rgb(255, 208, 0);
     text-decoration: none;
     margin-right: 10px;
 }
@@ -38,7 +38,7 @@ li{
 .link-signin{
     font-family: 'Special Elite', cursive;
 
-    color: rgb(0, 238, 255);
+    color: rgb(255, 208, 0);
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 8px;
