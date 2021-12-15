@@ -1,7 +1,8 @@
 .discover-page{
     margin-top: 40px;
     width: 55%;
-    background-color: rgba(155, 155, 155, 0.705);
+    background-color: rgba(68, 68, 68, 0.705);
+    color: rgb(255, 208, 0);
     border: 5px groove rgb(177, 145, 0);
     border-radius: 10px;
     margin: 50px auto 150px;

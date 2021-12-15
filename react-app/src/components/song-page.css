@@ -1,7 +1,7 @@
 .song-page{
     margin: 100px auto 250px;
     width: 30%;
-    background-color: rgba(155, 155, 155, 0.705);
+    background-color: rgba(68, 68, 68, 0.705);
     border: 5px groove rgb(177, 145, 0);
     border-radius: 10px;
     display: flex;
@@ -41,8 +41,11 @@ right: 50px;
 
 .the-comment{
     text-align: center;
-    border-radius: 5px;
+    color: rgb(255, 208, 0);
     width: auto;
     padding: 2px;
-    border: solid 1px;
+    border: 3px;
+    border-radius: 5px;
+    border-color: rgb(177, 145, 0);
+    border-style: groove groove groove;
 }
