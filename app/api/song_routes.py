@@ -72,11 +72,11 @@ def song_post():
         )
         db.session.add(new_song)
         db.session.commit()
-        return new_song.to_dict()
+        return jsonify(new_song.to_dict())
 
 
     else:
-        return "Bad Data"
+        return {"shoot":"shoot"}
 
 
 # To delete the song from the database
