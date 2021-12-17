@@ -1,5 +1,5 @@
 .song-page{
-    margin: 100px auto 250px;
+    margin: 100px auto 354px;
     width: 30%;
     background-color: rgba(68, 68, 68, 0.705);
     border: 5px groove rgb(177, 145, 0);
@@ -9,7 +9,7 @@
     justify-content: center;
     align-items: center;
 }
-
+/* TODO fix the play button position in the song page. it does not show up! */
 .solo-song{
     margin-top: 10px;
     display: flex;
@@ -19,11 +19,19 @@
 }
 
 .new-song-bttn{
-position: relative;
-right: 50px;
+    position: absolute;
+    top: -300px;
+    left: -300px;
+    z-index: 1000;
 }
 
+/* .new-song-bttn{
+position: relative;
+z-index: 1000;
+} */
+
 .song-title{
+    color: rgb(255, 208, 0);
     text-align: center;
 }
 

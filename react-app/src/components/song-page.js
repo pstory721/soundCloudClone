@@ -64,11 +64,6 @@ export function SongPage() {
     <div className='song-page'>
         <div className='solo-song'>
             <img src={singleSong.image_url} width='200px' height='200px' alt='art'></img><br></br>
-          <div className='new-song-bttn'>
-          <div className='songs-bttns' >
-            <button className='song-bttn' onClick={()=> setLeSong(singleSong.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1639445654/Styckr/Untitled_design_26_mgyaki.png" alt='play'></img> </button>
-          </div>
-          </div>
         </div>
           <div>
             <h1 className='song-title'>{singleSong.title}</h1>
@@ -76,6 +71,11 @@ export function SongPage() {
             {otherCheck}
             <CommentForm song_id={id}/>
         </div>
+          <div className='new-song-bttn'>
+          <div className='songs-bttns' >
+            <button className='song-bttn' onClick={()=> setLeSong(singleSong.song_url)}><img className='play-bttn' src="https://res.cloudinary.com/dzjkwepju/image/upload/v1639445654/Styckr/Untitled_design_26_mgyaki.png" alt='play'></img> </button>
+          </div>
+          </div>
         <div>
           {allComments?.map((comment) =>
             <div className='comment-stuff'>
