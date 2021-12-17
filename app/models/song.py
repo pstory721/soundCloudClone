@@ -1,5 +1,5 @@
 from .db import db
-
+from flask_login import login_required, current_user
 
 class Song(db.Model):
     __tablename__ = 'songs'
@@ -9,6 +9,7 @@ class Song(db.Model):
     artist = db.Column(db.String)
     length = db.Column(db.Integer)
     likes = db.Column(db.Integer)
+    index = db.Column(db.Integer)
     song_url = db.Column(db.String(255))
     image_url = db.Column(db.String(255))
 
@@ -24,6 +25,7 @@ class Song(db.Model):
             'artist': self.artist,
             'length': self.length,
             'likes': self.likes,
+            'index':self.index,
             'song_url': self.song_url,
             'image_url': self.image_url,
             'user_id': self.user_id
@@ -63,6 +65,22 @@ class Likes(db.Model):
             'user_id': self.user_id,
             'song_id': self.song_id
         }
+
+    def like_song(self, song):
+        if not self.has_liked_post(song):
+            like = Likes(user_id=current_user.id, song_id=song.id)
+            db.session.add(like)
+
+    def has_liked_post(self, song):
+        return Likes.query.filter(
+            Likes.user_id == current_user.id,
+            Likes.song_id == song.id).count() > 0
+
+    def unlike_post(self, song):
+        if self.has_liked_post(song):
+            Likes.query.filter_by(
+                user_id=current_user.id,
+                song_id=song.id).delete()
 
 
 class Playlist_Join(db.Model):

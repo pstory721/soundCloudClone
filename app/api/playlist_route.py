@@ -17,11 +17,11 @@ def playlists_join():
     return {'playlists': [playlist.to_dict() for playlist in playlists_join]}
 
 
-@playlist_routes.route('/<int:id>', methods=["DELETE"])
-@login_required
-def delete_playlist(id):
-    current_playlist = Playlist[id]
-    if current_playlist["user_id"] not in current_user:
-        return "Cannot complete request", 403
-    db.session.delete(current_playlist)
-    return redirect("/")
+# @playlist_routes.route('/<int:id>', methods=["DELETE"])
+# @login_required
+# def delete_playlist(id):
+#     current_playlist = Playlist[id]
+#     if current_playlist["user_id"] not in current_user:
+#         return "Cannot complete request", 403
+#     db.session.delete(current_playlist)
+#     return redirect("/")

@@ -93,6 +93,7 @@ export const GetAllSongs = () => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log(data);
     dispatch(GetSongs(data));
   }
 };

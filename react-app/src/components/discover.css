@@ -13,7 +13,7 @@
 .lines{
     background-color: rgb(197, 197, 197);
     border-radius: 100px;
-    margin: 415px auto 45px;
+    margin: 215px auto 45px;
     text-align: center;
     height: 1px;
     width: 70%;
@@ -48,6 +48,9 @@
     margin-bottom: 5px;
     width: 29px;
     height: 29px;
+    position: absolute;
+    top: 550px;
+    left: 360px;
 }
 
 .overflow{
@@ -72,25 +75,11 @@
     overflow-y: auto;
 }
 
-.songs-bttns{
-    /* overflow-x: hidden;
-     height: 240px;
-     width: 500px;
-     margin-top: 40px;
-     margin-right: 40px;
-     margin-left: 40px;
-     float: left;
-     flex-direction: row;
-     display:flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     align-items: center; */
-}
 
 .lines-trend{
     background-color: rgb(197, 197, 197);
     border-radius: 100px;
-    margin:385px auto 45px;
+    margin:185px auto 45px;
     height: 1px;
     width: 70%;
 }
@@ -98,4 +87,36 @@
 .trending{
     text-align: center;
     margin-top: 35px;
+}
+.carousel{
+    height: 600px;
+    width: 1000px;
+}
+.slider2{
+    height: 600px;;
+    width: 1000px;
+}
+.btn-back2{
+    position : absolute;
+    background-color: transparent;
+    height: 100px;
+    width: 80px;
+    left: 0;
+    top: 300px;
+    transform: scaleX(-1);
+    background-image: url("https://res.cloudinary.com/dveuedvvm/image/upload/v1639443472/Untitled_design_24_ydbbcd.png");
+    background-size: 80px;
+    background-repeat: no-repeat;
+}
+.btn-next2{
+    position : absolute;
+    background-color: transparent;
+    right: 0;
+    height: 90px;
+    width: 80px;
+    top: 300px;
+
+    background-image: url("https://res.cloudinary.com/dveuedvvm/image/upload/v1639443472/Untitled_design_24_ydbbcd.png");
+    background-size: 80px;
+    background-repeat: no-repeat;
 }

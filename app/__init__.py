@@ -9,6 +9,7 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.song_routes import song_routes
+from .api.likes import like_routes
 from .api.comment_routes import comment_routes
 from .api.playlist_route import playlist_routes
 
@@ -37,6 +38,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(song_routes, url_prefix='/api')
 app.register_blueprint(comment_routes, url_prefix='/api')
 app.register_blueprint(playlist_routes, url_prefix='/api')
+app.register_blueprint(like_routes, url_prefix='/api')
 
 db.init_app(app)
 Migrate(app, db)

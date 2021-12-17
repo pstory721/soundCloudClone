@@ -49,9 +49,9 @@ export function Home() {
         <div className="">Heres whats trending in our community</div>
         <div>
 
-        <Slider>
+        <Slider className="size"  >
         {songs?.map((song) => (
-          <Slide index={song.id} className="size" >
+          <Slide index={song.id} >
             <ButtonBack className="btn-back"/>
             <img className="slider" src={`${song.image_url}`} alt="ooops that broke"></img>
             <ButtonNext className="btn-next"/>

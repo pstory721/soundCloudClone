@@ -21,6 +21,7 @@ def single_songs(id):
 @song_routes.route("/song")
 def all_songs():
     songs = Song.query.all()
+    print(songs)
     return {'songs':[song.to_dict() for song in songs ]}
 
 # Post songs to the Database
