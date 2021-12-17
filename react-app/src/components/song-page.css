@@ -1,7 +1,9 @@
 .song-page{
     margin: 100px auto 250px;
     width: 30%;
-    background-color: white;
+    background-color: rgba(68, 68, 68, 0.705);
+    border: 5px groove rgb(177, 145, 0);
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,6 +16,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.new-song-bttn{
+position: relative;
+right: 50px;
+}
+
+.song-title{
+    text-align: center;
 }
 
 .x{
@@ -30,8 +41,11 @@
 
 .the-comment{
     text-align: center;
-    border-radius: 5px;
+    color: rgb(255, 208, 0);
     width: auto;
     padding: 2px;
-    border: solid 1px;
+    border: 3px;
+    border-radius: 5px;
+    border-color: rgb(177, 145, 0);
+    border-style: groove groove groove;
 }

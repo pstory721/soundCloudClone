@@ -12,10 +12,13 @@
     display: flex;
     width: 60%;
     height: 600px;
-    margin: 100px auto 50px;
+    margin: 60px auto 120px;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: rgba(68, 68, 68, 0.705);
+    color: rgb(255, 208, 0);
+    border: 5px groove rgb(177, 145, 0);
+    border-radius: 10px;
 }
 
 .user-list{
@@ -87,7 +90,7 @@
     margin-bottom: 10px;
     font-size: 24px;
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 208, 0);
 }
 
 .user-all{

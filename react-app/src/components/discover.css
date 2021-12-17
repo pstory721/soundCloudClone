@@ -1,7 +1,10 @@
 .discover-page{
     margin-top: 40px;
     width: 55%;
-    background-color: white;
+    background-color: rgba(68, 68, 68, 0.705);
+    color: rgb(255, 208, 0);
+    border: 5px groove rgb(177, 145, 0);
+    border-radius: 10px;
     margin: 50px auto 150px;
     font-family: 'Special Elite', cursive;
     display: flex;
@@ -11,7 +14,7 @@
 }
 
 .lines{
-    background-color: rgb(197, 197, 197);
+    background-color: rgb(255, 208, 0);
     border-radius: 100px;
     margin: 215px auto 45px;
     text-align: center;
@@ -46,11 +49,8 @@
     margin-top: 5px;
     margin-left: 120px;
     margin-bottom: 5px;
-    width: 29px;
-    height: 29px;
-    position: absolute;
-    top: 550px;
-    left: 360px;
+    width: 40px;
+    height: 40px;
 }
 
 .overflow{
@@ -77,7 +77,7 @@
 
 
 .lines-trend{
-    background-color: rgb(197, 197, 197);
+    background-color: rgb(255, 208, 0);
     border-radius: 100px;
     margin:185px auto 45px;
     height: 1px;
