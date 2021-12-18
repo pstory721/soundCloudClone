@@ -5,12 +5,14 @@ import CommentReducer from './Comments';
 import PlaylistReducer from './playlist';
 // import session from './session'
 import reducer from './session';
+import LikeReducer from './likes';
 
 const rootReducer = combineReducers({
   session:reducer,
   songs:SongReducer,
   comment:CommentReducer,
-  playlist:PlaylistReducer
+  playlist:PlaylistReducer,
+  Likes:LikeReducer
 });
 
 
