@@ -21,7 +21,7 @@
 .new-song-bttn{
     position: absolute;
     top: -300px;
-    left: -300px;
+    left: 250px;
     z-index: 1000;
 }
 
