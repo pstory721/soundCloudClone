@@ -34,6 +34,8 @@ export function Home() {
         </div>
       </div>
 
+          <button onClick={() => setShowPlaylist(!showPlaylist)} className='playlist-bttn' >Playlist</button>
+          {showPlaylist && <Playlist setShowPlaylist={setShowPlaylist}/>}
       <div className='the-search'>
           <div className='work'>
           <input className='joe' placeholder="Search for your favorite artist,tracks,or bands"></input>
@@ -46,7 +48,7 @@ export function Home() {
         totalSlides={28}
       >
       <div className="the -trends">
-        <div className="">Heres whats trending in our community</div>
+        <h1 className="here-trend">Here's what's trending in our community:</h1>
         <div>
 
         <Slider className="size"  >
@@ -61,8 +63,6 @@ export function Home() {
         </Slider>
 
         </div >
-        <button onClick={() => setShowPlaylist(!showPlaylist)} className='playlist-bttn' >Playlist</button>
-        {showPlaylist && <Playlist setShowPlaylist={setShowPlaylist}/>}
 
         </div>
         </CarouselProvider>

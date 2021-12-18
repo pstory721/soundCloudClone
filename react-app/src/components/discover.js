@@ -18,6 +18,7 @@ export function Discover() {
   const dispatch = useDispatch();
   const songs = useSelector((state) => state.songs.songs);
   const playlist = useSelector((state) => state.playlist.playlist);
+  const singleSong = useSelector((state) => state.songs.singleSong);
   useEffect(() => {
     dispatch(GetAllSongs());
   }, [dispatch]);
@@ -40,6 +41,7 @@ export function Discover() {
                 .map((song) => (
                   <Slide index={song.id} className="size">
                     <div className="songs-bttns">
+                      <h1 className='disc-song-tittle'>{song.title}</h1>
                       <ButtonBack className="btn-back2"/>
                       <img
                         img
@@ -54,7 +56,7 @@ export function Discover() {
                       >
                         <img
                           className="play-bttn"
-                          src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png"
+                          src="https://res.cloudinary.com/dzjkwepju/image/upload/v1639445654/Styckr/Untitled_design_26_mgyaki.png"
                           alt="play"
                         ></img>{" "}
                       </button>
@@ -79,6 +81,7 @@ export function Discover() {
             .map((song) => (
               <Slide index={song.id} className="size">
               <div className="songs-bttns">
+              <h1 className='disc-song-tittle'>{song.title}</h1>
               <ButtonBack className="btn-back2"/>
                 <img
                   className="slider2"
@@ -92,7 +95,7 @@ export function Discover() {
                 >
                   <img
                     className="play-bttn"
-                    src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png"
+                    src="https://res.cloudinary.com/dzjkwepju/image/upload/v1639445654/Styckr/Untitled_design_26_mgyaki.png"
                     alt="play"
                   ></img>{" "}
                 </button>
@@ -119,6 +122,7 @@ export function Discover() {
           {songs?.map((song) => (
              <Slide index={song.id} className="size">
             <div className="songs-bttns">
+            <h1 className='disc-song-tittle'>{song.title}</h1>
             <ButtonBack className="btn-back2"/>
               <img
                 className="slider2"
@@ -132,7 +136,7 @@ export function Discover() {
               >
                 <img
                   className="play-bttn"
-                  src="https://res.cloudinary.com/dzjkwepju/image/upload/v1636850988/Styckr/2105530_q1clya.png"
+                  src="https://res.cloudinary.com/dzjkwepju/image/upload/v1639445654/Styckr/Untitled_design_26_mgyaki.png"
                   alt="play"
                 ></img>{" "}
               </button>

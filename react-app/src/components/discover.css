@@ -13,6 +13,10 @@
 
 }
 
+.disc-song-tittle{
+    text-align: center;
+}
+
 .lines{
     background-color: rgb(255, 208, 0);
     border-radius: 100px;
@@ -49,6 +53,9 @@
     margin-top: 5px;
     margin-left: 120px;
     margin-bottom: 5px;
+    position: absolute;
+    top: 550px;
+    left: 360px;
     width: 40px;
     height: 40px;
 }
@@ -103,8 +110,8 @@
     width: 80px;
     left: 0;
     top: 300px;
-    transform: scaleX(-1);
-    background-image: url("https://res.cloudinary.com/dveuedvvm/image/upload/v1639443472/Untitled_design_24_ydbbcd.png");
+    /* transform: scaleX(-1); */
+    background-image: url("https://res.cloudinary.com/dzjkwepju/image/upload/v1639703438/Styckr/A_3_sddvhl.png");
     background-size: 80px;
     background-repeat: no-repeat;
 }
@@ -116,7 +123,7 @@
     width: 80px;
     top: 300px;
 
-    background-image: url("https://res.cloudinary.com/dveuedvvm/image/upload/v1639443472/Untitled_design_24_ydbbcd.png");
+    background-image: url("https://res.cloudinary.com/dzjkwepju/image/upload/v1639703492/Styckr/A_4_ztz9yn.png");
     background-size: 80px;
     background-repeat: no-repeat;
 }

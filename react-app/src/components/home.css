@@ -12,6 +12,12 @@
 
 }
 
+.here-trend{
+    font-size: 24px;
+    color: rgb(255, 208, 0);
+    text-align: center;
+}
+
 .joe{
     border: none;
     white-space: nowrap;
@@ -24,7 +30,7 @@
 }
 
 .the-search{
-    margin-top: 100px;
+    margin-top: 0px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -44,7 +50,7 @@
 .work{
     /* width: 50%; */
     border-radius: 10px;
-    background-color: rgba(155, 155, 155, 0.705);
+    background-color: rgba(194, 194, 194, 0.705);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -81,8 +87,8 @@
     border-radius: 5px;
     background-color: rgb(88, 72, 0);
     font-size: 24px;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    /* margin-bottom: 30px; */
+    /* margin-top: 30px; */
 }
 
 .lower{
@@ -97,10 +103,10 @@
     border: 5px;
     border-color: rgb(177, 145, 0);
     border-style: groove groove groove;
-    margin: 30px auto 130px;
+    margin: 30px auto 230px;
     width: 60%;
     height: 100%;
-    background-color: rgba(155, 155, 155, 0.705);
+    background-color: rgba(75, 75, 75, 0.705);
     font-family: 'Special Elite', cursive;
 
 }
@@ -138,8 +144,11 @@
     margin-bottom: 30px;
 }
  .slider{
-    height:600px;
-    width:1150px;
+     margin-left: 100px;
+     text-align: center;
+    height:550px;
+    width: 950px;
+    margin-bottom: 100px;
 }
 .btn-back{
     position : absolute;
@@ -148,8 +157,8 @@
     width: 80px;
     left: 0;
     top: 300px;
-    transform: scaleX(-1);
-    background-image: url("https://res.cloudinary.com/dveuedvvm/image/upload/v1639443472/Untitled_design_24_ydbbcd.png");
+    /* transform: scaleX(-1); */
+    background-image: url("https://res.cloudinary.com/dzjkwepju/image/upload/v1639703438/Styckr/A_3_sddvhl.png");
     background-size: 80px;
     background-repeat: no-repeat;
 }
@@ -161,7 +170,7 @@
     width: 80px;
     top: 300px;
 
-    background-image: url("https://res.cloudinary.com/dveuedvvm/image/upload/v1639443472/Untitled_design_24_ydbbcd.png");
+    background-image: url("https://res.cloudinary.com/dzjkwepju/image/upload/v1639703492/Styckr/A_4_ztz9yn.png");
     background-size: 80px;
     background-repeat: no-repeat;
 }
@@ -169,4 +178,3 @@
     height:600px;
     width:1150px;
 }
-
