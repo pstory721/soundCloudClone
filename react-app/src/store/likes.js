@@ -45,7 +45,7 @@ export const GetOneUsersLikes = (id) => async (dispatch) => {
 };
 
 export const UploadALike = (song_id,action) => async (dispatch) => {
-  const response = await fetch(`/api/like${song_id}/${action}`, {
+  const response = await fetch(`/api/like/${song_id}/${action}`, {
       method: "POST",
 
   });

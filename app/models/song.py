@@ -67,7 +67,7 @@ class Likes(db.Model):
         }
 
     def like_song(self, song):
-        if not self.has_liked_post(song):
+        if not self.has_liked_post(self,song):
             like = Likes(user_id=current_user.id, song_id=song.id)
             db.session.add(like)
 
@@ -76,8 +76,8 @@ class Likes(db.Model):
             Likes.user_id == current_user.id,
             Likes.song_id == song.id).count() > 0
 
-    def unlike_post(self, song):
-        if self.has_liked_post(song):
+    def unlike_song(self, song):
+        if self.has_liked_post(self,song):
             Likes.query.filter_by(
                 user_id=current_user.id,
                 song_id=song.id).delete()
