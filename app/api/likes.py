@@ -20,6 +20,7 @@ def all_likes_for_a_user(id):
 @like_routes.route('/like/<int:song_id>/<action>', methods=["POST","DELETE"])
 @login_required
 def like_action(song_id, action):
+    likes = Likes.query.all()
     s = Song()
     songs =s.query.filter_by(id=song_id).first()
     # song = Song.query.filter_by(id=song_id
@@ -29,4 +30,4 @@ def like_action(song_id, action):
     if action == 'unlike':
         Likes.unlike_song(Likes,songs)
         db.session.commit()
-    return redirect(request.referrer)
+    return jsonify([like.to_dict() for like in likes])

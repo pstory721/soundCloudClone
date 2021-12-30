@@ -7,15 +7,15 @@ const DELETE_LIKE = "session/DeleteLikes";
 
 const GetLikes = (likes) => {
   return {
-    type: GET_LIKES,
-    payload: likes,
+    type:GET_LIKES,
+    likes,
   };
 };
 
 const GetALike = (like) => {
   return {
     type:GET_A_LIKE,
-    payload: like,
+    like,
   };
 };
 
@@ -29,7 +29,7 @@ const AddLikes = (likes) => {
 
 const DeleteLike = (like) => {
   return {
-    type: DELETE_LIKE,
+    type:DELETE_LIKE,
     like
   };
 };
@@ -83,11 +83,11 @@ const LikeReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_LIKES:
       newState = Object.assign({}, state);
-      newState.songLikes = action.payload.likes;
+      newState.songLikes = action.likes;
       return newState;
       case GET_A_LIKE:
       newState = Object.assign({}, state);
-      newState.userLikes = action.payload.like;
+      newState.userLikes = action.like;
       return newState;
     case DELETE_LIKE:
         newState = Object.assign({}, state);

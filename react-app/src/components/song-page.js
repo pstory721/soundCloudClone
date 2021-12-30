@@ -11,7 +11,7 @@ import { DeleteAComment, GetAllComments } from "../store/Comments";
 import "./song-page.css";
 
 import EditForm from "./edit_comment";
-import { GetASongsLikes,UploadALike } from "../store/likes";
+import { GetASongsLikes, GetOneUsersLikes, UploadALike } from "../store/likes";
 
 export function SongPage() {
   const { leSong, setLeSong } = usePlayer();
@@ -50,21 +50,28 @@ export function SongPage() {
 
   const [showForm, setShowForm] = useState(false);
   const [audio, setAudio] = useState();
+  const [like, setLike] = useState("like");
   useEffect(() => {
     dispatch(GetOneSong(id));
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(GetAllComments(id));
+    dispatch(GetASongsLikes(id));
+    dispatch(GetOneUsersLikes(sessionUser.id));
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(GetASongsLikes(id));
-  }, [dispatch]);
+    likes?.map((like2) => {
+      if (sessionUser?.id === like2?.user_id) {
+        setLike("unlike");
+      } else if (sessionUser?.id !== like2?.user_id) {
+        setLike("like");
+      }
+    });
+  }, );
 
   const handleAudio = () => {
     setLeSong(singleSong.song_url);
   };
+  console.log(like)
 
   return (
     <div className="song-page">
@@ -81,7 +88,7 @@ export function SongPage() {
         <h1 className="song-title">{singleSong.title}</h1>
         {userCheck}
         {otherCheck}
-        <button onClick={()=> dispatch(UploadALike(id,"like"))}></button>
+        <button onClick={() => dispatch(UploadALike(id, like))}></button>
         <CommentForm song_id={id} />
       </div>
       <div className="new-song-bttn">
