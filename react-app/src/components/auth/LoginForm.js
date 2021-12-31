@@ -44,7 +44,7 @@ const LoginForm = () => {
       <div>
         <label id='pad' className='break' htmlFor='email'>Email</label><br></br>
         <input
-        className='break'
+        className='break2'
           name='email'
           type='text'
           placeholder='Email'
@@ -55,7 +55,7 @@ const LoginForm = () => {
       <div>
         <label className='break' htmlFor='password'>Password</label><br></br>
         <input
-        className='break'
+        className='break2'
           name='password'
           type='password'
           placeholder='Password'

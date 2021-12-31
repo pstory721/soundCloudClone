@@ -71,7 +71,18 @@ export function SongPage() {
   const handleAudio = () => {
     setLeSong(singleSong.song_url);
   };
+
+  let likeImg;
+  likes?.map((like2) => {
+  if (like === 'unlike' ){
+    likeImg = <img src='https://res.cloudinary.com/dzjkwepju/image/upload/v1639785271/Styckr/Untitled_design_31_ljpu7l.png' alt='liked'></img>
+
+  }else if (like === 'like'){
+    likeImg = <img src='https://res.cloudinary.com/dzjkwepju/image/upload/v1639785238/Styckr/Untitled_design_30_aabiyy.png' alt='unliked'></img>
+  } });
+
   console.log(like)
+
 
   return (
     <div className="song-page">
@@ -88,7 +99,8 @@ export function SongPage() {
         <h1 className="song-title">{singleSong.title}</h1>
         {userCheck}
         {otherCheck}
-        <button onClick={() => dispatch(UploadALike(id, like))}></button>
+        <button onClick={() => dispatch(UploadALike(id, like))}>{likeImg}</button>
+        <h1 className='like-count'>{likes.length}</h1>
         <CommentForm song_id={id} />
       </div>
       <div className="new-song-bttn">

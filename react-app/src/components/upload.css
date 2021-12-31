@@ -48,3 +48,18 @@ body{
     font-family: 'Special Elite', cursive;
     font-size: 24px;
 }
+
+@media screen and (min-width: 2499px){
+    .upload{
+        color: rgb(255, 208, 0);
+        background-color: rgba(59, 59, 59, 0.726);
+        border: 5px groove rgb(177, 145, 0);
+        border-radius: 10px;
+        width: 20%;
+        margin: 300px auto 770px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

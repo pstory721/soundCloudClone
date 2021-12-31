@@ -54,7 +54,7 @@
     margin-left: 120px;
     margin-bottom: 5px;
     position: absolute;
-    top: 550px;
+    top: 700px;
     left: 360px;
     width: 40px;
     height: 40px;
@@ -96,13 +96,18 @@
     margin-top: 35px;
 }
 .carousel{
-    height: 600px;
+    height: 780px;
     width: 1000px;
 }
 .slider2{
-    height: 600px;;
+    height: 700px;;
     width: 1000px;
 }
+
+.outer{
+    height: 750px;
+}
+
 .btn-back2{
     position : absolute;
     background-color: transparent;
@@ -126,4 +131,77 @@
     background-image: url("https://res.cloudinary.com/dzjkwepju/image/upload/v1639703492/Styckr/A_4_ztz9yn.png");
     background-size: 80px;
     background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 2499px){
+    .the-ps{
+        font-size: 34px;
+        text-align: center;
+    }
+
+    .trending{
+        text-align: center;
+        margin-top: 55px;
+    }
+
+    .disc-song-tittle{
+        text-align: center;
+        font-size: 44px;
+    }
+
+    .slider2{
+        height: 900px;
+        width: 1000px;
+    }
+
+    .carousel{
+        height: 1000px;
+        width: 1000px;
+    }
+
+    .btn-back2{
+        position : absolute;
+        background-color: transparent;
+        height: 100px;
+        width: 80px;
+        left: 0;
+        top: 550px;
+        /* transform: scaleX(-1); */
+        background-image: url("https://res.cloudinary.com/dzjkwepju/image/upload/v1639703438/Styckr/A_3_sddvhl.png");
+        background-size: 80px;
+        background-repeat: no-repeat;
+    }
+    .btn-next2{
+        position : absolute;
+        background-color: transparent;
+        right: 0;
+        height: 90px;
+        width: 80px;
+        top: 550px;
+
+        background-image: url("https://res.cloudinary.com/dzjkwepju/image/upload/v1639703492/Styckr/A_4_ztz9yn.png");
+        background-size: 80px;
+        background-repeat: no-repeat;
+    }
+
+    .song-bttn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        margin-left: 120px;
+        margin-bottom: 5px;
+        position: absolute;
+        top: 930px;
+        left: 360px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .play-bttn{
+        text-align: center;
+        width: 38px;
+        height: 38px;
+    }
+
 }

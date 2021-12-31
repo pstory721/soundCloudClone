@@ -85,3 +85,45 @@ button{
 .rhap_total-time{
     color: rgb(255, 208, 0);
 }
+
+@media screen and (min-width: 2499px){
+    #player{
+        margin-bottom: 95px;
+    }
+
+    .rhap_progress-container{
+        width:90%;
+        background-color: rgba(137, 43, 226, 0);
+        height: 35px;
+    }
+
+    .rhap_progress-bar{
+        margin-top: 10px;
+        position: relative;
+        width: 90%;
+        background-color: rgb(226, 211, 142);
+        height:10px;
+    }
+
+    .rhap_progress-indicator{
+        position: absolute;
+        z-index: 2;
+        height: 15px;
+        width: 15px;
+        background-color: rgb(255, 208, 0);
+        border-radius: 10px;
+    }
+
+    .rhap_current-time{
+        font-size: 20px;
+        margin-top: 7px;
+        margin-right: 35px;
+        color: rgb(255, 208, 0);
+    }
+
+    .rhap_total-time{
+        font-size: 20px;
+        margin-top: 7px;
+        color: rgb(255, 208, 0);
+    }
+}

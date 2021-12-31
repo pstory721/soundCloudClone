@@ -10,3 +10,19 @@
     padding-right: 9px;
     font-family: 'Special Elite', cursive;
 }
+
+@media screen and (min-width: 2499px){
+    .logout{
+        margin-right: 10px;
+        background-color: rgb(88, 72, 0);
+        color: rgb(255, 208, 0);
+        border-radius: 15px;
+        border-top-color: white;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 9px;
+        padding-right: 9px;
+        font-family: 'Special Elite', cursive;
+        font-size: 22px;
+    }
+}
