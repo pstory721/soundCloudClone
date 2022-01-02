@@ -66,13 +66,12 @@ export const GetASongsLikes = (id) => async (dispatch) => {
   }
 };
 
-export const DeleteALike = (song_id,action) => async (dispatch) => {
+export const DeleteALike = (song_id,action,id) => async (dispatch) => {
   const response = await fetch(`/api/like/${song_id}/${action}`, {
     method: "DELETE",
   });
   if (response.ok) {
-    const like = await response.json()
-    dispatch(DeleteLike(like));
+    dispatch(DeleteLike(id));
   }
 };
 
@@ -92,6 +91,7 @@ const LikeReducer = (state = initialState, action) => {
     case DELETE_LIKE:
         newState = Object.assign({}, state);
         newState.songLikes = state.songLikes.filter(({ id }) => id !== action.like);
+        newState.userLikes = state.songLikes.filter(({ id }) => id !== action.like);
         return newState;
     case POST_LIKE:
         return { ...state, songLikes: [...state.songLikes, action.likes] };

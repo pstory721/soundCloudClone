@@ -11,7 +11,7 @@ import { DeleteAComment, GetAllComments } from "../store/Comments";
 import "./song-page.css";
 
 import EditForm from "./edit_comment";
-import { GetASongsLikes, GetOneUsersLikes, UploadALike } from "../store/likes";
+import { GetASongsLikes, GetOneUsersLikes, UploadALike,DeleteALike } from "../store/likes";
 
 export function SongPage() {
   const { leSong, setLeSong } = usePlayer();
@@ -23,6 +23,7 @@ export function SongPage() {
   const singleSong = useSelector((state) => state.songs.singleSong);
   const allComments = useSelector((state) => state.comment.comments);
   const likes = useSelector((state) => state.likes.songLikes);
+  const userLikes = useSelector((state) => state.likes.songLikes);
 
   const handleDelete = (e) => {
     // e.preventDefault();
@@ -51,6 +52,7 @@ export function SongPage() {
   const [showForm, setShowForm] = useState(false);
   const [audio, setAudio] = useState();
   const [like, setLike] = useState("like");
+  const [singleLike, setSingleLike] = useState();
   useEffect(() => {
     dispatch(GetOneSong(id));
     dispatch(GetAllComments(id));
@@ -66,12 +68,21 @@ export function SongPage() {
         setLike("like");
       }
     });
-  }, );
+  });
 
   const handleAudio = () => {
     setLeSong(singleSong.song_url);
   };
-  console.log(like)
+
+
+  useEffect(() => {
+    likes?.map((like2) => {
+      if (sessionUser?.id === like2?.user_id) {
+        setSingleLike(like2.id)
+      }
+    });
+});
+
 
   return (
     <div className="song-page">
@@ -88,7 +99,7 @@ export function SongPage() {
         <h1 className="song-title">{singleSong.title}</h1>
         {userCheck}
         {otherCheck}
-        <button onClick={() => dispatch(UploadALike(id, like))}></button>
+        <button onClick={() => like==="like"?dispatch(UploadALike(id, like)): dispatch(DeleteALike(id,like,singleLike))}></button>
         <CommentForm song_id={id} />
       </div>
       <div className="new-song-bttn">
