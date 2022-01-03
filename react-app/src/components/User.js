@@ -11,6 +11,7 @@ function User() {
   const sessionUser = useSelector((state) => state.session.user);
   const { userId }  = useParams();
   const songs = useSelector((state) => state.songs.songs);
+  const userLikes = useSelector((state) => state.likes.songLikes);
   useEffect(() => {
     dispatch(GetAllSongs());
   }, [dispatch]);
@@ -32,20 +33,24 @@ function User() {
 
   function toggle_visibility(id, id2) {
     let something = document.getElementById(id);
+    let somethingElse = document.getElementById(id2);
     if(something.style.display === 'block'){
       something.style.display = 'none';
+      somethingElse.style.display = 'block';
 
     }
     else{
-
       something.style.display = 'block';
+      somethingElse.style.display = 'none';
     }
  }
 
   return (
    <div className='all-user'>
-      <div>
-        <h2 className='username'>{user.username}</h2>
+      <div className='user-div'>
+        <h1 className='username'>{user.username}</h1>
+        <h3>{user.email}</h3>
+        <h3>Likes: {userLikes.length}</h3>
       </div>
       <ul className='user-list'>
           <li className='lis'>
@@ -61,7 +66,19 @@ function User() {
               </div>))}
               </div>
           </li>
-          {/* <li className='lis'><NavLink className='lis-text' to={`/users/${sessionUser.id}`}>Likes</NavLink></li> */}
+          <li className='lis'>
+            <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('play', 'song')}>
+            Likes
+            </NavLink>
+            <div className='liked-songs' id="play">
+              {songs?.filter(song=> song.user_id === sessionUser.id).map((song) => (
+              <div className='shiz-giggles' >
+                <ul>
+                <li className='li-images'>{`${song.artist}`}</li>
+                </ul>
+              </div>))}
+              </div>
+            </li>
           {/* <li className='lis'>
             <NavLink className='lis-text' to={`/users/${sessionUser.id}`} onClick={()=> toggle_visibility('play', 'song')}>
               Playlist
