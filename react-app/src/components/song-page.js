@@ -88,14 +88,7 @@ export function SongPage() {
     });
 });
 
-  let likeImg;
-  likes?.map((like2) => {
-  if (like === 'unlike' ){
-    likeImg = <img src='https://res.cloudinary.com/dzjkwepju/image/upload/v1639785271/Styckr/Untitled_design_31_ljpu7l.png' alt='liked'></img>
-
-  }else if (like === 'like'){
-    likeImg = <img src='https://res.cloudinary.com/dzjkwepju/image/upload/v1639785238/Styckr/Untitled_design_30_aabiyy.png' alt='unliked'></img>
-  } });
+  let likeImg =<img src='https://res.cloudinary.com/dzjkwepju/image/upload/v1639785271/Styckr/Untitled_design_31_ljpu7l.png' alt='liked'></img>
 
 const handleLike =() => {
   check===false?dispatch(DeleteALike(id,like,singleLike)):dispatch(UploadALike(id, like))
@@ -118,7 +111,7 @@ const handleLike =() => {
         <h1 className="song-title">{singleSong.title}</h1>
         {userCheck}
         {otherCheck}
-        <button onClick={() => handleLike()}></button>
+        <button onClick={() => handleLike()}>{likeImg}</button>
         <h1 className='like-count'>{likes.length}</h1>
         <CommentForm song_id={id} />
       </div>
