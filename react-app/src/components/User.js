@@ -10,8 +10,9 @@ function User() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const { userId }  = useParams();
-  const songs = useSelector((state) => state.songs.songs);
+  const songs1 = useSelector((state) => state.songs.songs);
   const userLikes = useSelector((state) => state.likes.songLikes);
+  const likedSongs = useSelector((state) => state.likes.userLikes);
   useEffect(() => {
     dispatch(GetAllSongs());
   }, [dispatch]);
@@ -50,7 +51,7 @@ function User() {
       <div className='user-div'>
         <h1 className='username'>{user.username}</h1>
         <h3>{user.email}</h3>
-        <h3>Likes: {userLikes.length}</h3>
+        <h3>Likes: {likedSongs.length}</h3>
       </div>
       <ul className='user-list'>
           <li className='lis'>
@@ -58,7 +59,7 @@ function User() {
               All
             </NavLink>
               <div className='all-songs' id="song">
-              {songs?.filter(song=> song.user_id === sessionUser.id).map((song) => (
+              {songs1?.filter(song=> song.user_id === sessionUser.id).map((song) => (
               <div className='shiz-giggles' >
                 <ul>
                 <li className='li-images'><img className='user-all' src={`${song.image_url}`} alt="ooops that broke"></img></li>
@@ -71,7 +72,7 @@ function User() {
             Likes
             </NavLink>
             <div className='liked-songs' id="play">
-              {songs?.filter(song=> song.user_id === sessionUser.id).map((song) => (
+              {songs1?.filter(song=> song.user_id === sessionUser.id).map((song) => (
               <div className='shiz-giggles' >
                 <ul>
                 <li className='li-images'>{`${song.artist}`}</li>
