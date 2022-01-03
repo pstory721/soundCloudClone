@@ -32,7 +32,7 @@ export function SongPage() {
   };
 
   let userCheck;
-  if (sessionUser.id === singleSong?.user_id) {
+  if (sessionUser?.id === singleSong?.user_id) {
     userCheck = (
       <button
         id="splashlinkbuttons"
@@ -45,13 +45,14 @@ export function SongPage() {
     );
   }
   let otherCheck;
-  if (sessionUser.id === singleSong?.user_id) {
+  if (sessionUser?.id === singleSong?.user_id) {
     otherCheck = <UpdateForm id={singleSong.id} />;
   }
 
   const [showForm, setShowForm] = useState(false);
   const [audio, setAudio] = useState();
-  const [like, setLike] = useState("like");
+  const [like, setLike] = useState();
+  const [check, setCheck] = useState();
   const [singleLike, setSingleLike] = useState();
   useEffect(() => {
     dispatch(GetOneSong(id));
@@ -60,18 +61,22 @@ export function SongPage() {
     dispatch(GetOneUsersLikes(sessionUser.id));
   }, [dispatch]);
 
-  useEffect(() => {
-    likes?.map((like2) => {
-      if (sessionUser?.id === like2?.user_id) {
-        setLike("unlike");
-      } else if (sessionUser?.id !== like2?.user_id) {
-        setLike("like");
-      }
-    });
-  },[like]);
-
+//   useEffect(() => {
+//     likes?.map((like2) => {
+//       if (sessionUser?.id === like2?.user_id) {
+//         const tmp = [...check]
+//         setCheck(true)
+//         setLike("unlike");
+//       } else if (sessionUser?.id !== like2?.user_id) {
+//         const tmp = [...check]
+//         setCheck(false)
+//         setLike("like");
+//       }
+//     });
+//   },[dispatch,check]);
+// console.log(check)
   const handleAudio = () => {
-    setLeSong(singleSong.song_url);
+    setLeSong(singleSong?.song_url);
   };
 
 
@@ -81,7 +86,7 @@ export function SongPage() {
         setSingleLike(like2.id)
       }
     });
-},[like]);
+});
 
   let likeImg;
   likes?.map((like2) => {
@@ -92,7 +97,11 @@ export function SongPage() {
     likeImg = <img src='https://res.cloudinary.com/dzjkwepju/image/upload/v1639785238/Styckr/Untitled_design_30_aabiyy.png' alt='unliked'></img>
   } });
 
-
+const handleLike =() => {
+  check===false?dispatch(DeleteALike(id,like,singleLike)):dispatch(UploadALike(id, like))
+  check===false?setCheck(true):setCheck(false)
+  check===false?setLike("like"):setLike("unlike")
+}
 
   return (
     <div className="song-page">
@@ -109,7 +118,7 @@ export function SongPage() {
         <h1 className="song-title">{singleSong.title}</h1>
         {userCheck}
         {otherCheck}
-        <button onClick={() => like==="like"?dispatch(UploadALike(id, like)): dispatch(DeleteALike(id,like,singleLike))}></button>
+        <button onClick={() => handleLike()}></button>
         <h1 className='like-count'>{likes.length}</h1>
         <CommentForm song_id={id} />
       </div>

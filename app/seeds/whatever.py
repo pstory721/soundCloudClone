@@ -8,9 +8,6 @@ def seed_playlist_join():
     Test2 = Playlist_Join(
         song_id=3, playlist_id=1,
     )
-    Test3 = Playlist_Join(
-        song_id=4, playlist_id=1,
-    )
     Test4 = Playlist_Join(
         song_id=6, playlist_id=2,
     )
@@ -58,7 +55,6 @@ def seed_playlist_join():
     )
     db.session.add(Test)
     db.session.add(Test2)
-    db.session.add(Test3)
     db.session.add(Test4)
     db.session.add(Test5)
     db.session.add(Test6)
@@ -110,10 +106,7 @@ def seed_songs():
         title='Paris', artist='Suicide Boys', length=1.47, likes=32, song_url="https://res.cloudinary.com/dveuedvvm/video/upload/v1636840301/UICIDEBOY_-_PARIS_uq6xhb.mp4",
         image_url="https://res.cloudinary.com/dveuedvvm/image/upload/v1636841135/maxresdefault_qixegr.jpg", user_id=1,index=1,
     )
-    Hot = Song(
-        title='Hot Demon B!tches Near You', artist='Corpse', length=1.37, likes=12, song_url="https://res.cloudinary.com/dveuedvvm/video/upload/v1636840307/HOT_DEMON_B_TCHES_NEAR_U_ocn5o6.mp4",
-        image_url="https://res.cloudinary.com/dveuedvvm/image/upload/v1636841048/ab67706c0000bebbea79c6c74f125c03d0872044_vfsil8.jpg", user_id=1,index=2,
-    )
+
     Enemy = Song(
         title='Enemy', artist='Imagine Dragons X JID', length=3.34, likes=54, song_url="https://res.cloudinary.com/dveuedvvm/video/upload/v1636840313/Imagine_Dragons_x_J.I.D_-_Enemy_from_the_series_Arcane_League_of_Legends_jv7flv.mp4",
         image_url="https://res.cloudinary.com/dveuedvvm/image/upload/v1636841007/IDEnemyJID_glolkc.jpg", user_id=3,index=2,
@@ -215,7 +208,6 @@ def seed_songs():
     db.session.add(Epic)
     db.session.add(Carolltan)
     db.session.add(Paris)
-    db.session.add(Hot)
     db.session.add(Enemy)
     db.session.add(King)
     db.session.add(Popular)
