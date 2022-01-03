@@ -37,3 +37,45 @@
     border-radius: 5px;
     margin-bottom: 10px;
 }
+
+@media screen and (min-width: 2499px){
+    .sign-up-form{
+        background-color: rgba(68, 68, 68, 0.705);
+        color: rgb(255, 208, 0);
+        border: 5px groove rgb(177, 145, 0);
+        border-radius: 10px;
+        margin: 300px auto 730px;
+        width: 20%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .label{
+        font-family: 'Special Elite', cursive;
+        font-size: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .input{
+        margin-bottom: 10px;
+        font-size: 25px;
+    }
+
+    .signup-button{
+        font-family: 'Special Elite', cursive;
+        font-size: 24px;
+        padding-top: 3px;
+        background-color: rgb(88, 72, 0);
+        color: rgb(255, 208, 0);
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+}

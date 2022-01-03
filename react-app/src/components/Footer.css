@@ -43,3 +43,14 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+@media screen and (min-width: 2499px){
+    .footer{
+        height: 85px;
+        font-size: 34px;
+        border: 10px;
+        background-color: rgb(49, 44, 44);
+        border-color: rgb(177, 145, 0);
+        border-style: groove none none;
+    }
+}

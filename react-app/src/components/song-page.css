@@ -18,6 +18,11 @@
     align-items: center;
 }
 
+.like-count{
+    color: rgb(255, 208, 0);
+    font-family: 'Special Elite', cursive;
+}
+
 .new-song-bttn{
     position: absolute;
     top: -300px;

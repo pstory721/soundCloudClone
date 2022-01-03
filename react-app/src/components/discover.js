@@ -25,8 +25,8 @@ export function Discover() {
 
   return (
     <div className="discover-page">
-      <div>
-        <div>
+      <div >
+        <div >
           <h2 className="trending"> TOP 10: </h2>
           <p className="the-ps">The most played tracks on Angry Cloud</p>
 
