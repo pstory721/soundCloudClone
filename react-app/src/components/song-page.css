@@ -62,3 +62,15 @@ z-index: 1000;
     border-color: rgb(177, 145, 0);
     border-style: groove groove groove;
 }
+
+@media screen and (max-width:1441px) {
+    .song-bttn{
+        position: relative;
+        left: 150px;
+        /* top: .5px; */
+    }
+
+    .song-title{
+        margin-top: 55px;
+    }
+}
