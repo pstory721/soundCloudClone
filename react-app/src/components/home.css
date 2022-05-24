@@ -247,3 +247,44 @@
     /* margin-top: 30px; */
 }
 }
+
+@media screen and (max-width:1441px) {
+    .slider{
+        padding-right: 300px;
+     /* margin-left: 320px; */
+    text-align: center;
+    height:550px;
+    width: 750px;
+    margin-bottom: 100px;
+}
+
+.btn-back{
+    position : absolute;
+    background-color: transparent;
+    height: 100px;
+    width: 80px;
+    left: 100px;
+    top: 350px;
+    /* transform: scaleX(-1); */
+    background-image: url("https://res.cloudinary.com/dzjkwepju/image/upload/v1639703438/Styckr/A_3_sddvhl.png");
+    background-size: 80px;
+    background-repeat: no-repeat;
+}
+
+.btn-next{
+    position : absolute;
+    background-color: transparent;
+    right: 330px;
+    height: 90px;
+    width: 80px;
+    top: 350px;
+
+    background-image: url("https://res.cloudinary.com/dzjkwepju/image/upload/v1639703492/Styckr/A_4_ztz9yn.png");
+    background-size: 80px;
+    background-repeat: no-repeat;
+}
+
+.carousel{
+    height: 80%;
+}
+}
