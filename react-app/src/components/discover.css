@@ -205,3 +205,27 @@
     }
 
 }
+
+@media screen and (max-width:1441px){
+.slider2{
+    margin-left: 150px;
+    height: 550px;
+    width: 700px;
+}
+
+.btn-next2{
+    right: 150px;
+}
+
+.btn-back2{
+    left: 150px;
+}
+
+.lines-trend{
+    margin-top: 80px;
+}
+
+.lines{
+    margin-top: 85px;
+}
+}
